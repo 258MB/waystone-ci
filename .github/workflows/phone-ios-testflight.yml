@@ -1,0 +1,71 @@
+name: phone-ios-testflight
+# Builds the signed iPhone app and sends it to TestFlight. Ready, but it waits for 4 secrets that need Marko's
+# Apple Developer account: APPLE_TEAM_ID, ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8 (an App Store Connect API key,
+# Admin or App Manager role). Signing is automatic with that key: no certificate or profile files to make by hand.
+# Nothing is uploaded as an artifact (this repo is public). The app source comes only through PHONE_SRC_URL.
+on:
+  workflow_dispatch:
+    inputs:
+      src_sha:
+        description: "sha256 of the source zip"
+        required: false
+      build_number:
+        description: "build number (must go up for each upload)"
+        required: true
+        default: "1"
+permissions:
+  contents: read
+jobs:
+  testflight:
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check the signing secrets
+        env:
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          KID: ${{ secrets.ASC_KEY_ID }}
+          ISS: ${{ secrets.ASC_ISSUER_ID }}
+          P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          missing=""
+          [ -n "$TEAM" ] || missing="$missing APPLE_TEAM_ID"
+          [ -n "$KID" ] || missing="$missing ASC_KEY_ID"
+          [ -n "$ISS" ] || missing="$missing ASC_ISSUER_ID"
+          [ -n "$P8" ] || missing="$missing ASC_KEY_P8"
+          if [ -n "$missing" ]; then echo "::error::Waiting for Apple signing secrets:$missing"; exit 1; fi
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Get the app source
+        env: { SRC_URL: "${{ secrets.PHONE_SRC_URL }}", SRC_SHA: "${{ inputs.src_sha }}" }
+        run: |
+          curl -sSL -o src.zip "$SRC_URL"
+          if [ -n "$SRC_SHA" ]; then echo "$SRC_SHA  src.zip" | shasum -a 256 -c -; fi
+          mkdir app && cd app && unzip -q ../src.zip
+      - name: Archive, sign and upload to TestFlight
+        env:
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          KID: ${{ secrets.ASC_KEY_ID }}
+          ISS: ${{ secrets.ASC_ISSUER_ID }}
+          P8: ${{ secrets.ASC_KEY_P8 }}
+          BUILD: ${{ inputs.build_number }}
+        run: |
+          KEY="$RUNNER_TEMP/AuthKey.p8"; printf '%s' "$P8" > "$KEY"
+          AUTH="-allowProvisioningUpdates -authenticationKeyPath $KEY -authenticationKeyID $KID -authenticationKeyIssuerID $ISS"
+          cd app/native && npm ci --no-audit --no-fund && node scripts/prepare-www.mjs && npx cap sync ios
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Release -destination "generic/platform=iOS" \
+            -archivePath "$RUNNER_TEMP/Waystone.xcarchive" DEVELOPMENT_TEAM="$TEAM" CODE_SIGN_STYLE=Automatic \
+            CURRENT_PROJECT_VERSION="$BUILD" $AUTH -quiet archive
+          cat > "$RUNNER_TEMP/export.plist" <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>$TEAM</string>
+            <key>signingStyle</key><string>automatic</string>
+          </dict></plist>
+          PLIST
+          sed -i '' 's/^          //' "$RUNNER_TEMP/export.plist"
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/Waystone.xcarchive" -exportOptionsPlist "$RUNNER_TEMP/export.plist" \
+            -exportPath "$RUNNER_TEMP/export" $AUTH
+          rm -f "$KEY"
