@@ -27,6 +27,8 @@ DATA="$HOME/Library/Application Support/Waystone"; RUN="$DATA/en-cours.json"; rm
 # The quarantine mark makes Gatekeeper wait for a click on "Open" that never comes on a runner, which hung
 # every shard for hours (r23c). The buyer view is logged above; clear the mark, then launch without blocking.
 xattr -d -r com.apple.quarantine "$APP" 2>/dev/null; log "quarantine cleared for the automated launch"
+# Shards other than 0 only need the unpacked app for the question set: skip the smoke test there.
+[ "${SMOKE:-1}" = 0 ] && { log "smoke test skipped on this shard"; exit 0; }
 T0=$(date +%s); open "$APP" & OPEN_PID=$!
 URL=""
 for i in $(seq 1 300); do sleep 1; [ -f "$RUN" ] && URL=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['url'])" "$RUN" 2>/dev/null) && [ -n "$URL" ] && break; done

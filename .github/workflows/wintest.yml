@@ -37,7 +37,7 @@ jobs:
       - name: Run the Windows test
         shell: pwsh
         env:
-          ZIP_URL: ${{ secrets.WIN_URL_R23F }}
+          ZIP_URL: ${{ secrets.WIN_URL_R23G }}
           ZIP_SHA: ${{ inputs.win_sha }}
         run: ./test/wintest.ps1
       - name: Upload results
@@ -54,7 +54,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [0, 1, 2, 3, 4]
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     steps:
       - uses: actions/checkout@v4
       - name: Install screenshot helper
@@ -63,19 +63,22 @@ jobs:
           npm install --no-audit --no-fund puppeteer-core@23.11.1
       - name: Run the macOS test
         env:
-          ZIP_URL: ${{ secrets.MAC_URL_R23F }}
+          ZIP_URL: ${{ secrets.MAC_URL_R23G }}
           ZIP_SHA: ${{ inputs.mac_sha }}
+          SMOKE: ${{ matrix.shard == 0 && '1' || '0' }}
         run: bash test/mactest.sh
       - name: Run a question set through the app
-        if: ${{ inputs.eval_set != '' }}
+        if: ${{ always() && inputs.eval_set != '' }}
+        timeout-minutes: 110
         env:
           SET: ${{ inputs.eval_set }}
+          EVAL_DEADLINE_S: "5700"
         run: |
           APP=$(find "$HOME/Téléchargements/Waystone test" -maxdepth 3 -name Waystone.app | head -1)
-          mkdir -p work/eval/results out
-          python3 -I -c "import json,sys; q=json.load(open(sys.argv[1])); json.dump(q[int(sys.argv[2])::5], open(sys.argv[3],'w'), ensure_ascii=False)" "test/sets/questions_${SET}.json" "${{ matrix.shard }}" "work/eval/questions_${SET}.json"
-          EVAL_ROOT="$PWD/work" EVAL_BIN="$APP/Contents/MacOS/guide" python3 -I test/eval_run.py "$APP/Contents/Resources" "$SET" run 2>&1 | tail -60
-          cp work/eval/results/* out/
+          # Answers are written straight into out/ (one line per answer), so a stopped job still uploads them.
+          mkdir -p work/eval out; ln -sfn "$PWD/out" work/eval/results
+          python3 -I -c "import json,sys; q=json.load(open(sys.argv[1])); json.dump(q[int(sys.argv[2])::15], open(sys.argv[3],'w'), ensure_ascii=False)" "test/sets/questions_${SET}.json" "${{ matrix.shard }}" "work/eval/questions_${SET}.json"
+          EVAL_ROOT="$PWD/work" EVAL_BIN="$APP/Contents/MacOS/guide" python3 -I test/eval_run.py "$APP/Contents/Resources" "$SET" run 2>&1 | tee out/eval-log.txt | tail -60
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4

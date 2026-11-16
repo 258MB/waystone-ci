@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(os.environ.get("EVAL_ROOT") or Path(__file__).resolve().parent.parent)
 BIN = Path(os.environ.get("EVAL_BIN") or ROOT / "build" / "bin" / "guide-macos-arm64")  # EVAL_BIN on the Linux test machine
 PORT = int(os.environ.get("EVAL_PORT", "18940"))  # several tests side by side on the cloud machine
+DEADLINE = float(os.environ.get("EVAL_DEADLINE_S") or 0)  # stop asking new questions after this many seconds (CI step limit)
 CPU = os.environ.get("EVAL_CPU") == "1"  # run the AI on the processor (for the 8B model on an 8 GB Mac)
 
 
@@ -147,6 +148,10 @@ def main():
         print("ready", round(load_s, 1), "s", mem_ready, "MB", st, flush=True)
         for q in qs:
             if stopped:
+                break
+            if DEADLINE and time.time() - t0 > DEADLINE:
+                print("deadline reached, saving what is done", flush=True)
+                stopped = True
                 break
             if q["id"] in done:
                 continue
