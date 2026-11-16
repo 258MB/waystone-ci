@@ -8,9 +8,21 @@ ZIP="$RUNNER_TEMP/waystone.zip"
 t=$(date +%s); curl -sSL --retry 3 -o "$ZIP" "$ZIP_URL"; log "download $(( $(date +%s) - t )) s, $(stat -f %z "$ZIP") bytes"
 SHA=$(shasum -a 256 "$ZIP" | cut -d' ' -f1); log "sha256 $SHA"
 if [ -n "$ZIP_SHA" ] && [ "$SHA" != "$ZIP_SHA" ]; then log "SHA MISMATCH"; exit 1; fi
+QMARK="0083;$(printf %x $(date +%s));Safari;"
+xattr -w com.apple.quarantine "$QMARK" "$ZIP"; log "zip quarantine mark: $(xattr -p com.apple.quarantine "$ZIP")"
 DEST="$HOME/Téléchargements/Waystone test"; mkdir -p "$DEST"
-t=$(date +%s); ditto -x -k "$ZIP" "$DEST"; log "unzip $(( $(date +%s) - t )) s"; rm "$ZIP"
+t=$(date +%s); ditto -x -k "$ZIP" "$DEST"; log "unzip $(( $(date +%s) - t )) s"
 APP=$(find "$DEST" -maxdepth 3 -name "Waystone.app" | head -1); log "app $APP"
+# First run as a real buyer: quarantine mark on the app, then what Gatekeeper and the signature seal say (logged, not failed)
+xattr -w -r com.apple.quarantine "$QMARK" "$APP" 2>&1 | tail -2
+{ echo "--- spctl (ditto copy, quarantined)"; spctl --assess --type execute -vv "$APP" 2>&1; echo "exit $?"
+  echo "--- codesign verify (ditto copy)"; codesign --verify --deep --strict -vv "$APP" 2>&1; echo "exit $?"; } | tee -a "$OUT/log.txt"
+# Second copy with plain unzip (Keka-like tools): stray ._ files would break the signature seal
+DEST2="$RUNNER_TEMP/unzip-copy"; mkdir -p "$DEST2"; unzip -q "$ZIP" -d "$DEST2" 2>&1 | tail -2
+APP2=$(find "$DEST2" -maxdepth 3 -name "Waystone.app" | head -1)
+log "plain unzip: $(find "$DEST2" -name '._*' | wc -l | tr -d ' ') stray ._ files"
+{ echo "--- codesign verify (plain unzip copy)"; codesign --verify --deep --strict -vv "$APP2" 2>&1; echo "exit $?"; } | tee -a "$OUT/log.txt"
+rm -rf "$DEST2"; rm "$ZIP"
 DATA="$HOME/Library/Application Support/Waystone"; RUN="$DATA/en-cours.json"; rm -f "$RUN"
 T0=$(date +%s); open "$APP"
 URL=""

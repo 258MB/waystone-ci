@@ -27,8 +27,13 @@ if (-not $R.sha_ok) { throw "sha256 mismatch: $sha" }
 $e = [char]0x00E9
 $dest = "C:\Users\runneradmin\T${e}l${e}chargements\Waystone test"
 New-Item -ItemType Directory -Force $dest | Out-Null
+# First run as a real buyer: internet mark on the zip, Explorer's own extraction engine, Defender and Smart App Control state
+Set-Content -Path $zip -Stream Zone.Identifier -Value "[ZoneTransfer]`r`nZoneId=3"
+Log "zone identifier set: $((Get-Content -Path $zip -Stream Zone.Identifier) -join ' ')"
+try { $mp = Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled, AntivirusEnabled, AMServiceEnabled, BehaviorMonitorEnabled, IoavProtectionEnabled; $R.defender = $mp; Log "defender: $($mp | ConvertTo-Json -Compress)" } catch { Log "defender status not readable: $_" }
+try { $sac = (Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\CI\Policy" -ErrorAction Stop).VerifiedAndReputablePolicyState; $R.smart_app_control = $sac; Log "smart app control state (0 off, 1 on, 2 evaluation): $sac" } catch { Log "smart app control state not readable: $_" }
 $t = Get-Date
-7z x $zip "-o$dest" -y | Out-Null
+Expand-Archive -LiteralPath $zip -DestinationPath $dest -Force
 $R.unzip_s = [math]::Round(((Get-Date) - $t).TotalSeconds)
 Remove-Item $zip
 $app = Get-ChildItem -LiteralPath $dest -Recurse -Filter "Start Waystone.exe" | Select-Object -First 1
@@ -119,7 +124,7 @@ Copy-Item (Join-Path $data "journal.txt") (Join-Path $out "journal-main.txt") -E
 Log "quit ok: $($R.quit_ok), model servers left: $($R.model_servers_left)"
 Save
 
-# 8. VC runtime missing: hide the three DLLs from System32 on this throwaway machine and start again
+# 8. VC runtime hidden from System32 on this throwaway machine: the app must still reach ready with its bundled DLLs
 $R.vc_check = [ordered]@{}
 $dlls = "msvcp140.dll", "vcruntime140.dll", "vcruntime140_1.dll"
 $sys = Join-Path $env:SystemRoot "System32"
@@ -135,9 +140,10 @@ try {
   $u3 = $null
   for ($i = 0; $i -lt 120 -and -not $u3; $i++) { Start-Sleep 1; if (Test-Path $run) { try { $u3 = (Get-Content -Raw $run | ConvertFrom-Json).url } catch {} } }
   $s3 = $null
-  for ($i = 0; $i -lt 120 -and $u3; $i++) { try { $s3 = Invoke-RestMethod "${u3}api/status" -TimeoutSec 10 } catch {}; if ($s3 -and ($s3.error -or $s3.chat -eq "ready")) { break }; Start-Sleep 1 }
+  for ($i = 0; $i -lt 600 -and $u3; $i++) { try { $s3 = Invoke-RestMethod "${u3}api/status" -TimeoutSec 10 } catch {}; if ($s3 -and ($s3.error -or $s3.chat -eq "ready")) { break }; Start-Sleep 1 }
   $R.vc_check.status = $s3
-  $R.vc_check.message_ok = ("$($s3.error)" -match "vc_redist")
+  $R.vc_check.bundled_dlls = @(Get-ChildItem -LiteralPath $app.DirectoryName -Recurse -Include $dlls -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName.Substring($app.DirectoryName.Length) })
+  $R.vc_check.ready = ($s3.chat -eq "ready" -and $s3.embed -eq "ready" -and -not $s3.error)
   if ($u3) {
     Set-Location (Join-Path $ws "test")
     try { node (Join-Path $ws "test\vcshot.js") $chrome $u3 (Join-Path $out "6-vc-missing.png") 2>&1 | ForEach-Object { Log "$_" } } catch {}
@@ -151,7 +157,7 @@ finally { foreach ($d in $hidden) { Rename-Item (Join-Path $sys "$d.hidden") $d 
 Log "vc check: $($R.vc_check | ConvertTo-Json -Compress -Depth 5)"
 Save
 
-$R.pass = ($R.sha_ok -and $R.models_ready -and $R.single_instance.ok -and $R.quit_ok -and -not ($R.answers | Where-Object { $_.error }))
+$R.pass = ($R.sha_ok -and $R.models_ready -and $R.single_instance.ok -and $R.quit_ok -and $R.vc_check.ready -and -not ($R.answers | Where-Object { $_.error }))
 Save
 Log "PASS: $($R.pass)"
 if ($R.pass) { exit 0 } else { exit 1 }
