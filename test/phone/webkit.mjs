@@ -81,7 +81,27 @@ try {
 
   fs.mkdirSync(shots, { recursive: true });
   const screens = [["home", "#/"], ["emergency", "#/q/" + encodeURIComponent(qs.emergency)], ["chooser", "#/q/" + encodeURIComponent(qs.chooser)],
-    ["offtopic", "#/q/" + encodeURIComponent(qs.offtopic)], ["about", "#/about"]];
+    ["offtopic", "#/q/" + encodeURIComponent(qs.offtopic)], ["about", "#/about"], ["empage", "#/e/heart"]];
+  // What is on the first screen, above the bottom tabs, without scrolling (iPhone 13: 390x844).
+  out.fold = {};
+  for (const [name, hash] of screens.filter((x) => ["emergency", "chooser", "empage"].includes(x[0]))) {
+    await page.evaluate((h) => { location.hash = h; }, hash);
+    await page.waitForTimeout(400);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    out.fold[name] = await page.evaluate(() => {
+      const dock = document.querySelector("#dock");
+      const limit = dock ? dock.getBoundingClientRect().top : innerHeight;
+      const b = (el) => el ? Math.round(el.getBoundingClientRect().bottom) : null;
+      const first = document.querySelector("#main .riskbox.first");
+      let firstLine = null;
+      if (first) { const r = document.createRange(); r.selectNodeContents(first); const rects = [...r.getClientRects()]; firstLine = rects.length ? Math.round(rects[0].bottom) : null; }
+      const choices = [...document.querySelectorAll("#main .chooser .emlist a")].map(b);
+      const step1 = b(document.querySelector("#main .page .steps li, #main .steps li"));
+      return { visible_until: Math.round(limit), choices, all_choices_visible: choices.length ? choices.every((y) => y <= limit) : null,
+        do_first_first_line: firstLine, do_first_visible: firstLine !== null && firstLine <= limit,
+        do_first_text: first ? first.textContent.slice(0, 90) : null, step1_bottom: step1, step1_visible: step1 !== null && step1 <= limit };
+    });
+  }
   out.shots = [];
   for (const scheme of ["light", "dark"]) {
     await page.emulateMedia({ colorScheme: scheme });
