@@ -11,6 +11,9 @@ on:
       run_ios:
         description: "also build and test iOS"
         default: "yes"
+      api_level:
+        description: "Android emulator API level (34 = Android 14, 35 = Android 15)"
+        default: "34"
 permissions:
   contents: read
 jobs:
@@ -48,10 +51,10 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
-      - name: Test in the Android emulator (API 34, Pixel 7, airplane mode)
+      - name: Test in the Android emulator (Pixel 7, airplane mode)
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 34
+          api-level: ${{ inputs.api_level || 34 }}
           target: google_apis
           arch: x86_64
           profile: pixel_7
