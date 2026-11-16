@@ -1,0 +1,31 @@
+name: vcruntime
+on: workflow_dispatch
+jobs:
+  collect:
+    runs-on: windows-latest
+    steps:
+      - name: Collect the Visual C++ runtime DLLs (x64)
+        shell: pwsh
+        run: |
+          $names = "msvcp140.dll", "vcruntime140.dll", "vcruntime140_1.dll"
+          New-Item -ItemType Directory -Force vcruntime | Out-Null
+          $dirs = @()
+          $vs = "C:\Program Files\Microsoft Visual Studio"
+          if (Test-Path $vs) {
+            $dirs += Get-ChildItem -Path $vs -Recurse -Directory -Filter "Microsoft.VC*.CRT" -ErrorAction SilentlyContinue |
+              Where-Object { $_.FullName -match "VC\\Redist\\MSVC\\.*\\x64\\" } | Sort-Object FullName -Descending | ForEach-Object { $_.FullName }
+          }
+          $dirs += "C:\Windows\System32"
+          Write-Host "search folders: $($dirs -join '; ')"
+          foreach ($n in $names) {
+            foreach ($d in $dirs) {
+              $f = Join-Path $d $n
+              if (Test-Path $f) { Copy-Item $f (Join-Path vcruntime $n); Write-Host "$n taken from $d"; break }
+            }
+          }
+          Get-ChildItem vcruntime | ForEach-Object { Write-Host ("{0}  {1}  {2} bytes" -f $_.Name, $_.VersionInfo.FileVersion, $_.Length) }
+          if ((Get-ChildItem vcruntime).Count -ne 3) { throw "not all three DLLs found" }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vcruntime
+          path: vcruntime/*.dll
