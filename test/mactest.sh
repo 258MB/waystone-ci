@@ -24,10 +24,14 @@ log "plain unzip: $(find "$DEST2" -name '._*' | wc -l | tr -d ' ') stray ._ file
 { echo "--- codesign verify (plain unzip copy)"; codesign --verify --deep --strict -vv "$APP2" 2>&1; echo "exit $?"; } | tee -a "$OUT/log.txt"
 rm -rf "$DEST2"; rm "$ZIP"
 DATA="$HOME/Library/Application Support/Waystone"; RUN="$DATA/en-cours.json"; rm -f "$RUN"
-T0=$(date +%s); open "$APP"
+# The quarantine mark makes Gatekeeper wait for a click on "Open" that never comes on a runner, which hung
+# every shard for hours (r23c). The buyer view is logged above; clear the mark, then launch without blocking.
+xattr -d -r com.apple.quarantine "$APP" 2>/dev/null; log "quarantine cleared for the automated launch"
+T0=$(date +%s); open "$APP" & OPEN_PID=$!
 URL=""
 for i in $(seq 1 300); do sleep 1; [ -f "$RUN" ] && URL=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['url'])" "$RUN" 2>/dev/null) && [ -n "$URL" ] && break; done
 log "interface $URL after $(( $(date +%s) - T0 )) s"
+kill "$OPEN_PID" 2>/dev/null
 [ -z "$URL" ] && { cp "$DATA/journal.txt" "$OUT/" 2>/dev/null; exit 1; }
 python3 - "$URL" "$T0" "$OUT" "$WS/test/questions.json" <<'EOF'
 import json, sys, time, urllib.request
