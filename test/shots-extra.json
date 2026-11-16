@@ -1,26 +1,14 @@
 [
  [
-  "chest-pain",
-  "My dad has chest pain and there is no hospital. What do I do?"
+  "rip-current",
+  "my son is being pulled out to sea by the current he cant get back pls help"
  ],
  [
-  "head-injury",
-  "Someone hit their head and we cannot reach a hospital for days. What do we do?"
+  "chest-wound",
+  "stab wound in his chest and it makes a sucking sound when he breathes"
  ],
  [
-  "avalanche",
-  "partner got buried in a slide, i am out and my beacon is on, what now"
- ],
- [
-  "water",
-  "How much water does each person need per day?"
- ],
- [
-  "child-diarrhoea",
-  "My child has diarrhea and there is no doctor. What do I do?"
- ],
- [
-  "deep-cut",
-  "How do I care for a deep cut for a week with no doctor?"
+  "toddler-dehydrated",
+  "my toddler wont drink and hasnt peed all day eyes look sunken what do i do"
  ]
 ]
