@@ -5,7 +5,7 @@ set -u
 WS="$GITHUB_WORKSPACE"; OUT="$WS/out"; mkdir -p "$OUT"
 log() { echo "$(date +%H:%M:%S) $*" | tee -a "$OUT/log.txt"; }
 ZIP="$RUNNER_TEMP/waystone.zip"
-t=$(date +%s); curl -sSL --retry 3 -o "$ZIP" "$ZIP_URL"; log "download $(( $(date +%s) - t )) s, $(stat -f %z "$ZIP") bytes"
+t=$(date +%s); if [ -n "${ZIP_FILE:-}" ]; then mv "$ZIP_FILE" "$ZIP"; else curl -sSL --retry 3 -o "$ZIP" "$ZIP_URL"; fi; log "download $(( $(date +%s) - t )) s, $(stat -f %z "$ZIP") bytes"
 SHA=$(shasum -a 256 "$ZIP" | cut -d' ' -f1); log "sha256 $SHA"
 if [ -n "$ZIP_SHA" ] && [ "$SHA" != "$ZIP_SHA" ]; then log "SHA MISMATCH"; exit 1; fi
 QMARK="0083;$(printf %x $(date +%s));Safari;"

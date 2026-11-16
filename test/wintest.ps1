@@ -13,7 +13,7 @@ $R.machine = [ordered]@{ cores = (Get-CimInstance Win32_Processor | Measure-Obje
 # 1. Download and sha256
 $zip = Join-Path $env:RUNNER_TEMP "waystone.zip"
 $t = Get-Date
-curl.exe -sSL --retry 3 -o $zip $env:ZIP_URL
+if ($env:ZIP_FILE) { Move-Item -LiteralPath $env:ZIP_FILE -Destination $zip -Force } else { curl.exe -sSL --retry 3 -o $zip $env:ZIP_URL }
 $R.download_s = [math]::Round(((Get-Date) - $t).TotalSeconds)
 $R.zip_bytes = (Get-Item $zip).Length
 $sha = (Get-FileHash -Algorithm SHA256 $zip).Hash.ToLower()

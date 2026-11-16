@@ -23,12 +23,62 @@ on:
         default: ""
 
 jobs:
+  # Download each zip from Drive ONCE and keep it in the Actions cache: 15 shards pulling 2.8 GB each from the
+  # Drive link hit Drive's download limit (r23g: 13 shards got a 2 KB quota page). The cache is only readable by
+  # workflows in this repo; the zip never becomes a public artifact.
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Cached already?
+        id: probe
+        uses: actions/cache/restore@v4
+        with:
+          path: zips
+          key: zips-${{ inputs.mac_sha }}-${{ inputs.win_sha }}
+          enableCrossOsArchive: true
+          lookup-only: true
+      - name: Download the zips once
+        if: steps.probe.outputs.cache-hit != 'true'
+        env:
+          MAC_URL: ${{ secrets.MAC_URL_R23G }}
+          WIN_URL: ${{ secrets.WIN_URL_R23G }}
+          MAC_SHA: ${{ inputs.mac_sha }}
+          WIN_SHA: ${{ inputs.win_sha }}
+          RUN_MAC: ${{ inputs.run_mac }}
+          RUN_WIN: ${{ inputs.run_win }}
+        run: |
+          mkdir -p zips
+          get() { # get <url> <sha> <file>: retry until the sha matches (Drive sometimes answers with a small quota page)
+            for i in 1 2 3 4 5 6 7 8 9 10; do
+              curl -sSL --retry 3 -o "$3" "$1"; h=$(sha256sum "$3" | cut -d' ' -f1)
+              echo "$3 try $i: $(stat -c %s "$3") bytes"; [ -z "$2" ] || [ "$h" = "$2" ] && return 0; sleep 90
+            done; return 1; }
+          [ "$RUN_MAC" = true ] && { get "$MAC_URL" "$MAC_SHA" zips/mac.zip || exit 1; }
+          [ "$RUN_WIN" = true ] && { get "$WIN_URL" "$WIN_SHA" zips/win.zip || exit 1; }
+          ls -la zips
+      - name: Keep them in the cache
+        if: steps.probe.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: zips
+          key: zips-${{ inputs.mac_sha }}-${{ inputs.win_sha }}
+          enableCrossOsArchive: true
+
   windows:
     if: ${{ inputs.run_win }}
+    needs: fetch
     runs-on: windows-latest
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+      - name: Get the zip from the cache
+        uses: actions/cache/restore@v4
+        with:
+          path: zips
+          key: zips-${{ inputs.mac_sha }}-${{ inputs.win_sha }}
+          enableCrossOsArchive: true
+          fail-on-cache-miss: true
       - name: Install screenshot helper
         shell: pwsh
         run: |
@@ -37,7 +87,7 @@ jobs:
       - name: Run the Windows test
         shell: pwsh
         env:
-          ZIP_URL: ${{ secrets.WIN_URL_R23G }}
+          ZIP_FILE: zips/win.zip
           ZIP_SHA: ${{ inputs.win_sha }}
         run: ./test/wintest.ps1
       - name: Upload results
@@ -49,6 +99,7 @@ jobs:
 
   macos:
     if: ${{ inputs.run_mac }}
+    needs: fetch
     runs-on: macos-latest
     timeout-minutes: 150
     strategy:
@@ -57,13 +108,20 @@ jobs:
         shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     steps:
       - uses: actions/checkout@v4
+      - name: Get the zip from the cache
+        uses: actions/cache/restore@v4
+        with:
+          path: zips
+          key: zips-${{ inputs.mac_sha }}-${{ inputs.win_sha }}
+          enableCrossOsArchive: true
+          fail-on-cache-miss: true
       - name: Install screenshot helper
         run: |
           cd test
           npm install --no-audit --no-fund puppeteer-core@23.11.1
       - name: Run the macOS test
         env:
-          ZIP_URL: ${{ secrets.MAC_URL_R23G }}
+          ZIP_FILE: zips/mac.zip
           ZIP_SHA: ${{ inputs.mac_sha }}
           SMOKE: ${{ matrix.shard == 0 && '1' || '0' }}
         run: bash test/mactest.sh
