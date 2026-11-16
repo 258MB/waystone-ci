@@ -1,0 +1,58 @@
+name: phone-webkit
+# The phone version in Safari's engine (Playwright WebKit, iPhone size). The app itself is never in this repo:
+# its zip link comes from the PHONE_URL secret.
+on:
+  workflow_dispatch:
+    inputs:
+      zip_sha:
+        description: "sha256 of the phone zip"
+        required: false
+        default: ""
+      run_mac:
+        description: "Also run on macOS"
+        type: boolean
+        default: true
+
+jobs:
+  webkit:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - name: Skip macOS when not asked
+        if: ${{ matrix.os == 'macos-latest' && !inputs.run_mac }}
+        run: echo "macOS skipped" && exit 0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Get the phone app
+        env:
+          PHONE_URL: ${{ secrets.PHONE_URL }}
+          ZIP_SHA: ${{ inputs.zip_sha }}
+        run: |
+          curl -sSL -o phone.zip "$PHONE_URL"
+          if [ -n "$ZIP_SHA" ]; then echo "$ZIP_SHA  phone.zip" | shasum -a 256 -c -; fi
+          mkdir -p web && cd web && unzip -q ../phone.zip && ls
+      - name: Install Playwright WebKit
+        run: |
+          cd test/phone
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.64.1
+          npx playwright install --with-deps webkit
+      - name: Run the phone test
+        env:
+          WEB_DIR: ${{ github.workspace }}/web
+          OUT_DIR: ${{ github.workspace }}/out
+        run: |
+          mkdir -p out
+          node test/phone/webkit.mjs | tee out/summary.txt
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phone-webkit-${{ matrix.os }}
+          path: out/
