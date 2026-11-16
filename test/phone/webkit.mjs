@@ -14,7 +14,12 @@ const ph = path.join(here, "..");
 const web = process.env.WEB_DIR ? path.resolve(process.env.WEB_DIR) : path.join(ph, "web");
 const shots = process.env.OUT_DIR ? path.resolve(process.env.OUT_DIR) : path.join(ph, "shots");
 const require = process.env.WEB_DIR ? createRequire(import.meta.url) : createRequire(path.join(ph, "..", "website", "package.json"));
-const { webkit, devices } = require("playwright");
+const pw = require("playwright");
+const { devices } = pw;
+// BROWSER=chromium DEVICE="Pixel 7" runs the same checks in Chrome's engine at Android phone size.
+const BROWSER = process.env.BROWSER || "webkit";
+const DEVICE = process.env.DEVICE || "iPhone 13";
+const TAG = BROWSER === "webkit" ? "webkit" : "android";
 
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".wasm": "application/wasm",
   ".bin": "application/octet-stream", ".png": "image/png", ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json" };
@@ -29,11 +34,11 @@ const server = http.createServer((req, res) => {
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
 const base = `http://localhost:${server.address().port}/`;
 
-const out = { engine: "webkit", base, steps: {} };
-const browser = await webkit.launch({ headless: true });
+const out = { engine: BROWSER, device: DEVICE, base, steps: {} };
+const browser = await pw[BROWSER].launch({ headless: true });
 out.browser_version = browser.version();
 try {
-  const ctx = await browser.newContext({ ...devices["iPhone 13"] });
+  const ctx = await browser.newContext({ ...devices[DEVICE] });
   const page = await ctx.newPage();
   const errors = [];
   page.on("pageerror", (e) => errors.push(String(e)));
@@ -59,7 +64,12 @@ try {
     const t = Date.now();
     await page.evaluate((h) => { location.hash = h; }, "#/q/" + encodeURIComponent(q));
     await page.waitForFunction(() => document.querySelector("#main .page, #main .chooser, #main .notfound"), null, { timeout: 30000 });
-    return { q, ms: Date.now() - t, text: await page.evaluate(() => document.querySelector("#main").innerText.slice(0, 160)) };
+    await page.waitForTimeout(150);
+    return { q, ms: Date.now() - t, text: await page.evaluate(() => document.querySelector("#main").innerText.slice(0, 160)),
+      ...(await page.evaluate(() => { const m = document.querySelector("#main"); return { status: window.__last && window.__last.status,
+        title: (m.querySelector(".page .pt, .emtitle") || {}).textContent || null,
+        do_first: m.querySelector(".riskbox") ? m.querySelector(".riskbox").textContent.slice(0, 80) : null,
+        choices: [...m.querySelectorAll(".chooser .emlist .t")].map((x) => x.textContent) }; })) };
   };
   const qs = { emergency: "My dad has crushing chest pain and we are far from any hospital.",
     chooser: "Grandpa is going quiet and his lips look grey", offtopic: "What is the capital of France?" };
@@ -109,7 +119,7 @@ try {
       await page.evaluate((h) => { location.hash = h; }, hash);
       await page.waitForTimeout(400);
       await page.evaluate(() => window.scrollTo(0, 0));
-      const f = path.join(shots, `webkit-${name}-${scheme}.png`);
+      const f = path.join(shots, `${TAG}-${name}-${scheme}.png`);
       await page.screenshot({ path: f });
       out.shots.push(f);
     }
@@ -120,7 +130,7 @@ try {
   try { server.close(); } catch (e) {}
 }
 out.user_agent = out.user_agent || null;
-fs.writeFileSync(process.env.OUT_DIR ? path.join(shots, "webkit.json") : path.join(ph, "eval", "webkit.json"), JSON.stringify(out, null, 1));
+fs.writeFileSync(process.env.OUT_DIR ? path.join(shots, `${TAG}.json`) : path.join(ph, "eval", `${TAG}.json`), JSON.stringify(out, null, 1));
 const brief = JSON.parse(JSON.stringify(out));
 for (const s of ["online", "offline"]) for (const k of Object.keys(brief.steps[s] || {})) if (brief.steps[s][k] && brief.steps[s][k].text) brief.steps[s][k].text = brief.steps[s][k].text.slice(0, 70);
 delete brief.shots;

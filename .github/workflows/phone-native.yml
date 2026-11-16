@@ -1,0 +1,106 @@
+name: phone-native
+# Builds the Waystone phone app for Android (debug APK, tested in an emulator in airplane mode) and for the
+# iOS Simulator (no signing), plus the Chromium check at Android phone size. The app source comes only through
+# the PHONE_SRC_URL secret; nothing of the app is stored in this repo. Artifacts are public here: kept 3 days.
+on:
+  workflow_dispatch:
+    inputs:
+      src_sha:
+        description: "sha256 of the source zip"
+        required: false
+      run_ios:
+        description: "also build and test iOS"
+        default: "yes"
+permissions:
+  contents: read
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21 }
+      - name: Get the app source
+        env: { SRC_URL: "${{ secrets.PHONE_SRC_URL }}", SRC_SHA: "${{ inputs.src_sha }}" }
+        run: |
+          curl -sSL -o src.zip "$SRC_URL"
+          if [ -n "$SRC_SHA" ]; then echo "$SRC_SHA  src.zip" | shasum -a 256 -c -; fi
+          mkdir app && cd app && unzip -q ../src.zip && ls
+      - name: Chromium check at Pixel 7 size (with the fold check)
+        run: |
+          cd test/phone && npm install --no-audit --no-fund playwright@1.64.1 && npx playwright install --with-deps chromium
+          cd ../.. && mkdir -p out/chromium
+          WEB_DIR=app/web OUT_DIR=out/chromium BROWSER=chromium DEVICE="Pixel 7" node test/phone/webkit.mjs | tee out/chromium/summary.txt
+      - name: Build the debug APK (clean, for the artifact) and a test APK (with the test driver)
+        run: |
+          cd app/native && npm ci --no-audit --no-fund
+          node scripts/prepare-www.mjs && npx cap sync android
+          cd android && chmod +x gradlew && ./gradlew --no-daemon -q assembleDebug
+          mkdir -p ../../../out/apk && cp app/build/outputs/apk/debug/app-debug.apk ../../../out/apk/waystone-debug.apk
+          cd .. && TEST_HARNESS=test/harness.js node scripts/prepare-www.mjs && npx cap copy android
+          cd android && ./gradlew --no-daemon -q assembleDebug && cp app/build/outputs/apk/debug/app-debug.apk ../../../test-app.apk
+          ls -l ../../../out/apk/waystone-debug.apk ../../../test-app.apk | tee ../../../out/apk/sizes.txt
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Test in the Android emulator (API 34, Pixel 7, airplane mode)
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_7
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: bash app/native/test/android-run.sh test-app.apk out/emulator
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: phone-android-results, path: out/chromium, retention-days: 3 }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: phone-android-emulator, path: out/emulator, retention-days: 3 }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: phone-android-apk, path: out/apk, retention-days: 3 }
+  ios:
+    if: ${{ inputs.run_ios != 'no' }}
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Get the app source
+        env: { SRC_URL: "${{ secrets.PHONE_SRC_URL }}", SRC_SHA: "${{ inputs.src_sha }}" }
+        run: |
+          curl -sSL -o src.zip "$SRC_URL"
+          if [ -n "$SRC_SHA" ]; then echo "$SRC_SHA  src.zip" | shasum -a 256 -c -; fi
+          mkdir app && cd app && unzip -q ../src.zip
+      - name: Build for the iOS Simulator (test build with the test driver)
+        run: |
+          xcodebuild -version
+          cd app/native && npm ci --no-audit --no-fund
+          TEST_HARNESS=test/harness.js node scripts/prepare-www.mjs && npx cap sync ios
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator \
+            -destination "generic/platform=iOS Simulator" -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet build
+          ls build/Build/Products/Debug-iphonesimulator/
+      - name: Test in the iPhone simulator
+        run: bash app/native/test/ios-run.sh app/native/build/Build/Products/Debug-iphonesimulator/App.app out/simulator
+      - name: Clean simulator build (for the artifact)
+        run: |
+          cd app/native && node scripts/prepare-www.mjs && npx cap copy ios
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator \
+            -destination "generic/platform=iOS Simulator" -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet build
+          mkdir -p ../../out/app && cd build/Build/Products/Debug-iphonesimulator && ditto -c -k --keepParent App.app ../../../../../../out/app/Waystone-simulator.app.zip
+          du -sk App.app | tee ../../../../../../out/app/size.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: phone-ios-simulator, path: out/simulator, retention-days: 3 }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: phone-ios-app, path: out/app, retention-days: 3 }
