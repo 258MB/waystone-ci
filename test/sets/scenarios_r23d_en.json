@@ -1,0 +1,4373 @@
+[
+ {
+  "id": "SC-001",
+  "q": "my friend fell and wont wake up what do i do",
+  "topic": "unresponsive person after fall",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "check scene safe, then check breathing and response",
+  "want": [
+   "unresponsive",
+   "fall_spine",
+   "head_injury"
+  ]
+ },
+ {
+  "id": "SC-002",
+  "q": "my dad is pale sweaty and his skin is cold and he feels dizzy after cutting his leg badly",
+  "topic": "shock from blood loss",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "stop bleeding with firm pressure, lay him flat",
+  "want": [
+   "limb_bleed",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-003",
+  "q": "how do i know if someone is going into shock",
+  "topic": "recognising shock",
+  "area": "patient assessment and shock",
+  "emergency": false,
+  "first_action": "explain signs of shock and laying flat",
+  "want": []
+ },
+ {
+  "id": "SC-004",
+  "q": "my husband is confused and breathing fast and his hands are clammy after a car crash",
+  "topic": "shock after car crash",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "lay flat, control bleeding, keep warm",
+  "want": [
+   "road_crash",
+   "blunt_internal"
+  ]
+ },
+ {
+  "id": "SC-005",
+  "q": "i found a guy lying in the road not moving no one else around",
+  "topic": "unknown unresponsive adult",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "check scene danger, then breathing",
+  "want": [
+   "unresponsive",
+   "road_crash",
+   "unresponsive_body"
+  ]
+ },
+ {
+  "id": "SC-006",
+  "q": "my friend says he feels like he is going to pass out and he is grey",
+  "topic": "near fainting with grey skin",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "lay him flat, raise legs",
+  "want": [
+   "fainting_near_faint"
+  ],
+  "missing_kind": {
+   "id": "fainting_near_faint",
+   "note": "Fainting or about to faint: lay flat with legs raised, loosen clothing, check breathing, look for cause (bleeding, heart, heat, low sugar) and when to worry."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-007",
+  "q": "what order do i check things on an injured person",
+  "topic": "primary survey steps",
+  "area": "patient assessment and shock",
+  "emergency": false,
+  "first_action": "give steps: danger, response, airway, breathing, bleeding",
+  "want": []
+ },
+ {
+  "id": "SC-008",
+  "q": "she fainted for a few seconds and is awake now but looks pale",
+  "topic": "simple faint",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "lay flat with legs raised, check breathing",
+  "want": [
+   "fainting_near_faint"
+  ],
+  "missing_kind": {
+   "id": "fainting_near_faint",
+   "note": "Fainting or about to faint: lay flat with legs raised, loosen clothing, check breathing, look for cause (bleeding, heart, heat, low sugar) and when to worry."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-009",
+  "q": "my brother got hit by a bike and says his belly hurts and he is getting weaker",
+  "topic": "internal bleeding shock",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "lay flat, keep warm, treat as internal bleeding",
+  "want": [
+   "blunt_internal"
+  ]
+ },
+ {
+  "id": "SC-010",
+  "q": "two people hurt in a rollover one is silent one is screaming who do i help first",
+  "topic": "triage of two casualties",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "help the silent one first, check breathing",
+  "want": [
+   "mass_casualty_triage"
+  ],
+  "missing_kind": {
+   "id": "mass_casualty_triage",
+   "note": "Several injured people: make the scene safe, then help first those who are silent or not breathing, then major bleeding, then the screaming ones."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-011",
+  "q": "my mom collapsed in the kitchen and her lips look blue",
+  "topic": "collapse with blue lips",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "check breathing and start CPR if none",
+  "want": [
+   "collapse",
+   "arrest_batt",
+   "heart_attack"
+  ]
+ },
+ {
+  "id": "SC-012",
+  "q": "i cant feel my friends pulse at the wrist but he is breathing",
+  "topic": "weak pulse after injury",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "lay flat, find bleeding, keep warm",
+  "want": [
+   "shock_unknown_cause"
+  ],
+  "missing_kind": {
+   "id": "shock_unknown_cause",
+   "note": "Weak or absent pulse, pale, cold, after injury or illness: lay flat, legs raised, find and stop bleeding, keep warm, check breathing."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-013",
+  "q": "man fell from ladder is awake but cant remember what happened and keeps asking the same thing",
+  "topic": "fall with memory loss",
+  "area": "patient assessment and shock",
+  "emergency": true,
+  "first_action": "keep still, protect neck, watch breathing",
+  "want": [
+   "head_injury"
+  ]
+ },
+ {
+  "id": "SC-014",
+  "q": "do i need to move someone who is hurt before i check them",
+  "topic": "moving an injured person",
+  "area": "patient assessment and shock",
+  "emergency": false,
+  "first_action": "do not move unless danger, check them where they are",
+  "want": []
+ },
+ {
+  "id": "SC-015",
+  "q": "my dad is choking cant speak cant cough hands on his throat",
+  "topic": "adult choking",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "give 5 back blows then abdominal thrusts",
+  "want": [
+   "choking_adult",
+   "choking_object"
+  ]
+ },
+ {
+  "id": "SC-016",
+  "q": "something stuck in my throat but i can still cough and talk",
+  "topic": "partial choking",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "encourage coughing, do not slap back",
+  "want": [
+   "choking_adult",
+   "choking_object"
+  ]
+ },
+ {
+  "id": "SC-017",
+  "q": "my friend ate peanuts and now makes a high whistle sound when he breathes and his face is swelling",
+  "topic": "swelling airway after peanuts",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "use epinephrine auto injector now",
+  "want": [
+   "anaphylaxis",
+   "throat_closing"
+  ]
+ },
+ {
+  "id": "SC-018",
+  "q": "pregnant woman choking what do i do",
+  "topic": "choking in pregnancy",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "chest thrusts instead of belly thrusts",
+  "want": [
+   "choking_pregnant"
+  ]
+ },
+ {
+  "id": "SC-019",
+  "q": "he is not breathing and has a pulse what do i do",
+  "topic": "not breathing with pulse",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "give rescue breaths every 5 to 6 seconds",
+  "want": [
+   "arrest_adult"
+  ]
+ },
+ {
+  "id": "SC-020",
+  "q": "my grandma stopped breathing in her sleep",
+  "topic": "adult not breathing",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "call for help, start CPR with compressions",
+  "want": [
+   "arrest_adult",
+   "arrest_batt"
+  ]
+ },
+ {
+  "id": "SC-021",
+  "q": "my brother is gasping weirdly like a fish but not really breathing",
+  "topic": "agonal breathing",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "treat as cardiac arrest, start CPR",
+  "want": [
+   "arrest_adult",
+   "arrest_batt"
+  ]
+ },
+ {
+  "id": "SC-022",
+  "q": "choking and i am alone nobody here",
+  "topic": "self choking alone",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "abdominal thrusts on a chair back or fist",
+  "want": [
+   "choking_alone"
+  ],
+  "missing_kind": {
+   "id": "choking_alone",
+   "note": "Choking with nobody to help: give yourself abdominal thrusts or lean over a chair back or table edge, call out or signal for help."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-023",
+  "q": "man with chest stab wound is wheezing and air is bubbling out",
+  "topic": "sucking chest wound",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "seal with three sided dressing",
+  "want": [
+   "chest_wound"
+  ]
+ },
+ {
+  "id": "SC-024",
+  "q": "i got hit in the chest and now i cant breathe and one side looks bigger",
+  "topic": "tension pneumothorax",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "sit upright, release seal if taped, prepare decompression",
+  "want": [
+   "chest_blunt",
+   "breathing"
+  ]
+ },
+ {
+  "id": "SC-025",
+  "q": "he is unconscious and snoring loudly on his back",
+  "topic": "blocked airway unconscious",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "open airway with head tilt chin lift",
+  "want": [
+   "unresponsive",
+   "unresponsive_body"
+  ]
+ },
+ {
+  "id": "SC-026",
+  "q": "my friend vomited and is lying on his back drunk and gurgling",
+  "topic": "vomit airway drunk",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "roll to recovery position and clear mouth",
+  "want": [
+   "unresponsive",
+   "overdose_drowsy"
+  ]
+ },
+ {
+  "id": "SC-027",
+  "q": "lots of coughing and cant catch my breath after smoke from the fire",
+  "topic": "smoke inhalation breathing trouble",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "get to fresh air, sit upright",
+  "want": [
+   "smoke_inhaled"
+  ]
+ },
+ {
+  "id": "SC-028",
+  "q": "my husband has a broken rib and it hurts to breathe deep should i worry",
+  "topic": "rib fracture breathing",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "sit up, breathe gently, watch for worsening",
+  "want": [
+   "chest_blunt"
+  ]
+ },
+ {
+  "id": "SC-029",
+  "q": "is the heimlich the same for a fat person",
+  "topic": "choking in obese person",
+  "area": "airway and breathing",
+  "emergency": false,
+  "first_action": "explain chest thrusts for large person",
+  "want": []
+ },
+ {
+  "id": "SC-030",
+  "q": "how long can someone go without breathing before brain damage",
+  "topic": "time without oxygen",
+  "area": "airway and breathing",
+  "emergency": false,
+  "first_action": "explain minutes matter, act at once",
+  "want": []
+ },
+ {
+  "id": "SC-031",
+  "q": "my wife is breathing very fast and tingly in hands after fighting with me",
+  "topic": "hyperventilation",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "calm, slow breathing, check no other cause",
+  "want": [
+   "panic_attack",
+   "breathing"
+  ]
+ },
+ {
+  "id": "SC-032",
+  "q": "hanging accident my son is hanging in the shed",
+  "topic": "hanging",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "cut him down, check breathing, protect neck",
+  "want": [
+   "hanging_found"
+  ]
+ },
+ {
+  "id": "SC-033",
+  "q": "kid stuck head under water at pool 2 minutes ago and now coughing blue",
+  "topic": "near drowning child",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "check breathing, give rescue breaths",
+  "want": [
+   "drowning_child",
+   "water_rescue"
+  ]
+ },
+ {
+  "id": "SC-034",
+  "q": "man crushed under heavy log chest cant expand cant breathe",
+  "topic": "crush chest breathing",
+  "area": "airway and breathing",
+  "emergency": true,
+  "first_action": "free him if safe, support breathing",
+  "want": [
+   "chest_blunt",
+   "trapped_person"
+  ]
+ },
+ {
+  "id": "SC-035",
+  "q": "my dad grabbed his chest and is sweating and his left arm hurts",
+  "topic": "heart attack",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "sit him down, give aspirin to chew",
+  "want": [
+   "heart_attack"
+  ]
+ },
+ {
+  "id": "SC-036",
+  "q": "he dropped suddenly no pulse no breathing",
+  "topic": "cardiac arrest",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "start chest compressions now",
+  "want": [
+   "arrest_batt",
+   "arrest_adult"
+  ]
+ },
+ {
+  "id": "SC-037",
+  "q": "how deep and how fast do i press for cpr",
+  "topic": "CPR technique",
+  "area": "cardiac and circulation",
+  "emergency": false,
+  "first_action": "explain 5 to 6 cm, 100 to 120 per minute",
+  "want": []
+ },
+ {
+  "id": "SC-038",
+  "q": "my aunt is 70 and says jaw pain and feels sick and tired since this morning",
+  "topic": "atypical heart attack",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "rest, aspirin, treat as heart attack",
+  "want": [
+   "heart_attack"
+  ]
+ },
+ {
+  "id": "SC-039",
+  "q": "heart racing 180 and i feel faint",
+  "topic": "fast heart rate with faintness",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "sit down, try cough or bearing down, rest",
+  "want": [
+   "heart_attack",
+   "collapse"
+  ]
+ },
+ {
+  "id": "SC-040",
+  "q": "my husband has crushing chest pain and i dont have aspirin",
+  "topic": "chest pain no aspirin",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "rest sitting, loosen clothes, watch for arrest",
+  "want": [
+   "heart_attack"
+  ]
+ },
+ {
+  "id": "SC-041",
+  "q": "i do cpr on a 6 year old how different",
+  "topic": "child CPR",
+  "area": "cardiac and circulation",
+  "emergency": false,
+  "first_action": "one hand compressions, 30 to 2",
+  "want": []
+ },
+ {
+  "id": "SC-042",
+  "q": "cpr on my baby brother 3 months not breathing",
+  "topic": "infant CPR",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "5 rescue breaths then 2 finger compressions",
+  "want": [
+   "arrest_baby",
+   "arrest_batt_baby"
+  ]
+ },
+ {
+  "id": "SC-043",
+  "q": "he is bleeding from his thigh and it is spurting bright red",
+  "topic": "arterial bleeding thigh",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "tourniquet high on thigh, tighten until it stops",
+  "want": [
+   "limb_bleed",
+   "junctional_bleed",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-044",
+  "q": "deep cut on arm blood wont stop soaked the towel",
+  "topic": "severe arm bleeding",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "press hard directly on wound, add more cloth",
+  "want": [
+   "limb_bleed",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-045",
+  "q": "no tourniquet what can i use for his bleeding leg",
+  "topic": "improvised tourniquet",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "use belt or strap and stick, tighten hard",
+  "want": [
+   "limb_bleed",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-046",
+  "q": "my friend slashed his wrist and is bleeding a lot",
+  "topic": "wrist cut severe bleeding",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "firm direct pressure and raise arm",
+  "want": [
+   "limb_bleed",
+   "suicide"
+  ]
+ },
+ {
+  "id": "SC-047",
+  "q": "man swollen calf red and sore after long flight and now chest pain and short of breath",
+  "topic": "blood clot in lung",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "keep still, sit upright, rest",
+  "want": [
+   "blood_clot"
+  ]
+ },
+ {
+  "id": "SC-048",
+  "q": "my legs swell up and i am breathless lying down i have a weak heart",
+  "topic": "heart failure breathless",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "sit upright with legs down",
+  "want": [
+   "heart_failure"
+  ]
+ },
+ {
+  "id": "SC-049",
+  "q": "passed out while standing up quickly it happens sometimes is that bad",
+  "topic": "fainting on standing",
+  "area": "cardiac and circulation",
+  "emergency": false,
+  "first_action": "explain low blood pressure, sit and drink",
+  "want": []
+ },
+ {
+  "id": "SC-050",
+  "q": "my chest feels tight when i climb stairs but not now",
+  "topic": "exertional chest tightness past",
+  "area": "cardiac and circulation",
+  "emergency": false,
+  "first_action": "advise rest, see doctor, aspirin if pain returns",
+  "want": []
+ },
+ {
+  "id": "SC-051",
+  "q": "blood pressure shows 220 over 130 and i have a bad headache and blurry vision",
+  "topic": "hypertensive emergency",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "rest sitting, calm, watch for stroke signs",
+  "want": [
+   "bad_headache",
+   "stroke"
+  ]
+ },
+ {
+  "id": "SC-052",
+  "q": "hes on blood thinners and fell and cut his head and wont stop bleeding",
+  "topic": "bleeding on blood thinners",
+  "area": "cardiac and circulation",
+  "emergency": true,
+  "first_action": "firm pressure for long time, keep still",
+  "want": [
+   "head_thinner",
+   "head_bleed",
+   "blood_thinner_bleed"
+  ]
+ },
+ {
+  "id": "SC-053",
+  "q": "fell off a 3 meter ladder neck hurts and legs tingle",
+  "topic": "fall with neck pain",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "keep neck still, do not move him",
+  "want": [
+   "fall_spine"
+  ]
+ },
+ {
+  "id": "SC-054",
+  "q": "my friend fell from cliff back hurts and he cant feel his feet",
+  "topic": "spinal injury",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "keep still, hold head, do not move",
+  "want": [
+   "fall_spine"
+  ]
+ },
+ {
+  "id": "SC-055",
+  "q": "kid fell out of tree arm bent wrong way",
+  "topic": "forearm fracture child",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "splint arm as found, keep still",
+  "want": [
+   "broken_limb",
+   "limb_fracture"
+  ]
+ },
+ {
+  "id": "SC-056",
+  "q": "bone is sticking out of my shin",
+  "topic": "open fracture",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "cover with clean cloth, control bleeding, splint",
+  "want": [
+   "open_fracture"
+  ]
+ },
+ {
+  "id": "SC-057",
+  "q": "my leg looks twisted and short after dirt bike crash",
+  "topic": "femur fracture",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "splint, control bleeding, treat for shock",
+  "want": [
+   "limb_fracture",
+   "blunt_internal",
+   "broken_limb"
+  ]
+ },
+ {
+  "id": "SC-058",
+  "q": "shoulder popped out playing and he cant move it",
+  "topic": "shoulder dislocation",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "support arm in position found, check hand pulse",
+  "want": [
+   "dislocation"
+  ]
+ },
+ {
+  "id": "SC-059",
+  "q": "my finger is bent sideways after volleyball",
+  "topic": "finger dislocation",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "splint finger to neighbor, ice",
+  "want": [
+   "dislocation"
+  ]
+ },
+ {
+  "id": "SC-060",
+  "q": "ankle swollen and purple and cant walk after hiking",
+  "topic": "ankle sprain or fracture",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "splint, rest, check foot pulse",
+  "want": [
+   "broken_limb",
+   "limb_fracture"
+  ]
+ },
+ {
+  "id": "SC-061",
+  "q": "i think i broke my wrist what do i do",
+  "topic": "wrist fracture",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "splint wrist, ice, raise",
+  "want": [
+   "broken_limb",
+   "limb_fracture"
+  ]
+ },
+ {
+  "id": "SC-062",
+  "q": "how do i tell a sprain from a break",
+  "topic": "sprain versus fracture",
+  "area": "trauma",
+  "emergency": false,
+  "first_action": "explain signs and when to splint",
+  "want": []
+ },
+ {
+  "id": "SC-063",
+  "q": "hit my head on a rock fell asleep after and vomited twice",
+  "topic": "head injury with vomiting",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "keep still, watch breathing, wake often",
+  "want": [
+   "head_injury"
+  ]
+ },
+ {
+  "id": "SC-064",
+  "q": "blood and clear fluid coming from my sons ear after he hit his head",
+  "topic": "skull fracture sign",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "do not plug ear, keep head raised",
+  "want": [
+   "head_injury"
+  ]
+ },
+ {
+  "id": "SC-065",
+  "q": "one pupil bigger than the other after he got hit in the head",
+  "topic": "head injury unequal pupils",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "keep still, raise head, watch breathing",
+  "want": [
+   "head_injury"
+  ]
+ },
+ {
+  "id": "SC-066",
+  "q": "knocked out for a minute playing football now headache",
+  "topic": "concussion",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "rest, watch for worsening, no sleep alone",
+  "want": [
+   "head_injury"
+  ]
+ },
+ {
+  "id": "SC-067",
+  "q": "bumped head just a little no symptoms should i worry",
+  "topic": "minor head bump",
+  "area": "trauma",
+  "emergency": false,
+  "first_action": "watch for 24 hours, warning signs list",
+  "want": []
+ },
+ {
+  "id": "SC-068",
+  "q": "a fence post went through my husband's thigh and he is stuck",
+  "topic": "impalement in thigh",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "do not pull out, pad and stabilise",
+  "want": [
+   "impaled"
+  ]
+ },
+ {
+  "id": "SC-069",
+  "q": "a rebar is through his belly",
+  "topic": "abdominal impalement",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "do not remove, pad around, keep still",
+  "want": [
+   "impaled",
+   "belly_wound"
+  ]
+ },
+ {
+  "id": "SC-070",
+  "q": "knife stuck in his chest",
+  "topic": "chest stab wound",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "leave knife in, pad and steady it",
+  "want": [
+   "impaled",
+   "chest_wound"
+  ]
+ },
+ {
+  "id": "SC-071",
+  "q": "gunshot to the stomach and he is pale",
+  "topic": "abdominal gunshot",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "pressure on wounds, lay flat, keep warm",
+  "want": [
+   "belly_wound",
+   "blunt_internal"
+  ]
+ },
+ {
+  "id": "SC-072",
+  "q": "shot in the leg still conscious blood pouring",
+  "topic": "gunshot leg bleeding",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "tourniquet above wound",
+  "want": [
+   "limb_bleed",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-073",
+  "q": "explosion hit nearby ears ringing and shrapnel in his arm",
+  "topic": "blast injury",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "control bleeding, check breathing and ears",
+  "want": [
+   "limb_bleed",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-074",
+  "q": "pelvis hurt after truck rolled over and he cannot stand",
+  "topic": "pelvic fracture",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "do not move, wrap pelvis with sheet, treat shock",
+  "want": [
+   "pelvic_fracture"
+  ]
+ },
+ {
+  "id": "SC-075",
+  "q": "something heavy fell on my legs been trapped for hours now freed",
+  "topic": "crush injury",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "keep him still, watch for shock, drink fluids",
+  "want": [
+   "amputation_crush",
+   "compartment_syndrome",
+   "crush_injury"
+  ]
+ },
+ {
+  "id": "SC-076",
+  "q": "car crash seat belt bruise across belly and he is getting pale",
+  "topic": "blunt abdominal trauma",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "lay flat, keep warm, watch for shock",
+  "want": [
+   "blunt_internal"
+  ]
+ },
+ {
+  "id": "SC-077",
+  "q": "my arm is partially cut off by a saw",
+  "topic": "partial amputation",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "pressure and tourniquet, keep the part attached",
+  "want": [
+   "amputation",
+   "limb_bleed"
+  ]
+ },
+ {
+  "id": "SC-078",
+  "q": "finger cut off by axe where is the finger what do i do",
+  "topic": "amputated finger",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "pressure on stump, wrap part in damp cloth cool",
+  "want": [
+   "amputation"
+  ]
+ },
+ {
+  "id": "SC-079",
+  "q": "deep cut in my forehead dont know if stitches",
+  "topic": "facial laceration",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "press with clean cloth, close later",
+  "want": [
+   "head_bleed",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-080",
+  "q": "big gash on my calf from a rusty fence",
+  "topic": "dirty deep wound",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "clean with clean water, pressure, cover",
+  "want": [
+   "wound_infected",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-081",
+  "q": "how clean a wound when no soap",
+  "topic": "wound cleaning",
+  "area": "trauma",
+  "emergency": false,
+  "first_action": "explain clean water flush, cover",
+  "want": []
+ },
+ {
+  "id": "SC-082",
+  "q": "wound on my foot is red hot swelling with red line up leg and fever",
+  "topic": "spreading wound infection",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "keep leg raised, antibiotics if available, watch sepsis",
+  "want": [
+   "sepsis",
+   "wound_infected"
+  ]
+ },
+ {
+  "id": "SC-083",
+  "q": "my tooth got knocked out playing",
+  "topic": "knocked out tooth",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "hold tooth by crown, put in milk",
+  "want": [
+   "tooth_knocked_out"
+  ],
+  "missing_kind": {
+   "id": "tooth_knocked_out",
+   "note": "Knocked-out tooth: hold by the crown, do not scrub, rinse gently, push back in or keep in milk or cheek, see a dentist within an hour; control bleeding."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-084",
+  "q": "bad toothache and swollen cheek and fever",
+  "topic": "dental abscess",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "warm salt rinses, watch swelling in face",
+  "want": [
+   "dental_spread"
+  ]
+ },
+ {
+  "id": "SC-085",
+  "q": "broke my front tooth in half",
+  "topic": "chipped tooth",
+  "area": "trauma",
+  "emergency": false,
+  "first_action": "rinse, cover edge, see dentist later",
+  "want": []
+ },
+ {
+  "id": "SC-086",
+  "q": "my jaw hangs open after punch and cant close it",
+  "topic": "jaw dislocation",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "support jaw with hand, keep airway clear",
+  "want": [
+   "dislocation"
+  ]
+ },
+ {
+  "id": "SC-087",
+  "q": "hit in the face now the nose is bent and bleeding",
+  "topic": "broken nose",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "lean forward, pinch, cold pack",
+  "want": [
+   "nosebleed",
+   "head_injury"
+  ]
+ },
+ {
+  "id": "SC-088",
+  "q": "my neck brace question can i use a rolled towel for a neck injury",
+  "topic": "improvised collar",
+  "area": "trauma",
+  "emergency": false,
+  "first_action": "hold head by hand, support with rolled cloth",
+  "want": [],
+  "note": "reviewer: arguably a real injury or infection question, not calm"
+ },
+ {
+  "id": "SC-089",
+  "q": "knee locked after twisting cant straighten it",
+  "topic": "knee injury locked",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "rest, splint comfortable, ice",
+  "want": [
+   "dislocation",
+   "broken_limb"
+  ]
+ },
+ {
+  "id": "SC-090",
+  "q": "man fell on chest ribs crunch with big bruise and cant breathe deep",
+  "topic": "flail chest",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "support the segment with padding, sit up",
+  "want": [
+   "chest_blunt"
+  ]
+ },
+ {
+  "id": "SC-091",
+  "q": "my son got his hand stuck in a machine and it is mangled",
+  "topic": "hand crush mangled",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "control bleeding, raise hand, cover",
+  "want": [
+   "amputation_crush",
+   "limb_bleed"
+  ]
+ },
+ {
+  "id": "SC-092",
+  "q": "someone fell onto a spike and it is in his eye region",
+  "topic": "impalement face",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "do not remove, stabilise object",
+  "want": [
+   "eye_penetrating",
+   "impaled"
+  ]
+ },
+ {
+  "id": "SC-093",
+  "q": "leg trapped under tree for 4 hours and now getting tight and numb",
+  "topic": "compartment syndrome",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "loosen bandages, keep level, urgent care",
+  "want": [
+   "compartment_syndrome",
+   "crush_injury"
+  ]
+ },
+ {
+  "id": "SC-094",
+  "q": "collarbone hurts and sticks up after falling off horse",
+  "topic": "collarbone fracture",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "sling the arm, rest",
+  "want": [
+   "broken_limb",
+   "limb_fracture"
+  ]
+ },
+ {
+  "id": "SC-095",
+  "q": "slipped ice and hit my tailbone it hurts to sit",
+  "topic": "tailbone bruise",
+  "area": "trauma",
+  "emergency": false,
+  "first_action": "rest, ice, cushion",
+  "want": []
+ },
+ {
+  "id": "SC-096",
+  "q": "spurting blood from neck wound",
+  "topic": "neck wound bleeding",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "press hard directly on wound with fingers",
+  "want": [
+   "junctional_bleed",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-097",
+  "q": "my brother hit by car is awake but his legs wont move",
+  "topic": "spinal cord injury",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "hold head still, do not move",
+  "want": [
+   "fall_spine"
+  ]
+ },
+ {
+  "id": "SC-098",
+  "q": "splinter deep in my finger what do i do",
+  "topic": "splinter",
+  "area": "trauma",
+  "emergency": false,
+  "first_action": "clean and remove with tweezers",
+  "want": []
+ },
+ {
+  "id": "SC-099",
+  "q": "fell on my wrist and now its swollen but i can move my fingers",
+  "topic": "possible wrist fracture",
+  "area": "trauma",
+  "emergency": true,
+  "first_action": "splint, ice, elevate",
+  "want": [
+   "broken_limb",
+   "limb_fracture"
+  ]
+ },
+ {
+  "id": "SC-100",
+  "q": "my 4 year old pulled boiling water on her chest",
+  "topic": "scald child",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "cool with running water 20 minutes",
+  "want": [
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-101",
+  "q": "my hand touched hot stove blistered",
+  "topic": "hand burn",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "cool under cool running water 20 minutes",
+  "want": [
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-102",
+  "q": "he is on fire what do i do",
+  "topic": "person on fire",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "stop drop and roll, smother flames",
+  "want": [
+   "clothes_fire"
+  ]
+ },
+ {
+  "id": "SC-103",
+  "q": "whole arm burned white and leathery no pain",
+  "topic": "full thickness burn",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "cool 20 minutes, cover loosely, treat shock",
+  "want": [
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-104",
+  "q": "burn on my face and my eyebrows are singed after a gas flash",
+  "topic": "face burn airway risk",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "cool, watch breathing, sit upright",
+  "want": [
+   "severe_burn",
+   "smoke_inhaled"
+  ]
+ },
+ {
+  "id": "SC-105",
+  "q": "chemical burn bleach on my arm",
+  "topic": "bleach chemical burn",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "flush with lots of water for 20 minutes",
+  "want": [
+   "chem_burn"
+  ]
+ },
+ {
+  "id": "SC-106",
+  "q": "acid splashed on his legs",
+  "topic": "acid burn",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "remove clothes, flush with water long",
+  "want": [
+   "chem_burn"
+  ]
+ },
+ {
+  "id": "SC-107",
+  "q": "electric shock from a downed line he is on the ground",
+  "topic": "electrical injury",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "make sure power is off, check breathing",
+  "want": [
+   "power_line_down",
+   "electric_shock"
+  ]
+ },
+ {
+  "id": "SC-108",
+  "q": "got shocked by outlet my hand looks white and i feel weird",
+  "topic": "electric shock hand",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "check heartbeat, cool burn, watch rhythm",
+  "want": [
+   "electric_shock"
+  ]
+ },
+ {
+  "id": "SC-109",
+  "q": "lightning hit near our tent two people down",
+  "topic": "lightning strike",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "check breathing and start CPR if none",
+  "want": [
+   "lightning_struck"
+  ]
+ },
+ {
+  "id": "SC-110",
+  "q": "bad sunburn blisters on my back and shoulders and chills",
+  "topic": "severe sunburn",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "cool shower, drink fluids, do not pop blisters",
+  "want": [
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-111",
+  "q": "minor burn from cooking oil on my finger",
+  "topic": "small kitchen burn",
+  "area": "burns",
+  "emergency": false,
+  "first_action": "cool under water, cover, no butter",
+  "want": []
+ },
+ {
+  "id": "SC-112",
+  "q": "do i put butter on a burn",
+  "topic": "butter on burns myth",
+  "area": "burns",
+  "emergency": false,
+  "first_action": "no butter, cool with water",
+  "want": []
+ },
+ {
+  "id": "SC-113",
+  "q": "burn blisters popped now weepy and smelly",
+  "topic": "infected burn",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "clean, cover with non stick dressing, watch infection",
+  "want": [
+   "wound_infected",
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-114",
+  "q": "my camping stove exploded and my face and hands are burned",
+  "topic": "stove flash burn",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "cool burns, cover, watch breathing",
+  "want": [
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-115",
+  "q": "tar stuck on my skin hot tar burn",
+  "topic": "hot tar burn",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "cool with water, do not peel off tar",
+  "want": [
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-116",
+  "q": "scalded by steam from a pressure cooker on his face",
+  "topic": "steam burn face",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "cool with water, watch airway",
+  "want": [
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-117",
+  "q": "hot oil burn on thigh bigger than my hand",
+  "topic": "large scald",
+  "area": "burns",
+  "emergency": true,
+  "first_action": "cool 20 minutes, cover with clean film",
+  "want": [
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-118",
+  "q": "rope burn on my hand how treat",
+  "topic": "friction burn",
+  "area": "burns",
+  "emergency": false,
+  "first_action": "clean, cover, keep clean",
+  "want": []
+ },
+ {
+  "id": "SC-119",
+  "q": "my friend is shivering badly and slurring words after falling in the lake",
+  "topic": "moderate hypothermia",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "get out of wet, insulate, handle gently",
+  "want": [
+   "hypothermia"
+  ]
+ },
+ {
+  "id": "SC-120",
+  "q": "he stopped shivering and is very sleepy and cold",
+  "topic": "severe hypothermia",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "handle gently, insulate, horizontal, warm core",
+  "want": [
+   "hypothermia",
+   "cold_water_out"
+  ]
+ },
+ {
+  "id": "SC-121",
+  "q": "how do i warm up someone who is cold",
+  "topic": "rewarming hypothermia",
+  "area": "environmental",
+  "emergency": false,
+  "first_action": "insulate, warm sweet drinks if awake",
+  "want": []
+ },
+ {
+  "id": "SC-122",
+  "q": "my toes are white and hard and no feeling after hiking all day in snow",
+  "topic": "frostbite",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "get warm indoors, do not rub, warm water if no refreeze",
+  "want": [
+   "frostbite"
+  ]
+ },
+ {
+  "id": "SC-123",
+  "q": "fingers blistered after we warmed them up from frostbite",
+  "topic": "frostbite blisters",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "leave blisters, protect, keep warm",
+  "want": [
+   "frostbite"
+  ]
+ },
+ {
+  "id": "SC-124",
+  "q": "my feet are wet and cold for days now swollen and numb",
+  "topic": "trench foot",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "dry feet, warm, raise, no rubbing",
+  "want": [
+   "trench_foot"
+  ]
+ },
+ {
+  "id": "SC-125",
+  "q": "hiker is hot confused and not sweating hot dry skin",
+  "topic": "heat stroke",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "cool body fast with water and fan",
+  "want": [
+   "heat_stroke",
+   "heat_stroke_hot"
+  ]
+ },
+ {
+  "id": "SC-126",
+  "q": "working in the sun and i have cramps and heavy sweat and nausea",
+  "topic": "heat exhaustion",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "shade, cool, drink fluids with salt",
+  "want": [
+   "heat_stroke"
+  ]
+ },
+ {
+  "id": "SC-127",
+  "q": "my toddler locked in hot car is limp",
+  "topic": "child heat stroke",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "cool with water at once, fan",
+  "want": [
+   "hot_car",
+   "heat_stroke"
+  ]
+ },
+ {
+  "id": "SC-128",
+  "q": "spent the day in snow now eyes burn and see only blur",
+  "topic": "snow blindness",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "dark cover on eyes, rest, cool cloths",
+  "want": [
+   "snow_blindness"
+  ]
+ },
+ {
+  "id": "SC-129",
+  "q": "i hear thunder very near what do i do",
+  "topic": "lightning safety",
+  "area": "environmental",
+  "emergency": false,
+  "first_action": "get low, avoid trees and water",
+  "want": []
+ },
+ {
+  "id": "SC-130",
+  "q": "lightning struck my friend is breathing but burned",
+  "topic": "lightning survivor",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "check pulse, treat burns, watch breathing",
+  "want": [
+   "lightning_struck",
+   "severe_burn"
+  ]
+ },
+ {
+  "id": "SC-131",
+  "q": "kid fell through ice and is out now not moving",
+  "topic": "ice immersion child",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "check breathing, start rescue breaths, warm",
+  "want": [
+   "drowning_found_child",
+   "cold_water_out",
+   "arrest_child"
+  ]
+ },
+ {
+  "id": "SC-132",
+  "q": "my son pulled from the river not breathing",
+  "topic": "drowning not breathing",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "give 5 rescue breaths then CPR",
+  "want": [
+   "drowning_found_child",
+   "drowning_child"
+  ]
+ },
+ {
+  "id": "SC-133",
+  "q": "swam out far and my wife is panicking in the water",
+  "topic": "active drowning",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "reach with pole or throw float, do not swim to her",
+  "want": [
+   "drowning_now"
+  ]
+ },
+ {
+  "id": "SC-134",
+  "q": "diver came up fast and has joint pain and tingling",
+  "topic": "decompression sickness",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "lay flat, give oxygen if any, urgent chamber",
+  "want": [
+   "dive_injury"
+  ]
+ },
+ {
+  "id": "SC-135",
+  "q": "diver holding breath came up and now chest pain coughing blood",
+  "topic": "diving lung injury",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "lay flat on left side, oxygen",
+  "want": [
+   "dive_injury",
+   "blood_vomit_cough"
+  ]
+ },
+ {
+  "id": "SC-136",
+  "q": "climbing at 4500 m and he has bad headache nausea and cant walk straight",
+  "topic": "severe altitude sickness",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "descend at once",
+  "want": [
+   "altitude_illness"
+  ]
+ },
+ {
+  "id": "SC-137",
+  "q": "coughing pink foam at altitude and breathless at rest",
+  "topic": "HAPE",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "descend at once, sit upright",
+  "want": [
+   "altitude_illness"
+  ]
+ },
+ {
+  "id": "SC-138",
+  "q": "mild headache at 3000 m first night",
+  "topic": "mild altitude headache",
+  "area": "environmental",
+  "emergency": false,
+  "first_action": "rest, drink, do not climb higher",
+  "want": []
+ },
+ {
+  "id": "SC-139",
+  "q": "buried in avalanche dug out but not breathing",
+  "topic": "avalanche burial no breathing",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "clear airway, give rescue breaths",
+  "want": [
+   "avalanche_burial",
+   "arrest_adult"
+  ]
+ },
+ {
+  "id": "SC-140",
+  "q": "avalanche dug out cold and talking but confused",
+  "topic": "avalanche survivor hypothermia",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "insulate, handle gently, warm",
+  "want": [
+   "hypothermia",
+   "avalanche_burial"
+  ]
+ },
+ {
+  "id": "SC-141",
+  "q": "we are lost in desert and out of water what to do",
+  "topic": "desert dehydration",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "shade, ration sweat not water, signal",
+  "want": [
+   "no_water_survival"
+  ],
+  "missing_kind": {
+   "id": "no_water_survival",
+   "note": "Out of water in hot dry country: stop moving in the heat, find shade, ration effort not water, signal for rescue, recognise heat illness, how to find water."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-142",
+  "q": "i am a bit sunburned on my face",
+  "topic": "mild sunburn",
+  "area": "environmental",
+  "emergency": false,
+  "first_action": "cool skin, moisturizer, fluids",
+  "want": []
+ },
+ {
+  "id": "SC-143",
+  "q": "caught in a flood the car is filling with water",
+  "topic": "flood in car",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "get out through window now",
+  "want": [
+   "car_flood"
+  ]
+ },
+ {
+  "id": "SC-144",
+  "q": "hypothermia question can i give a hot shower",
+  "topic": "hot shower hypothermia",
+  "area": "environmental",
+  "emergency": false,
+  "first_action": "no, warm slowly",
+  "want": []
+ },
+ {
+  "id": "SC-145",
+  "q": "my feet are cold and tingly after skiing is that frostnip",
+  "topic": "frostnip",
+  "area": "environmental",
+  "emergency": false,
+  "first_action": "warm gently, check colour",
+  "want": []
+ },
+ {
+  "id": "SC-146",
+  "q": "lightning struck tree near us what do we do next",
+  "topic": "after lightning near miss",
+  "area": "environmental",
+  "emergency": false,
+  "first_action": "check for injuries, move low",
+  "want": []
+ },
+ {
+  "id": "SC-147",
+  "q": "friend was in cold water 30 minutes and now he feels fine but weak",
+  "topic": "after cold water",
+  "area": "environmental",
+  "emergency": true,
+  "first_action": "dry, insulate, warm, watch for collapse",
+  "want": [
+   "cold_water_out",
+   "hypothermia"
+  ]
+ },
+ {
+  "id": "SC-148",
+  "q": "snake bit my leg and it is swelling fast",
+  "topic": "snake bite leg",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "keep calm, still, immobilise leg, no cutting",
+  "want": [
+   "snake_bite"
+  ]
+ },
+ {
+  "id": "SC-149",
+  "q": "kid stepped on adder and has pain and swelling",
+  "topic": "viper bite child",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "keep still and calm, carry out",
+  "want": [
+   "snake_bite"
+  ]
+ },
+ {
+  "id": "SC-150",
+  "q": "cobra bit my friend and his eyelids are droopy",
+  "topic": "neurotoxic snake bite",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "bandage limb firmly, keep still, support breathing",
+  "want": [
+   "snake_bite"
+  ]
+ },
+ {
+  "id": "SC-151",
+  "q": "do i suck out venom",
+  "topic": "snake venom myth",
+  "area": "bites and stings",
+  "emergency": false,
+  "first_action": "no sucking, cutting or ice",
+  "want": []
+ },
+ {
+  "id": "SC-152",
+  "q": "black widow bit my arm and my belly is cramping",
+  "topic": "black widow bite",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "clean, cool pack, watch breathing",
+  "want": [
+   "spider_scorpion",
+   "spider_bite"
+  ]
+ },
+ {
+  "id": "SC-153",
+  "q": "brown recluse bite turned dark and ulcer",
+  "topic": "recluse spider bite",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "clean, cool, watch for infection",
+  "want": [
+   "spider_scorpion",
+   "spider_bite"
+  ]
+ },
+ {
+  "id": "SC-154",
+  "q": "scorpion sting my daughter 4 and she is drooling and twitching",
+  "topic": "scorpion sting child",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "keep calm, watch breathing, cool pack",
+  "want": [
+   "spider_scorpion"
+  ]
+ },
+ {
+  "id": "SC-155",
+  "q": "stung once by a bee on my arm",
+  "topic": "single bee sting",
+  "area": "bites and stings",
+  "emergency": false,
+  "first_action": "remove stinger, cool, antihistamine",
+  "want": []
+ },
+ {
+  "id": "SC-156",
+  "q": "stung by bee and now my throat feels tight and hives",
+  "topic": "bee sting anaphylaxis",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "use epinephrine now",
+  "want": [
+   "anaphylaxis"
+  ]
+ },
+ {
+  "id": "SC-157",
+  "q": "stung by like 50 hornets and i am dizzy and my heart pounds",
+  "topic": "multiple stings with dizziness",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "get away from nest, remove stingers, lay flat",
+  "want": [
+   "many_stings",
+   "anaphylaxis"
+  ]
+ },
+ {
+  "id": "SC-158",
+  "q": "my husband got swarmed by wasps and he is swelling all over",
+  "topic": "multiple wasp stings",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "epinephrine if any, antihistamine, lay flat",
+  "want": [
+   "many_stings",
+   "anaphylaxis"
+  ]
+ },
+ {
+  "id": "SC-159",
+  "q": "tick on my thigh for who knows how long",
+  "topic": "embedded tick",
+  "area": "bites and stings",
+  "emergency": false,
+  "first_action": "remove with tweezers close to skin",
+  "want": []
+ },
+ {
+  "id": "SC-160",
+  "q": "rash with bullseye after a tick bite and fever and aching",
+  "topic": "Lyme disease",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "remove tick, antibiotics early if possible",
+  "want": [
+   "tick_borne_illness"
+  ],
+  "missing_kind": {
+   "id": "tick_borne_illness",
+   "note": "Fever, rash or aches after a tick bite: how to remove a tick, note the date, and when to get antibiotics or care."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-161",
+  "q": "fever and headache a week after a tick bite in africa",
+  "topic": "tick fever",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "cool, fluids, seek care, watch for rash",
+  "want": [
+   "tick_borne_illness"
+  ],
+  "missing_kind": {
+   "id": "tick_borne_illness",
+   "note": "Fever, rash or aches after a tick bite: how to remove a tick, note the date, and when to get antibiotics or care."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-162",
+  "q": "jellyfish wrapped around my leg at the beach and burns",
+  "topic": "jellyfish sting",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "rinse with vinegar, hot water 45 C",
+  "want": [
+   "jellyfish_severe"
+  ]
+ },
+ {
+  "id": "SC-163",
+  "q": "stepped on stonefish and foot is in agony",
+  "topic": "stonefish sting",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "immerse in hot water as hot as tolerable",
+  "want": [
+   "venomous_spine_sting"
+  ],
+  "missing_kind": {
+   "id": "venomous_spine_sting",
+   "note": "Stonefish, stingray or lionfish sting: immerse the wound in water as hot as can be tolerated, control bleeding, watch breathing, remove only loose spine pieces."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-164",
+  "q": "man o war stings across my chest",
+  "topic": "portuguese man of war",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "remove tentacles, rinse with seawater, heat",
+  "want": [
+   "jellyfish_severe"
+  ]
+ },
+ {
+  "id": "SC-165",
+  "q": "box jellyfish sting and she collapsed",
+  "topic": "box jellyfish",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "vinegar on skin, start CPR if not breathing",
+  "want": [
+   "jellyfish_severe",
+   "arrest_batt"
+  ]
+ },
+ {
+  "id": "SC-166",
+  "q": "stingray barb in my foot",
+  "topic": "stingray wound",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "hot water, clean wound, control bleeding",
+  "want": [
+   "venomous_spine_sting"
+  ],
+  "missing_kind": {
+   "id": "venomous_spine_sting",
+   "note": "Stonefish, stingray or lionfish sting: immerse the wound in water as hot as can be tolerated, control bleeding, watch breathing, remove only loose spine pieces."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-167",
+  "q": "sea urchin spines in my foot",
+  "topic": "urchin spines",
+  "area": "bites and stings",
+  "emergency": false,
+  "first_action": "remove spines, hot water soak",
+  "want": []
+ },
+ {
+  "id": "SC-168",
+  "q": "dog bit my son on the face skin torn",
+  "topic": "dog bite face",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "press to control bleeding, wash with soap and water",
+  "want": [
+   "dog_attack",
+   "head_bleed"
+  ]
+ },
+ {
+  "id": "SC-169",
+  "q": "neighbours dog bit me through the skin and i dont know if vaccinated",
+  "topic": "dog bite rabies risk",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "wash 15 minutes with soap, seek rabies shots",
+  "want": [
+   "rabies_exposure"
+  ],
+  "missing_kind": {
+   "id": "rabies_exposure",
+   "note": "Bite, scratch or contact from a bat, fox, monkey or unknown dog: wash the wound with soap and water for 15 minutes, then get rabies shots as soon as possible."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-170",
+  "q": "a bat flew in and i woke with it near me am i at risk of rabies",
+  "topic": "bat exposure rabies",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "wash any contact area, treat as possible exposure",
+  "want": [
+   "rabies_exposure"
+  ],
+  "missing_kind": {
+   "id": "rabies_exposure",
+   "note": "Bite, scratch or contact from a bat, fox, monkey or unknown dog: wash the wound with soap and water for 15 minutes, then get rabies shots as soon as possible."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-171",
+  "q": "fox bit my hand and acted strange",
+  "topic": "wild animal bite rabies",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "wash 15 minutes, urgent rabies shots",
+  "want": [
+   "rabies_exposure"
+  ],
+  "missing_kind": {
+   "id": "rabies_exposure",
+   "note": "Bite, scratch or contact from a bat, fox, monkey or unknown dog: wash the wound with soap and water for 15 minutes, then get rabies shots as soon as possible."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-172",
+  "q": "a monkey scratched my arm at the temple",
+  "topic": "monkey scratch",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "wash 15 minutes with soap and water",
+  "want": [
+   "rabies_exposure"
+  ],
+  "missing_kind": {
+   "id": "rabies_exposure",
+   "note": "Bite, scratch or contact from a bat, fox, monkey or unknown dog: wash the wound with soap and water for 15 minutes, then get rabies shots as soon as possible."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-173",
+  "q": "bear mauled my friend head and arm bleeding",
+  "topic": "bear attack",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "control bleeding, pressure, protect head",
+  "want": [
+   "dog_attack",
+   "head_bleed",
+   "limb_bleed"
+  ]
+ },
+ {
+  "id": "SC-174",
+  "q": "cat scratch is red and swollen",
+  "topic": "cat scratch infection",
+  "area": "bites and stings",
+  "emergency": false,
+  "first_action": "clean, watch for spreading redness",
+  "want": []
+ },
+ {
+  "id": "SC-175",
+  "q": "spider bite swelling red and warm on my leg",
+  "topic": "spider bite infection",
+  "area": "bites and stings",
+  "emergency": false,
+  "first_action": "clean, watch for spread",
+  "want": [],
+  "note": "reviewer: arguably a real injury or infection question, not calm"
+ },
+ {
+  "id": "SC-176",
+  "q": "fire ants swarmed my legs and she is wheezing",
+  "topic": "ant stings with wheeze",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "epinephrine, remove from ants, sit upright",
+  "want": [
+   "anaphylaxis",
+   "many_stings"
+  ]
+ },
+ {
+  "id": "SC-177",
+  "q": "bitten by something in the night two fang marks",
+  "topic": "unknown bite night",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "keep still, note symptoms, immobilise limb",
+  "want": [
+   "snake_bite"
+  ]
+ },
+ {
+  "id": "SC-178",
+  "q": "how long can i wait after a snake bite",
+  "topic": "delay after snakebite",
+  "area": "bites and stings",
+  "emergency": false,
+  "first_action": "urgent, keep still and get to care",
+  "want": []
+ },
+ {
+  "id": "SC-179",
+  "q": "leech on my ankle",
+  "topic": "leech",
+  "area": "bites and stings",
+  "emergency": false,
+  "first_action": "remove by sliding fingernail, press",
+  "want": []
+ },
+ {
+  "id": "SC-180",
+  "q": "honey bees swarmed our dog and our kid is crying and swollen but breathing fine",
+  "topic": "multiple stings child fine",
+  "area": "bites and stings",
+  "emergency": true,
+  "first_action": "remove stingers, cool, watch breathing",
+  "want": [
+   "many_stings"
+  ]
+ },
+ {
+  "id": "SC-181",
+  "q": "my toddler swallowed some of my pills",
+  "topic": "child medicine ingestion",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "find out what and how much, no vomiting",
+  "want": [
+   "poison_swallowed",
+   "poison_person"
+  ]
+ },
+ {
+  "id": "SC-182",
+  "q": "took too much paracetamol on purpose 2 hours ago",
+  "topic": "paracetamol overdose",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "do not wait, find out amount, urgent care",
+  "want": [
+   "paracetamol_overdose",
+   "poison_go_er"
+  ]
+ },
+ {
+  "id": "SC-183",
+  "q": "my friend took a lot of sleeping pills and wont wake",
+  "topic": "sedative overdose",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "check breathing, recovery position",
+  "want": [
+   "overdose_drowsy",
+   "overdose"
+  ]
+ },
+ {
+  "id": "SC-184",
+  "q": "he took heroin and his lips are blue and slow breathing",
+  "topic": "opioid overdose",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "give naloxone, rescue breaths",
+  "want": [
+   "opioid",
+   "overdose_drowsy"
+  ]
+ },
+ {
+  "id": "SC-185",
+  "q": "no naloxone what do i do for opioid overdose",
+  "topic": "opioid overdose no naloxone",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "rescue breaths, recovery position",
+  "want": [
+   "opioid",
+   "overdose_drowsy"
+  ]
+ },
+ {
+  "id": "SC-186",
+  "q": "ate wild mushrooms 6 hours ago and now vomiting and diarrhoea",
+  "topic": "mushroom poisoning",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "keep sample, fluids, urgent help",
+  "want": [
+   "poison_go_er",
+   "poison_swallowed"
+  ]
+ },
+ {
+  "id": "SC-187",
+  "q": "kid ate berries from a bush",
+  "topic": "unknown berries child",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "identify plant, rinse mouth, watch",
+  "want": [
+   "poison_swallowed",
+   "poison_person"
+  ]
+ },
+ {
+  "id": "SC-188",
+  "q": "my dog food ok but baby drank dish soap",
+  "topic": "soap swallowed",
+  "area": "toxicology",
+  "emergency": false,
+  "first_action": "rinse mouth, small sips water, watch",
+  "want": []
+ },
+ {
+  "id": "SC-189",
+  "q": "child drank drain cleaner",
+  "topic": "caustic ingestion",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "do not vomit, rinse mouth, sips water",
+  "want": [
+   "poison_swallowed",
+   "poison_person"
+  ]
+ },
+ {
+  "id": "SC-190",
+  "q": "drank bleach by mistake",
+  "topic": "bleach swallowed",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "rinse mouth, sip water, do not vomit",
+  "want": [
+   "poison_swallowed",
+   "poison_person"
+  ]
+ },
+ {
+  "id": "SC-191",
+  "q": "kerosene drunk by my child and she coughs",
+  "topic": "kerosene ingestion",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "do not induce vomiting, watch breathing",
+  "want": [
+   "poison_swallowed",
+   "poison_person"
+  ]
+ },
+ {
+  "id": "SC-192",
+  "q": "we used a gas heater in the tent and everyone has headache and is sleepy",
+  "topic": "carbon monoxide poisoning",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "get everyone to fresh air at once",
+  "want": [
+   "co_now",
+   "heater_vehicle",
+   "co"
+  ]
+ },
+ {
+  "id": "SC-193",
+  "q": "woke up with headache and nausea and so did my wife in winter with a generator inside",
+  "topic": "CO in house",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "open doors, get everyone outside",
+  "want": [
+   "co_now",
+   "co",
+   "fuel_heater_fumes"
+  ]
+ },
+ {
+  "id": "SC-194",
+  "q": "smoke filled the room and my son is coughing and has soot in nose",
+  "topic": "smoke inhalation",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "fresh air, sit upright, watch breathing",
+  "want": [
+   "smoke_inhaled"
+  ]
+ },
+ {
+  "id": "SC-195",
+  "q": "drunk friend cant be woken and breathing slow",
+  "topic": "alcohol poisoning",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "recovery position, watch breathing",
+  "want": [
+   "overdose_drowsy",
+   "unresponsive"
+  ]
+ },
+ {
+  "id": "SC-196",
+  "q": "my friend drank a lot and is vomiting nonstop",
+  "topic": "alcohol vomiting",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "recovery position, small sips water",
+  "want": [
+   "overdose",
+   "poison_person"
+  ]
+ },
+ {
+  "id": "SC-197",
+  "q": "took ecstasy and is very hot and confused with jaw clenching",
+  "topic": "drug overheating",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "cool him, water, shade",
+  "want": [
+   "heat_stroke",
+   "overdose"
+  ]
+ },
+ {
+  "id": "SC-198",
+  "q": "smoked something and hes paranoid and hearing things",
+  "topic": "bad drug trip",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "calm quiet place, reassure, stay with him",
+  "want": [
+   "psychosis_danger"
+  ]
+ },
+ {
+  "id": "SC-199",
+  "q": "my son took meth and hes agitated sweating and chest pain",
+  "topic": "stimulant overdose",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "calm, cool, watch heart",
+  "want": [
+   "overdose",
+   "heart_attack"
+  ]
+ },
+ {
+  "id": "SC-200",
+  "q": "took cocaine and now chest pain",
+  "topic": "cocaine chest pain",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "rest, calm, aspirin if no allergy",
+  "want": [
+   "heart_attack",
+   "overdose"
+  ]
+ },
+ {
+  "id": "SC-201",
+  "q": "kid swallowed a button battery",
+  "topic": "button battery swallowed",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "honey if over 1 year, urgent removal",
+  "want": [
+   "button_battery"
+  ]
+ },
+ {
+  "id": "SC-202",
+  "q": "kid swallowed a magnet",
+  "topic": "magnet swallowed",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "watch for pain, urgent care if two",
+  "want": [
+   "swallowed_sharp",
+   "button_battery"
+  ]
+ },
+ {
+  "id": "SC-203",
+  "q": "child ate laundry pod",
+  "topic": "laundry pod",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "rinse mouth and eyes, watch breathing",
+  "want": [
+   "poison_swallowed",
+   "poison_person"
+  ]
+ },
+ {
+  "id": "SC-204",
+  "q": "i accidentally took double my blood pressure pill",
+  "topic": "double dose",
+  "area": "toxicology",
+  "emergency": false,
+  "first_action": "check symptoms, sit, call support",
+  "want": []
+ },
+ {
+  "id": "SC-205",
+  "q": "took a handful of aspirin and my ears are ringing",
+  "topic": "aspirin overdose",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "do not wait, urgent care, fluids",
+  "want": [
+   "overdose",
+   "poison_swallowed"
+  ]
+ },
+ {
+  "id": "SC-206",
+  "q": "insecticide sprayed on my skin and i feel sick with small pupils",
+  "topic": "organophosphate poisoning",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "remove clothes, wash skin with soap",
+  "want": [
+   "pesticide_poisoning"
+  ],
+  "missing_kind": {
+   "id": "pesticide_poisoning",
+   "note": "Insecticide on skin or breathed in: remove contaminated clothes, wash skin with soap and water, watch for drooling, tiny pupils and breathing trouble."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-207",
+  "q": "ate bad fish at the coast and numb mouth and tingling",
+  "topic": "fish poisoning",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "urgent care, watch breathing, fluids",
+  "want": [
+   "poison_swallowed",
+   "poison_go_er"
+  ]
+ },
+ {
+  "id": "SC-208",
+  "q": "food poisoning from chicken i am vomiting",
+  "topic": "food poisoning",
+  "area": "toxicology",
+  "emergency": false,
+  "first_action": "sip fluids, rest",
+  "want": []
+ },
+ {
+  "id": "SC-209",
+  "q": "my baby has swallowed a coin",
+  "topic": "coin swallowed",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "watch breathing, no vomiting",
+  "want": [
+   "swallowed_sharp"
+  ]
+ },
+ {
+  "id": "SC-210",
+  "q": "my friend ate a mushroom a hour ago and is fine but we are not sure its safe",
+  "topic": "uncertain mushroom just eaten",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "keep sample, watch, urgent advice",
+  "want": [
+   "poison_go_er",
+   "poison_swallowed"
+  ]
+ },
+ {
+  "id": "SC-211",
+  "q": "methanol drink we think homemade alcohol and vision going",
+  "topic": "methanol poisoning",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "urgent care, no more drinking",
+  "want": [
+   "poison_swallowed",
+   "overdose"
+  ]
+ },
+ {
+  "id": "SC-212",
+  "q": "household chemicals mixed in bathroom and eyes burn and cough",
+  "topic": "chlorine gas exposure",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "get to fresh air, flush eyes",
+  "want": [
+   "chem_fumes"
+  ]
+ },
+ {
+  "id": "SC-213",
+  "q": "breathed in fumes from paint stripper and dizzy",
+  "topic": "solvent fumes",
+  "area": "toxicology",
+  "emergency": true,
+  "first_action": "fresh air, rest, watch breathing",
+  "want": [
+   "chem_fumes"
+  ]
+ },
+ {
+  "id": "SC-214",
+  "q": "how many grams of paracetamol is dangerous",
+  "topic": "paracetamol limit",
+  "area": "toxicology",
+  "emergency": false,
+  "first_action": "explain safe maximum and risk",
+  "want": []
+ },
+ {
+  "id": "SC-215",
+  "q": "what should i keep in a poison kit",
+  "topic": "poison kit",
+  "area": "toxicology",
+  "emergency": false,
+  "first_action": "list items, no induced vomiting",
+  "want": []
+ },
+ {
+  "id": "SC-216",
+  "q": "bleach splashed in my eye",
+  "topic": "chemical eye burn",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "flush with water for 20 minutes",
+  "want": [
+   "chem_eye"
+  ]
+ },
+ {
+  "id": "SC-217",
+  "q": "something is stuck in my eye and it is red",
+  "topic": "eye foreign body",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "flush with clean water, do not rub",
+  "want": [
+   "eye_object"
+  ]
+ },
+ {
+  "id": "SC-218",
+  "q": "metal chip flew into my eye while grinding",
+  "topic": "metal in eye",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "cover loosely, do not rub, protect",
+  "want": [
+   "eye_object",
+   "eye_penetrating"
+  ]
+ },
+ {
+  "id": "SC-219",
+  "q": "a stick poked my eye and it is bleeding",
+  "topic": "penetrating eye injury",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "cover with shield, do not press",
+  "want": [
+   "eye_penetrating"
+  ]
+ },
+ {
+  "id": "SC-220",
+  "q": "fishhook in my eyelid",
+  "topic": "fishhook eyelid",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "cover eye, stabilise hook",
+  "want": [
+   "eye_penetrating",
+   "impaled"
+  ]
+ },
+ {
+  "id": "SC-221",
+  "q": "punched in the eye and cant see and swelling",
+  "topic": "blunt eye trauma",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "cool pack gently, protect, keep still",
+  "want": [
+   "eye_penetrating"
+  ]
+ },
+ {
+  "id": "SC-222",
+  "q": "sudden curtain over my vision in one eye",
+  "topic": "retinal detachment",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "rest, keep head still, urgent care",
+  "want": [
+   "eye_vision_threat"
+  ],
+  "missing_kind": {
+   "id": "eye_vision_threat",
+   "note": "Sudden vision loss, curtain over vision, or very red painful eye with contact lenses: remove lenses, cover eye lightly, do not rub or use drops, get an eye specialist urgently."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-223",
+  "q": "eye pain and very red after contact lens",
+  "topic": "contact lens eye infection",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "remove lens, no rubbing",
+  "want": [
+   "eye_vision_threat"
+  ],
+  "missing_kind": {
+   "id": "eye_vision_threat",
+   "note": "Sudden vision loss, curtain over vision, or very red painful eye with contact lenses: remove lenses, cover eye lightly, do not rub or use drops, get an eye specialist urgently."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-224",
+  "q": "my kid got pepper spray in the eye",
+  "topic": "pepper spray eye",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "flush with plenty water",
+  "want": [
+   "chem_eye"
+  ]
+ },
+ {
+  "id": "SC-225",
+  "q": "my eye is just a bit dry and itchy",
+  "topic": "dry eye",
+  "area": "eye",
+  "emergency": false,
+  "first_action": "rest, clean cool compress",
+  "want": []
+ },
+ {
+  "id": "SC-226",
+  "q": "welding flash and eyes burning hours later",
+  "topic": "welding flash",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "cool cloths, dark room, rest",
+  "want": [
+   "snow_blindness"
+  ]
+ },
+ {
+  "id": "SC-227",
+  "q": "something is hanging out of my eye socket after a blow",
+  "topic": "eye extruded",
+  "area": "eye",
+  "emergency": true,
+  "first_action": "cover with cup, do not push in",
+  "want": [
+   "eye_penetrating"
+  ]
+ },
+ {
+  "id": "SC-228",
+  "q": "pink eye in my daughter how contagious",
+  "topic": "conjunctivitis",
+  "area": "eye",
+  "emergency": false,
+  "first_action": "clean wash, hand washing",
+  "want": []
+ },
+ {
+  "id": "SC-229",
+  "q": "can i use tap water to rinse my eye",
+  "topic": "eye rinse tap water",
+  "area": "eye",
+  "emergency": false,
+  "first_action": "yes, use clean water, long flush",
+  "want": []
+ },
+ {
+  "id": "SC-230",
+  "q": "nosebleed wont stop for 30 minutes",
+  "topic": "prolonged nosebleed",
+  "area": "ENT",
+  "emergency": true,
+  "first_action": "lean forward, pinch soft part 15 minutes",
+  "want": [
+   "nosebleed_severe",
+   "nosebleed"
+  ]
+ },
+ {
+  "id": "SC-231",
+  "q": "nosebleed after a punch",
+  "topic": "nosebleed after blow",
+  "area": "ENT",
+  "emergency": true,
+  "first_action": "lean forward, pinch, watch for head injury",
+  "want": [
+   "nosebleed",
+   "head_injury"
+  ]
+ },
+ {
+  "id": "SC-232",
+  "q": "my toddler pushed a bead up his nose",
+  "topic": "object in nose",
+  "area": "ENT",
+  "emergency": true,
+  "first_action": "keep him calm, breathe mouth, do not dig",
+  "want": [
+   "object_nose"
+  ]
+ },
+ {
+  "id": "SC-233",
+  "q": "bug crawled into my ear and is buzzing",
+  "topic": "insect in ear",
+  "area": "ENT",
+  "emergency": true,
+  "first_action": "flood ear with oil or warm water, do not dig",
+  "want": [
+   "insect_in_ear"
+  ],
+  "missing_kind": {
+   "id": "insect_in_ear",
+   "note": "Live insect in the ear: do not poke, tilt the head and float it out with warm oil or water if the eardrum is intact, get care if it does not come out."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-234",
+  "q": "my kid put a pea in his ear",
+  "topic": "object in ear",
+  "area": "ENT",
+  "emergency": false,
+  "first_action": "do not poke, tilt head, seek help",
+  "want": []
+ },
+ {
+  "id": "SC-235",
+  "q": "throat is swelling and my voice is gone after an allergic food",
+  "topic": "throat swelling allergic",
+  "area": "ENT",
+  "emergency": true,
+  "first_action": "use epinephrine now",
+  "want": [
+   "throat_closing",
+   "anaphylaxis"
+  ]
+ },
+ {
+  "id": "SC-236",
+  "q": "my tonsils are swollen huge and i cant swallow or open my mouth",
+  "topic": "peritonsillar abscess",
+  "area": "ENT",
+  "emergency": true,
+  "first_action": "sit upright, drool, urgent care",
+  "want": [
+   "throat_closing",
+   "dental_spread"
+  ]
+ },
+ {
+  "id": "SC-237",
+  "q": "child with high fever drooling sitting forward and cant swallow",
+  "topic": "epiglottitis",
+  "area": "ENT",
+  "emergency": true,
+  "first_action": "keep child calm sitting, do not examine throat",
+  "want": [
+   "throat_closing",
+   "croup"
+  ]
+ },
+ {
+  "id": "SC-238",
+  "q": "fishbone stuck in throat",
+  "topic": "fishbone stuck",
+  "area": "ENT",
+  "emergency": false,
+  "first_action": "cough, sips of water, do not poke",
+  "want": []
+ },
+ {
+  "id": "SC-239",
+  "q": "ear pain and fever in my 2 year old",
+  "topic": "ear infection child",
+  "area": "ENT",
+  "emergency": false,
+  "first_action": "pain relief, watch fever",
+  "want": []
+ },
+ {
+  "id": "SC-240",
+  "q": "sudden loss of hearing after loud explosion",
+  "topic": "blast ear injury",
+  "area": "ENT",
+  "emergency": false,
+  "first_action": "keep ear dry, avoid pokes",
+  "want": []
+ },
+ {
+  "id": "SC-241",
+  "q": "sore throat for two days",
+  "topic": "sore throat",
+  "area": "ENT",
+  "emergency": false,
+  "first_action": "fluids, rest, warm drinks",
+  "want": []
+ },
+ {
+  "id": "SC-242",
+  "q": "water in ear after swimming and it hurts",
+  "topic": "swimmers ear",
+  "area": "ENT",
+  "emergency": false,
+  "first_action": "dry ear, tilt, keep clean",
+  "want": []
+ },
+ {
+  "id": "SC-243",
+  "q": "blood coming out of my ear after fall",
+  "topic": "ear bleeding after fall",
+  "area": "ENT",
+  "emergency": true,
+  "first_action": "do not plug, treat as head injury",
+  "want": [
+   "head_injury"
+  ]
+ },
+ {
+  "id": "SC-244",
+  "q": "my son ate shrimp and now hives and swelling lips and breathing hard",
+  "topic": "anaphylaxis",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "use epinephrine into outer thigh now",
+  "want": [
+   "anaphylaxis",
+   "throat_closing"
+  ]
+ },
+ {
+  "id": "SC-245",
+  "q": "no epipen what do i do for allergic reaction with wheezing",
+  "topic": "anaphylaxis no epinephrine",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "lay flat, antihistamine, urgent help",
+  "want": [
+   "allergy_no_pen",
+   "anaphylaxis"
+  ]
+ },
+ {
+  "id": "SC-246",
+  "q": "itchy rash after new food no breathing problems",
+  "topic": "mild allergic rash",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "antihistamine, watch for worsening",
+  "want": []
+ },
+ {
+  "id": "SC-247",
+  "q": "my kid has asthma attack and the inhaler is not helping",
+  "topic": "severe asthma attack",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "sit upright, repeat inhaler puffs",
+  "want": [
+   "asthma",
+   "asthma_no_inhaler"
+  ]
+ },
+ {
+  "id": "SC-248",
+  "q": "i get wheezy at night sometimes",
+  "topic": "mild asthma",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "advise inhaler and triggers",
+  "want": []
+ },
+ {
+  "id": "SC-249",
+  "q": "my wife is diabetic and she is shaky sweaty and confused",
+  "topic": "low blood sugar",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "give sugar by mouth now",
+  "want": [
+   "low_sugar"
+  ]
+ },
+ {
+  "id": "SC-250",
+  "q": "diabetic is unconscious and no glucagon",
+  "topic": "unconscious diabetic",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "recovery position, no food by mouth, urgent help",
+  "want": [
+   "low_sugar_out"
+  ]
+ },
+ {
+  "id": "SC-251",
+  "q": "diabetic friend very thirsty peeing a lot and breath smells like fruit",
+  "topic": "diabetic ketoacidosis",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "fluids, insulin if available, urgent help",
+  "want": [
+   "dka",
+   "dka_ketones"
+  ]
+ },
+ {
+  "id": "SC-252",
+  "q": "her sugar is 450 and she vomits",
+  "topic": "high blood sugar",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "fluids, rest, urgent care",
+  "want": [
+   "dka",
+   "dka_ketones"
+  ]
+ },
+ {
+  "id": "SC-253",
+  "q": "man having a seizure shaking all over on the floor",
+  "topic": "tonic clonic seizure",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "protect head, time it, nothing in mouth",
+  "want": [
+   "seizure_now",
+   "seizure"
+  ]
+ },
+ {
+  "id": "SC-254",
+  "q": "seizure going 8 minutes and not stopping",
+  "topic": "prolonged seizure",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "protect, recovery after, urgent help",
+  "want": [
+   "seizure_now",
+   "seizure"
+  ]
+ },
+ {
+  "id": "SC-255",
+  "q": "epileptic friend had a seizure and is sleepy now",
+  "topic": "after seizure",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "recovery position, check breathing",
+  "want": [
+   "seizure"
+  ]
+ },
+ {
+  "id": "SC-256",
+  "q": "face drooping and arm weak and speech slurred",
+  "topic": "stroke",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "note time, keep calm, lay with head slightly up",
+  "want": [
+   "stroke"
+  ]
+ },
+ {
+  "id": "SC-257",
+  "q": "sudden worst headache of my life",
+  "topic": "thunderclap headache",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "rest, avoid straining, urgent care",
+  "want": [
+   "bad_headache_now",
+   "bad_headache"
+  ]
+ },
+ {
+  "id": "SC-258",
+  "q": "mild headache what do i do",
+  "topic": "simple headache",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "rest, fluids, painkiller",
+  "want": []
+ },
+ {
+  "id": "SC-259",
+  "q": "sudden bad pain in my lower belly on right and feverish",
+  "topic": "appendicitis",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "no food, rest, urgent care",
+  "want": [
+   "acute_abdomen"
+  ]
+ },
+ {
+  "id": "SC-260",
+  "q": "belly pain stiff and hard like a board",
+  "topic": "peritonitis",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "no food or drink, comfortable position",
+  "want": [
+   "acute_abdomen"
+  ]
+ },
+ {
+  "id": "SC-261",
+  "q": "terrible side pain comes in waves and blood in urine",
+  "topic": "kidney stone",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "fluids, painkiller, warmth, watch fever",
+  "want": [
+   "kidney_stone"
+  ]
+ },
+ {
+  "id": "SC-262",
+  "q": "cant pee for 14 hours and belly swollen",
+  "topic": "urine retention",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "warm bath, try to pass, urgent help",
+  "want": [
+   "urine_retention"
+  ]
+ },
+ {
+  "id": "SC-263",
+  "q": "teen boy sudden severe pain in testicle woke him",
+  "topic": "testicular torsion",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "urgent surgery, do not wait",
+  "want": [
+   "testicular_torsion"
+  ]
+ },
+ {
+  "id": "SC-264",
+  "q": "high fever shivering and fast heart and confused after a wound infection",
+  "topic": "sepsis",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "fluids, antibiotics if any, urgent care",
+  "want": [
+   "sepsis",
+   "wound_infected"
+  ]
+ },
+ {
+  "id": "SC-265",
+  "q": "fever stiff neck and light hurts and rash that does not fade with a glass",
+  "topic": "meningitis",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "urgent care, antibiotics if any, cool",
+  "want": [
+   "meningitis_adult",
+   "meningitis",
+   "fever_rash"
+  ]
+ },
+ {
+  "id": "SC-266",
+  "q": "fever cough and breathing fast and chest pain",
+  "topic": "pneumonia",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "rest, fluids, sit upright, antibiotics",
+  "want": [
+   "pneumonia"
+  ]
+ },
+ {
+  "id": "SC-267",
+  "q": "vomiting and diarrhoea for 3 days and very weak and dry mouth",
+  "topic": "dehydration from gastroenteritis",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "sip oral rehydration fluids slowly",
+  "want": [
+   "toddler_dehydrated"
+  ]
+ },
+ {
+  "id": "SC-268",
+  "q": "how to make oral rehydration drink",
+  "topic": "oral rehydration",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "mix salt and sugar in clean water",
+  "want": []
+ },
+ {
+  "id": "SC-269",
+  "q": "my uncle vomiting blood",
+  "topic": "vomiting blood",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "lay on side, nothing by mouth, urgent help",
+  "want": [
+   "blood_vomit_cough",
+   "gi_bleed"
+  ]
+ },
+ {
+  "id": "SC-270",
+  "q": "black tarry stools and dizzy",
+  "topic": "gastrointestinal bleeding",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "lay flat, urgent care",
+  "want": [
+   "gi_bleed"
+  ]
+ },
+ {
+  "id": "SC-271",
+  "q": "sudden swollen painful leg after long trip",
+  "topic": "leg blood clot",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "rest, raise, no massage",
+  "want": [
+   "blood_clot"
+  ]
+ },
+ {
+  "id": "SC-272",
+  "q": "fever 38 for one day and aches",
+  "topic": "flu",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "rest, fluids, paracetamol",
+  "want": []
+ },
+ {
+  "id": "SC-273",
+  "q": "allergic to penicillin and got some how bad",
+  "topic": "penicillin allergy question",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "explain signs, antihistamine",
+  "want": []
+ },
+ {
+  "id": "SC-274",
+  "q": "severe cough since two weeks",
+  "topic": "persistent cough",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "fluids, rest, review",
+  "want": []
+ },
+ {
+  "id": "SC-275",
+  "q": "sudden severe dizziness spinning and vomiting",
+  "topic": "vertigo",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "rest, avoid moving head, fluids",
+  "want": []
+ },
+ {
+  "id": "SC-276",
+  "q": "my asthma inhaler ran out and i am wheezing and it is getting worse",
+  "topic": "asthma without inhaler",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "sit upright, steam, caffeine, urgent help",
+  "want": [
+   "asthma_no_inhaler",
+   "asthma"
+  ]
+ },
+ {
+  "id": "SC-277",
+  "q": "anaphylaxis second wave hours later what do i do",
+  "topic": "biphasic anaphylaxis",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "epinephrine again, urgent care",
+  "want": [
+   "anaphylaxis",
+   "allergy_no_pen"
+  ]
+ },
+ {
+  "id": "SC-278",
+  "q": "how bad is a fever of 39 in an adult",
+  "topic": "adult fever",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "fluids, rest, when to worry",
+  "want": []
+ },
+ {
+  "id": "SC-279",
+  "q": "blue lips and breathing hard copd patient",
+  "topic": "COPD flare",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "sit upright, pursed lips, inhaler",
+  "want": [
+   "copd_severe"
+  ]
+ },
+ {
+  "id": "SC-280",
+  "q": "a lump in my throat and food stuck",
+  "topic": "food bolus",
+  "area": "medical",
+  "emergency": false,
+  "first_action": "sip water, calm",
+  "want": []
+ },
+ {
+  "id": "SC-281",
+  "q": "abdominal pain on left low and fever",
+  "topic": "diverticulitis",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "rest, fluids, antibiotics if any",
+  "want": [
+   "acute_abdomen"
+  ]
+ },
+ {
+  "id": "SC-282",
+  "q": "gallstone attack pain under right ribs after fatty meal",
+  "topic": "biliary colic",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "rest, fluids, watch fever",
+  "want": [
+   "acute_abdomen"
+  ]
+ },
+ {
+  "id": "SC-283",
+  "q": "my boyfriend has a severe cough and thick fever at altitude and is drowsy",
+  "topic": "pneumonia with drowsiness",
+  "area": "medical",
+  "emergency": true,
+  "first_action": "descend, rest, treat fever",
+  "want": [
+   "altitude_illness",
+   "pneumonia"
+  ]
+ },
+ {
+  "id": "SC-284",
+  "q": "my wife is in labour contractions two minutes apart and baby coming",
+  "topic": "labour imminent",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "prepare clean space, support delivery",
+  "want": [
+   "labour"
+  ]
+ },
+ {
+  "id": "SC-285",
+  "q": "baby head is out what do i do",
+  "topic": "delivery head out",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "support head, check cord, gentle",
+  "want": [
+   "labour"
+  ]
+ },
+ {
+  "id": "SC-286",
+  "q": "baby is born and not crying",
+  "topic": "newborn not crying",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "dry, rub, stimulate, rescue breaths",
+  "want": [
+   "newborn_danger"
+  ]
+ },
+ {
+  "id": "SC-287",
+  "q": "the cord is around the babys neck",
+  "topic": "cord around neck",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "slip over head, do not pull",
+  "want": [
+   "labour",
+   "newborn_danger"
+  ]
+ },
+ {
+  "id": "SC-288",
+  "q": "cord came out first before the baby",
+  "topic": "cord prolapse",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "knees to chest, push head up, urgent care",
+  "want": [
+   "cord_prolapse"
+  ]
+ },
+ {
+  "id": "SC-289",
+  "q": "baby coming feet first",
+  "topic": "breech birth",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "hands off, support body, deliver head",
+  "want": [
+   "breech_birth"
+  ]
+ },
+ {
+  "id": "SC-290",
+  "q": "shoulders stuck baby head is out and wont come",
+  "topic": "shoulder dystocia",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "knees to chest, suprapubic pressure",
+  "want": [
+   "stuck_shoulders"
+  ]
+ },
+ {
+  "id": "SC-291",
+  "q": "placenta not out and she is bleeding a lot after birth",
+  "topic": "postpartum haemorrhage",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "massage uterus, nurse baby, pressure",
+  "want": [
+   "postpartum_bleed"
+  ]
+ },
+ {
+  "id": "SC-292",
+  "q": "pregnant woman 8 months bleeding a lot no pain",
+  "topic": "placenta praevia",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "lay left side, urgent care, no exam",
+  "want": [
+   "pregnancy_bleed"
+  ]
+ },
+ {
+  "id": "SC-293",
+  "q": "pregnant 30 weeks bleeding and very painful hard belly",
+  "topic": "placental abruption",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "lay on left, urgent care",
+  "want": [
+   "pregnancy_bleed"
+  ]
+ },
+ {
+  "id": "SC-294",
+  "q": "pregnant and my water broke 3 weeks early",
+  "topic": "early waters breaking",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "clean pad, rest, watch infection",
+  "want": [
+   "preterm_waters_broke"
+  ],
+  "missing_kind": {
+   "id": "preterm_waters_broke",
+   "note": "Waters broke before 37 weeks: lie down, note colour and time, no baths or internal exams, watch for fever and cord coming first, get to care."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-295",
+  "q": "i am 10 weeks pregnant and cramping and bleeding",
+  "topic": "early miscarriage",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "rest, pads, urgent care if heavy",
+  "want": [
+   "pregnancy_bleed"
+  ]
+ },
+ {
+  "id": "SC-296",
+  "q": "one sided pain low belly and spotting and dizzy missed period",
+  "topic": "ectopic pregnancy",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "lay flat, urgent care",
+  "want": [
+   "ectopic"
+  ]
+ },
+ {
+  "id": "SC-297",
+  "q": "pregnant with headache blurry vision and swollen hands",
+  "topic": "pre-eclampsia",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "rest left side, watch seizure, urgent",
+  "want": [
+   "preeclampsia"
+  ]
+ },
+ {
+  "id": "SC-298",
+  "q": "pregnant woman seizure",
+  "topic": "eclampsia",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "protect, left side, urgent",
+  "want": [
+   "seizure_now",
+   "preeclampsia"
+  ]
+ },
+ {
+  "id": "SC-299",
+  "q": "how do i tell contractions are real",
+  "topic": "labour contractions",
+  "area": "obstetric and gynaecological",
+  "emergency": false,
+  "first_action": "timing and signs",
+  "want": []
+ },
+ {
+  "id": "SC-300",
+  "q": "mother had baby and is bleeding heavy two days later with fever and smell",
+  "topic": "postpartum infection",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "fluids, antibiotics, urgent care",
+  "want": [
+   "maternal_sepsis",
+   "postpartum_bleed"
+  ]
+ },
+ {
+  "id": "SC-301",
+  "q": "heavy period soaking pad every hour",
+  "topic": "heavy period bleeding",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "rest, fluids, iron, urgent care",
+  "want": [
+   "heavy_period_bleeding"
+  ],
+  "missing_kind": {
+   "id": "heavy_period_bleeding",
+   "note": "Heavy non-pregnancy bleeding soaking a pad every hour: lie down with legs raised, watch for dizziness and fainting, drink fluids, urgent care."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-302",
+  "q": "how to cut the cord",
+  "topic": "cord care",
+  "area": "obstetric and gynaecological",
+  "emergency": false,
+  "first_action": "tie both ends, cut between",
+  "want": []
+ },
+ {
+  "id": "SC-303",
+  "q": "woman 38 weeks and baby stopped moving",
+  "topic": "reduced fetal movement",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "drink cold, lay left, urgent care",
+  "want": [
+   "fetal_movement",
+   "pregnancy_alarm"
+  ]
+ },
+ {
+  "id": "SC-304",
+  "q": "my pregnant wife fell on the belly",
+  "topic": "fall in pregnancy",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "rest, watch bleeding or movement",
+  "want": [
+   "pregnancy_danger",
+   "blunt_internal"
+  ]
+ },
+ {
+  "id": "SC-305",
+  "q": "baby born but is blue and floppy",
+  "topic": "newborn blue floppy",
+  "area": "obstetric and gynaecological",
+  "emergency": true,
+  "first_action": "dry, warm, rescue breaths",
+  "want": [
+   "newborn_danger"
+  ]
+ },
+ {
+  "id": "SC-306",
+  "q": "breastfeeding woman red hot lump and fever",
+  "topic": "mastitis",
+  "area": "obstetric and gynaecological",
+  "emergency": false,
+  "first_action": "keep feeding, warm cloth, rest",
+  "want": []
+ },
+ {
+  "id": "SC-307",
+  "q": "pregnant nausea all the time",
+  "topic": "morning sickness",
+  "area": "obstetric and gynaecological",
+  "emergency": false,
+  "first_action": "small meals, ginger",
+  "want": []
+ },
+ {
+  "id": "SC-308",
+  "q": "my baby is 2 months old and has fever 38.5",
+  "topic": "fever in young infant",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "urgent care, undress, do not wait",
+  "want": [
+   "baby_fever"
+  ]
+ },
+ {
+  "id": "SC-309",
+  "q": "toddler fever and suddenly shaking all over",
+  "topic": "febrile seizure",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "lay on side, time it, cool",
+  "want": [
+   "febrile_seizure"
+  ]
+ },
+ {
+  "id": "SC-310",
+  "q": "barky cough and noisy breathing in my 2 year old at night",
+  "topic": "croup",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "calm child, cool air, sit upright",
+  "want": [
+   "croup"
+  ]
+ },
+ {
+  "id": "SC-311",
+  "q": "my baby is wheezy and breathing fast and not feeding",
+  "topic": "bronchiolitis",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "upright, small feeds, urgent care",
+  "want": [
+   "bronchiolitis"
+  ]
+ },
+ {
+  "id": "SC-312",
+  "q": "baby has had diarrhoea all day and no wet diaper",
+  "topic": "infant dehydration",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "small oral rehydration sips often",
+  "want": [
+   "toddler_dehydrated"
+  ]
+ },
+ {
+  "id": "SC-313",
+  "q": "baby choking milk and turning blue",
+  "topic": "infant choking",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "5 back blows then 5 chest thrusts",
+  "want": [
+   "choking_baby"
+  ]
+ },
+ {
+  "id": "SC-314",
+  "q": "baby is not breathing and limp",
+  "topic": "infant not breathing",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "5 rescue breaths, then compressions",
+  "want": [
+   "arrest_baby"
+  ]
+ },
+ {
+  "id": "SC-315",
+  "q": "baby fell off the bed and hit his head and cries",
+  "topic": "infant head injury",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "observe, watch vomiting or sleepy",
+  "want": [
+   "baby_head_injury"
+  ]
+ },
+ {
+  "id": "SC-316",
+  "q": "my baby wont wake up to feed",
+  "topic": "unrousable baby",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "stimulate, check breathing, urgent",
+  "want": [
+   "floppy_baby"
+  ]
+ },
+ {
+  "id": "SC-317",
+  "q": "child has high fever and neck stiff and rash",
+  "topic": "child meningitis",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "urgent care, antibiotics, cool",
+  "want": [
+   "meningitis",
+   "fever_rash",
+   "sepsis_child"
+  ]
+ },
+ {
+  "id": "SC-318",
+  "q": "my toddler has fever and ear rubbing",
+  "topic": "toddler fever",
+  "area": "paediatric and baby",
+  "emergency": false,
+  "first_action": "paracetamol, fluids, watch",
+  "want": []
+ },
+ {
+  "id": "SC-319",
+  "q": "my baby won't stop crying for hours",
+  "topic": "inconsolable crying",
+  "area": "paediatric and baby",
+  "emergency": false,
+  "first_action": "check basics, calm, watch signs",
+  "want": []
+ },
+ {
+  "id": "SC-320",
+  "q": "a toddler with a swollen belly and vomiting green",
+  "topic": "bowel obstruction child",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "nothing by mouth, urgent care",
+  "want": [
+   "acute_abdomen"
+  ]
+ },
+ {
+  "id": "SC-321",
+  "q": "kid drank a lot of salt water",
+  "topic": "salt water ingestion",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "fluids, watch for confusion",
+  "want": [
+   "poison_swallowed"
+  ]
+ },
+ {
+  "id": "SC-322",
+  "q": "baby has a fever after vaccine",
+  "topic": "post vaccine fever",
+  "area": "paediatric and baby",
+  "emergency": false,
+  "first_action": "paracetamol, fluids",
+  "want": []
+ },
+ {
+  "id": "SC-323",
+  "q": "child fell from a swing and arm hurts and he wont use it",
+  "topic": "child arm injury",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "sling, splint, ice",
+  "want": [
+   "broken_limb"
+  ]
+ },
+ {
+  "id": "SC-324",
+  "q": "my 8 year old has sudden severe belly pain on the right and wont eat",
+  "topic": "child appendicitis",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "no food, rest, urgent care",
+  "want": [
+   "acute_abdomen"
+  ]
+ },
+ {
+  "id": "SC-325",
+  "q": "how do i give fluids to a sick child",
+  "topic": "giving fluids to child",
+  "area": "paediatric and baby",
+  "emergency": false,
+  "first_action": "spoonful every minute",
+  "want": []
+ },
+ {
+  "id": "SC-326",
+  "q": "3 year old fell in a pond and is breathing but coughing",
+  "topic": "child drowning coughing",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "keep warm, watch breathing",
+  "want": [
+   "water_rescue",
+   "drowning_child"
+  ]
+ },
+ {
+  "id": "SC-327",
+  "q": "baby has a rash and is feverish and lethargic",
+  "topic": "baby rash fever",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "glass test, urgent care",
+  "want": [
+   "fever_rash",
+   "floppy_baby",
+   "sepsis_child"
+  ]
+ },
+ {
+  "id": "SC-328",
+  "q": "infant swallowed small toy and gagging",
+  "topic": "infant swallowing toy",
+  "area": "paediatric and baby",
+  "emergency": true,
+  "first_action": "back blows, watch breathing",
+  "want": [
+   "choking_object_baby",
+   "choking_baby"
+  ]
+ },
+ {
+  "id": "SC-329",
+  "q": "i am having a panic attack heart racing cant breathe",
+  "topic": "panic attack",
+  "area": "mental health",
+  "emergency": true,
+  "first_action": "slow breathing, grounding, rule out other causes",
+  "want": [
+   "panic_attack",
+   "breathing"
+  ]
+ },
+ {
+  "id": "SC-330",
+  "q": "i want to kill myself",
+  "topic": "suicidal thoughts",
+  "area": "mental health",
+  "emergency": true,
+  "first_action": "stay with me, remove means, keep talking",
+  "want": [
+   "suicide"
+  ]
+ },
+ {
+  "id": "SC-331",
+  "q": "my friend says he doesnt want to live and has pills",
+  "topic": "suicide risk with pills",
+  "area": "mental health",
+  "emergency": true,
+  "first_action": "stay with him, remove pills, talk",
+  "want": [
+   "suicide"
+  ]
+ },
+ {
+  "id": "SC-332",
+  "q": "my brother is hearing voices and thinks we are poisoning him",
+  "topic": "acute psychosis",
+  "area": "mental health",
+  "emergency": true,
+  "first_action": "keep calm, safe, do not argue",
+  "want": [
+   "psychosis_danger"
+  ]
+ },
+ {
+  "id": "SC-333",
+  "q": "my grandpa suddenly doesnt know who i am and is agitated",
+  "topic": "delirium elderly",
+  "area": "mental health",
+  "emergency": true,
+  "first_action": "check infection, drink, calm, lights",
+  "want": [
+   "delirium_elderly"
+  ]
+ },
+ {
+  "id": "SC-334",
+  "q": "alcoholic dad stopped drinking two days ago and is shaking and seeing things",
+  "topic": "alcohol withdrawal",
+  "area": "mental health",
+  "emergency": true,
+  "first_action": "keep safe, fluids, watch seizure",
+  "want": [
+   "alcohol_withdrawal"
+  ],
+  "missing_kind": {
+   "id": "alcohol_withdrawal",
+   "note": "Shaking, sweating or seeing things after stopping heavy drinking: can bring seizures, keep calm and safe, small sips of fluid, urgent medical help."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-335",
+  "q": "i feel very anxious today",
+  "topic": "mild anxiety",
+  "area": "mental health",
+  "emergency": false,
+  "first_action": "breathing, rest, talk",
+  "want": []
+ },
+ {
+  "id": "SC-336",
+  "q": "my wife is sobbing and cant stop since her mother died",
+  "topic": "grief reaction",
+  "area": "mental health",
+  "emergency": false,
+  "first_action": "stay, listen, fluids",
+  "want": []
+ },
+ {
+  "id": "SC-337",
+  "q": "my teenager cut herself on purpose",
+  "topic": "self harm",
+  "area": "mental health",
+  "emergency": true,
+  "first_action": "treat wound, stay with her, gently talk",
+  "want": [
+   "suicide",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-338",
+  "q": "he is threatening to hurt himself with a knife",
+  "topic": "self harm threat",
+  "area": "mental health",
+  "emergency": true,
+  "first_action": "keep distance, calm talk, call for help",
+  "want": [
+   "psychosis_danger",
+   "suicide"
+  ]
+ },
+ {
+  "id": "SC-339",
+  "q": "i dont sleep for 3 days and feel racing thoughts",
+  "topic": "mania symptoms",
+  "area": "mental health",
+  "emergency": false,
+  "first_action": "rest, quiet, support",
+  "want": []
+ },
+ {
+  "id": "SC-340",
+  "q": "how do i support someone after a crash",
+  "topic": "psychological first aid",
+  "area": "mental health",
+  "emergency": false,
+  "first_action": "stay near, listen, practical help",
+  "want": []
+ },
+ {
+  "id": "SC-341",
+  "q": "kid is nightmares since flood",
+  "topic": "child trauma",
+  "area": "mental health",
+  "emergency": false,
+  "first_action": "calm routine, reassure",
+  "want": []
+ },
+ {
+  "id": "SC-342",
+  "q": "traumatised person shaking and not talking after the attack",
+  "topic": "acute stress",
+  "area": "mental health",
+  "emergency": true,
+  "first_action": "warm, safe, calm",
+  "want": [
+   "panic_attack"
+  ]
+ },
+ {
+  "id": "SC-343",
+  "q": "man in withdrawal from opiates vomiting and sweating",
+  "topic": "opiate withdrawal",
+  "area": "mental health",
+  "emergency": false,
+  "first_action": "fluids, rest, comfort",
+  "want": []
+ },
+ {
+  "id": "SC-344",
+  "q": "car is smoking and i am stuck in the seat",
+  "topic": "trapped in smoking car",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "get out, cut belt, leave vehicle",
+  "want": [
+   "car_fire",
+   "crash_trapped"
+  ]
+ },
+ {
+  "id": "SC-345",
+  "q": "car on fire with a person inside",
+  "topic": "vehicle fire",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "get the person out if safe, stay away from fumes",
+  "want": [
+   "car_fire"
+  ]
+ },
+ {
+  "id": "SC-346",
+  "q": "power line fell on the car",
+  "topic": "downed power line",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "stay in car, do not touch metal, jump clear",
+  "want": [
+   "power_line_car"
+  ]
+ },
+ {
+  "id": "SC-347",
+  "q": "smell of gas in the house and my kid is sick",
+  "topic": "gas leak",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "leave, no flames, no switches, open doors",
+  "want": [
+   "gas_smell",
+   "co_now"
+  ]
+ },
+ {
+  "id": "SC-348",
+  "q": "house is on fire and my mom is upstairs",
+  "topic": "house fire",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "stay low, get out, crawl, close door",
+  "want": [
+   "house_fire",
+   "fire_trapped"
+  ]
+ },
+ {
+  "id": "SC-349",
+  "q": "building collapsed after earthquake someone is under the beam",
+  "topic": "collapsed building",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "check danger, shout, expose airway",
+  "want": [
+   "trapped_person"
+  ]
+ },
+ {
+  "id": "SC-350",
+  "q": "flood water rising we are on the roof",
+  "topic": "flood survival",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "stay high, signal, stay together",
+  "want": [
+   "house_flood"
+  ]
+ },
+ {
+  "id": "SC-351",
+  "q": "someone with a gun is shooting nearby",
+  "topic": "active violence",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "run, hide, quiet, hide from sight",
+  "want": [
+   "active_attacker"
+  ]
+ },
+ {
+  "id": "SC-352",
+  "q": "man was stabbed in a fight and the attacker is still here",
+  "topic": "violence scene",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "get safe, then bleeding control",
+  "want": [
+   "active_attacker",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-353",
+  "q": "rock fall hit my friend and more could fall",
+  "topic": "rockfall danger",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "move out of line of fall, then treat",
+  "want": [
+   "landslide_now",
+   "bleeding"
+  ]
+ },
+ {
+  "id": "SC-354",
+  "q": "smoke from the forest fire is coming and we are in a valley",
+  "topic": "wildfire approaching",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "move uphill away from flames, cover face",
+  "want": [
+   "wildfire_near"
+  ]
+ },
+ {
+  "id": "SC-355",
+  "q": "tent is flooded and wind is strong and lightning",
+  "topic": "storm in tent",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "get low away from tall trees",
+  "want": [
+   "lightning_out"
+  ]
+ },
+ {
+  "id": "SC-356",
+  "q": "boat capsized and one man is under the hull",
+  "topic": "capsized boat",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "get him out, keep afloat",
+  "want": [
+   "boat_capsized",
+   "man_overboard"
+  ]
+ },
+ {
+  "id": "SC-357",
+  "q": "sinking in mud to my waist",
+  "topic": "stuck in mud",
+  "area": "hazards at the scene",
+  "emergency": false,
+  "first_action": "lie back, spread weight",
+  "want": []
+ },
+ {
+  "id": "SC-358",
+  "q": "two cars crashed with fuel leaking",
+  "topic": "fuel leak after crash",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "get people away, no sparks",
+  "want": [
+   "road_crash",
+   "car_fire"
+  ]
+ },
+ {
+  "id": "SC-359",
+  "q": "chemical truck leaking something near us we smell it",
+  "topic": "chemical spill",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "move upwind and uphill, cover face",
+  "want": [
+   "shelter_in_place",
+   "chem_fumes"
+  ]
+ },
+ {
+  "id": "SC-360",
+  "q": "manhole fumes my coworker collapsed in the pit",
+  "topic": "confined space collapse",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "do not go in, call for help",
+  "want": [
+   "confined_space"
+  ]
+ },
+ {
+  "id": "SC-361",
+  "q": "avalanche risk is high should we cross",
+  "topic": "avalanche risk",
+  "area": "hazards at the scene",
+  "emergency": false,
+  "first_action": "avoid slope, wait, go another route",
+  "want": []
+ },
+ {
+  "id": "SC-362",
+  "q": "what do i do if a lightning storm hits in the open",
+  "topic": "lightning safety",
+  "area": "hazards at the scene",
+  "emergency": false,
+  "first_action": "crouch low, feet together, avoid trees",
+  "want": []
+ },
+ {
+  "id": "SC-363",
+  "q": "gas stove left on all night and i smell it",
+  "topic": "small gas smell",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "ventilate, no flame",
+  "want": [
+   "gas_smell"
+  ]
+ },
+ {
+  "id": "SC-364",
+  "q": "my friend is trapped in a rolled car upside down and gas smell",
+  "topic": "trapped upside down car",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "turn off engine, get out, keep neck steady",
+  "want": [
+   "crash_trapped",
+   "car_fire"
+  ]
+ },
+ {
+  "id": "SC-365",
+  "q": "broke through ice and hanging on the edge",
+  "topic": "ice breakthrough self rescue",
+  "area": "hazards at the scene",
+  "emergency": true,
+  "first_action": "kick, pull flat onto ice, roll away",
+  "want": [
+   "ice_breakthrough"
+  ],
+  "missing_kind": {
+   "id": "ice_breakthrough",
+   "note": "Fell through ice: kick and pull forward onto the ice, roll away flat, do not stand, then get dry and warm at once."
+  },
+  "want_was": "MISSING"
+ },
+ {
+  "id": "SC-366",
+  "q": "trapped under car and engine is smoking",
+  "topic": "trapped with fire risk",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "get away from fire risk first, pull free",
+  "want": [
+   "crash_trapped",
+   "car_fire",
+   "trapped_self"
+  ]
+ },
+ {
+  "id": "SC-367",
+  "q": "stung many times and feel dizzy and i am alone",
+  "topic": "multiple stings alone",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "leave area, remove stingers, lie down",
+  "want": [
+   "many_stings",
+   "anaphylaxis"
+  ]
+ },
+ {
+  "id": "SC-368",
+  "q": "snake bit my friend and it is getting dark and we are far from help",
+  "topic": "snake bite remote",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "keep still, immobilise, signal, carry out",
+  "want": [
+   "snake_bite",
+   "remote_injury"
+  ]
+ },
+ {
+  "id": "SC-369",
+  "q": "hiker fell and is cold and bleeding in the rain",
+  "topic": "trauma with hypothermia",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "stop bleeding, insulate from ground",
+  "want": [
+   "bleeding",
+   "hypothermia"
+  ]
+ },
+ {
+  "id": "SC-370",
+  "q": "my pregnant wife is bleeding and the car crashed",
+  "topic": "pregnancy bleeding after crash",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "lay on left, control bleeding, warm",
+  "want": [
+   "road_crash",
+   "pregnancy_bleed"
+  ]
+ },
+ {
+  "id": "SC-371",
+  "q": "child fever and seizure and we are in the desert",
+  "topic": "fever seizure remote heat",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "cool, protect from injury, side position",
+  "want": [
+   "febrile_seizure",
+   "heat_stroke"
+  ]
+ },
+ {
+  "id": "SC-372",
+  "q": "burned hand and cold night",
+  "topic": "burn and cold",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "cool burn, then keep warm",
+  "want": [
+   "severe_burn",
+   "hypothermia"
+  ]
+ },
+ {
+  "id": "SC-373",
+  "q": "old man chest pain and was digging snow",
+  "topic": "chest pain after snow shovelling",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "rest, aspirin, treat as heart attack",
+  "want": [
+   "heart_attack"
+  ]
+ },
+ {
+  "id": "SC-374",
+  "q": "my friend has diabetes and fell and cut his head",
+  "topic": "diabetic with head injury",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "check sugar, control bleeding",
+  "want": [
+   "head_bleed",
+   "head_injury",
+   "low_sugar"
+  ]
+ },
+ {
+  "id": "SC-375",
+  "q": "choking and nobody here and also pregnant",
+  "topic": "choking pregnant alone",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "chest thrusts against a wall",
+  "want": [
+   "choking_pregnant"
+  ]
+ },
+ {
+  "id": "SC-376",
+  "q": "tourniquet is on but still bleeding and he is fading",
+  "topic": "tourniquet failing",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "add second tourniquet above, pack wound",
+  "want": [
+   "limb_bleed",
+   "bleeding",
+   "junctional_bleed"
+  ]
+ },
+ {
+  "id": "SC-377",
+  "q": "drowned boy breathing but vomiting and cold",
+  "topic": "drowning recovery",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "recovery position, warm, watch",
+  "want": [
+   "water_rescue",
+   "hypothermia"
+  ]
+ },
+ {
+  "id": "SC-378",
+  "q": "dog attacked my kid and she is bleeding and not responding",
+  "topic": "dog attack unresponsive",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "check breathing, control bleeding",
+  "want": [
+   "dog_attack",
+   "unresponsive"
+  ]
+ },
+ {
+  "id": "SC-379",
+  "q": "car crash my mom is not responding and my brother is bleeding badly",
+  "topic": "two casualties",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "stop the severe bleeding, then check breathing",
+  "want": [
+   "road_crash",
+   "bleeding",
+   "unresponsive"
+  ]
+ },
+ {
+  "id": "SC-380",
+  "q": "kid has asthma and allergy and is wheezing after nuts",
+  "topic": "asthma with allergy",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "use epinephrine first",
+  "want": [
+   "anaphylaxis",
+   "asthma"
+  ]
+ },
+ {
+  "id": "SC-381",
+  "q": "bee stings and i am pregnant and swelling",
+  "topic": "stings in pregnancy",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "epinephrine if wheeze, lie left",
+  "want": [
+   "anaphylaxis",
+   "many_stings"
+  ]
+ },
+ {
+  "id": "SC-382",
+  "q": "we drank river water and both have diarrhoea and fever",
+  "topic": "waterborne illness",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "oral rehydration, rest",
+  "want": [
+   "toddler_dehydrated"
+  ]
+ },
+ {
+  "id": "SC-383",
+  "q": "my wife is 7 months pregnant and has fever and diarrhoea",
+  "topic": "pregnancy dehydration",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "oral fluids, left side, urgent care",
+  "want": [
+   "pregnancy_danger",
+   "toddler_dehydrated"
+  ]
+ },
+ {
+  "id": "SC-384",
+  "q": "old man fell and cant stand and confused and cold on floor all night",
+  "topic": "elderly fall long lie",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "warm, check injuries, fluids",
+  "want": [
+   "fall_hip",
+   "hypothermia",
+   "delirium_elderly"
+  ]
+ },
+ {
+  "id": "SC-385",
+  "q": "fracture and no signal and its getting dark",
+  "topic": "fracture remote",
+  "area": "combined problems",
+  "emergency": true,
+  "first_action": "splint, shelter, signal",
+  "want": [
+   "broken_limb",
+   "remote_injury"
+  ]
+ }
+]
