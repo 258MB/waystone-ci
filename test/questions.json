@@ -1,0 +1,5 @@
+[
+ {"kind": "calm", "q": "How much water should I store per person?"},
+ {"kind": "rule_emergency", "q": "My friend is buried in an avalanche and we have a beacon. What do I do?"},
+ {"kind": "generic_candidate", "q": "My uncle was hit on the head by a chainsaw kickback. He is confused and cannot stand up. We cannot get to a hospital. What should we do?"}
+]

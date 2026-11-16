@@ -1,0 +1,80 @@
+name: waystone-test
+on:
+  workflow_dispatch:
+    inputs:
+      run_win:
+        description: "Run the Windows test (zip link comes from the WIN_URL secret)"
+        type: boolean
+        default: true
+      win_sha:
+        description: "sha256 of the Windows zip"
+        required: false
+        default: ""
+      run_mac:
+        description: "Run the macOS test (zip link comes from the MAC_URL secret)"
+        type: boolean
+        default: true
+      mac_sha:
+        description: "sha256 of the macOS zip"
+        required: false
+      eval_set:
+        description: "Question set to run through the macOS app after the test (test/sets/questions_<set>.json, empty = none)"
+        required: false
+        default: ""
+
+jobs:
+  windows:
+    if: ${{ inputs.run_win }}
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install screenshot helper
+        shell: pwsh
+        run: |
+          cd test
+          npm install --no-audit --no-fund puppeteer-core@23.11.1
+      - name: Run the Windows test
+        shell: pwsh
+        env:
+          ZIP_URL: ${{ secrets.WIN_URL }}
+          ZIP_SHA: ${{ inputs.win_sha }}
+        run: ./test/wintest.ps1
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-results
+          path: out/
+
+  macos:
+    if: ${{ inputs.run_mac }}
+    runs-on: macos-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install screenshot helper
+        run: |
+          cd test
+          npm install --no-audit --no-fund puppeteer-core@23.11.1
+      - name: Run the macOS test
+        env:
+          ZIP_URL: ${{ secrets.MAC_URL }}
+          ZIP_SHA: ${{ inputs.mac_sha }}
+        run: bash test/mactest.sh
+      - name: Run a question set through the app
+        if: ${{ inputs.eval_set != '' }}
+        env:
+          SET: ${{ inputs.eval_set }}
+        run: |
+          APP=$(find "$HOME/Téléchargements/Waystone test" -maxdepth 3 -name Waystone.app | head -1)
+          mkdir -p work/eval/results out
+          cp "test/sets/questions_${SET}.json" work/eval/
+          EVAL_ROOT="$PWD/work" EVAL_BIN="$APP/Contents/MacOS/guide" python3 -I test/eval_run.py "$APP/Contents/Resources" "$SET" run 2>&1 | tail -60
+          cp work/eval/results/* out/
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-results
+          path: out/
