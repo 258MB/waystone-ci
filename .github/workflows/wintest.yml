@@ -50,7 +50,11 @@ jobs:
   macos:
     if: ${{ inputs.run_mac }}
     runs-on: macos-latest
-    timeout-minutes: 150
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4]
     steps:
       - uses: actions/checkout@v4
       - name: Install screenshot helper
@@ -69,12 +73,12 @@ jobs:
         run: |
           APP=$(find "$HOME/Téléchargements/Waystone test" -maxdepth 3 -name Waystone.app | head -1)
           mkdir -p work/eval/results out
-          cp "test/sets/questions_${SET}.json" work/eval/
+          python3 -I -c "import json,sys; q=json.load(open(sys.argv[1])); json.dump(q[int(sys.argv[2])::5], open(sys.argv[3],'w'), ensure_ascii=False)" "test/sets/questions_${SET}.json" "${{ matrix.shard }}" "work/eval/questions_${SET}.json"
           EVAL_ROOT="$PWD/work" EVAL_BIN="$APP/Contents/MacOS/guide" python3 -I test/eval_run.py "$APP/Contents/Resources" "$SET" run 2>&1 | tail -60
           cp work/eval/results/* out/
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: macos-results
+          name: macos-results-${{ matrix.shard }}
           path: out/
