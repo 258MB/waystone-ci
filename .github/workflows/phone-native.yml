@@ -36,7 +36,7 @@ jobs:
         run: |
           cd test/phone && npm install --no-audit --no-fund playwright@1.64.1 && npx playwright install --with-deps chromium
           cd ../.. && mkdir -p out/chromium
-          WEB_DIR=app/web OUT_DIR=out/chromium BROWSER=chromium DEVICE="Pixel 7" node test/phone/webkit.mjs | tee out/chromium/summary.txt
+          WEB_DIR=app/web OUT_DIR=out/chromium BROWSER=chromium DEVICE="Pixel 7" EXTRA_QS=app/native/test/extra-qs.json node test/phone/webkit.mjs | tee out/chromium/summary.txt
       - name: Build the debug APK (clean, for the artifact) and a test APK (with the test driver)
         run: |
           cd app/native && npm ci --no-audit --no-fund

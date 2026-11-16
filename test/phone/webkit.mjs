@@ -124,6 +124,21 @@ try {
       out.shots.push(f);
     }
   }
+  // EXTRA_QS: a JSON file [{id, q}] of questions to screenshot too (for example the wrong or dangerous ones of a
+  // grading round), light only, scrolled to the top.
+  if (process.env.EXTRA_QS && fs.existsSync(process.env.EXTRA_QS)) {
+    await page.emulateMedia({ colorScheme: "light" });
+    out.extra = [];
+    for (const x of JSON.parse(fs.readFileSync(process.env.EXTRA_QS, "utf8"))) {
+      await page.evaluate((h) => { location.hash = h; }, "#/q/" + encodeURIComponent(x.q));
+      await page.waitForFunction(() => document.querySelector("#main .page, #main .chooser, #main .notfound"), null, { timeout: 30000 }).catch(() => {});
+      await page.waitForTimeout(400);
+      await page.evaluate(() => window.scrollTo(0, 0));
+      const f = path.join(shots, `${TAG}-x-${x.id}.png`);
+      await page.screenshot({ path: f, fullPage: true });
+      out.extra.push({ id: x.id, status: await page.evaluate(() => window.__last && window.__last.status) });
+    }
+  }
   out.errors = errors;
 } finally {
   await browser.close();
