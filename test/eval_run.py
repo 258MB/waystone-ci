@@ -43,6 +43,19 @@ def call(path, body=None, timeout=600):
     return json.loads(urllib.request.urlopen(req, timeout=timeout).read())
 
 
+def quick(q, prev):
+    """The instant first view (/api/quick), which people act on for minutes: banner, warning and the pages shown."""
+    t = time.time()
+    try:
+        r = call("/api/quick", {"q": q, "prev": prev}, timeout=120)
+    except Exception as e:  # never stop a run for the first view
+        return {"error": str(e)[:200]}, round((time.time() - t) * 1000)
+    ms = round((time.time() - t) * 1000)
+    return {"status": r.get("status", ""), "urgent": bool(r.get("urgent")), "warning": r.get("warning", ""),
+            "message": r.get("message", ""), "cards": [b["card_id"] for b in r.get("blocks") or []],
+            "reason": (r.get("debug") or {}).get("reason", "")}, ms
+
+
 def shown(res):
     """All text a user sees as the answer (message plus the sentences shown, not the hidden full card)."""
     t = [res.get("situation", ""), res.get("message", "")]  # situation: the checked line on top when a banner fires
@@ -137,6 +150,8 @@ def main():
                 break
             if q["id"] in done:
                 continue
+            # r23: the instant first view, as the page asks for it before the answer (same question and prev).
+            qk, qk_ms = quick(q["q"], q.get("prev") or "")
             t = time.time()
             res = call("/api/ask", {"q": q["q"], "prev": q.get("prev") or ""})  # as the app sends the question before
             el = time.time() - t
@@ -148,7 +163,8 @@ def main():
                          "cards": [b["card_id"] for b in res.get("blocks") or []], "shown": shown(res),
                          "choices": [c["card_id"] for c in res.get("choices") or []], "unsure": bool(res.get("unsure")),
                          "pages_shown": pages_shown(res),
-                         "seconds": round(el, 2), "auto": sc, "debug": res["debug"]})
+                         "seconds": round(el, 2), "auto": sc, "debug": res["debug"],
+                         "quick": qk, "quick_ms": qk_ms})
             pf.write(json.dumps(rows[-1], ensure_ascii=False) + "\n")
             pf.flush()
             print(q["id"], res["status"], rows[-1]["cards"], f"{el:.1f}s", "PASS" if sc["pass"] else "FAIL " + json.dumps(sc), flush=True)
