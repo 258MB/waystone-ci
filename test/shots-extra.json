@@ -1,14 +1,22 @@
 [
  [
-  "rip-current",
-  "my son is being pulled out to sea by the current he cant get back pls help"
+  "baby-cpr",
+  "my baby is not breathing and floppy what do i do"
  ],
  [
-  "chest-wound",
-  "stab wound in his chest and it makes a sucking sound when he breathes"
+  "choking-steak",
+  "piece of steak stuck in his throat he cant breathe or talk"
  ],
  [
-  "toddler-dehydrated",
-  "my toddler wont drink and hasnt peed all day eyes look sunken what do i do"
+  "power-line",
+  "my husband is lying next to a fallen power line not moving"
+ ],
+ [
+  "medicine-running-out",
+  "my insulin is running out and no pharmacy for weeks"
+ ],
+ [
+  "follow-up",
+  "how much water should i store for my family"
  ]
 ]

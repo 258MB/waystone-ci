@@ -37,7 +37,7 @@ jobs:
       - name: Run the Windows test
         shell: pwsh
         env:
-          ZIP_URL: ${{ secrets.WIN_URL }}
+          ZIP_URL: ${{ secrets.WIN_URL_R23 }}
           ZIP_SHA: ${{ inputs.win_sha }}
         run: ./test/wintest.ps1
       - name: Upload results
@@ -59,7 +59,7 @@ jobs:
           npm install --no-audit --no-fund puppeteer-core@23.11.1
       - name: Run the macOS test
         env:
-          ZIP_URL: ${{ secrets.MAC_URL }}
+          ZIP_URL: ${{ secrets.MAC_URL_R23 }}
           ZIP_SHA: ${{ inputs.mac_sha }}
         run: bash test/mactest.sh
       - name: Run a question set through the app
