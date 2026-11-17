@@ -1,0 +1,1322 @@
+[
+ {
+  "id": "EV-002",
+  "q": "power went out at 6pm and its now 9pm, is the milk in the fridge still ok?",
+  "topic": "food storage and power cuts",
+  "expect": "A closed fridge keeps food cold for about 4 hours, so at 3 hours the milk is probably still fine if the door stayed shut; discard it once it has been above 40F (4C) for over 2 hours."
+ },
+ {
+  "id": "EV-004",
+  "q": "we lost power this morning and I have a huge freezer full of meat from the farm shop. Husband keeps opening it to check. Should I stop him? How long do I have before it all goes off?",
+  "topic": "food storage and power cuts",
+  "expect": "Yes, keep the door shut: a full freezer stays frozen about 48 hours and a half-full one about 24 hours, and every opening shortens that."
+ },
+ {
+  "id": "EV-006",
+  "q": "can i refreeze meat that thawed in the power cut",
+  "topic": "food storage and power cuts",
+  "expect": "Only if it still contains ice crystals or has stayed at 40F (4C) or colder; if it was warmer than that for over 2 hours, discard it."
+ },
+ {
+  "id": "EV-008",
+  "q": "how many bags of ice for a cooler for a weekend power cut",
+  "topic": "food storage and power cuts",
+  "expect": "Fill the cooler as full as you can; a rough guide is about 2 parts ice to 1 part food by volume, and dry ice or block ice lasts longer than cubes."
+ },
+ {
+  "id": "EV-010",
+  "q": "how do u know if a freezer thermometer is needed",
+  "topic": "food storage and power cuts",
+  "expect": "An appliance thermometer helps check the fridge stays at 40F (4C) or below and the freezer at 0F (-18C) or below, so you can judge food after a power cut."
+ },
+ {
+  "id": "EV-012",
+  "q": "how long can eggs sit out",
+  "topic": "food storage and power cuts",
+  "expect": "Fresh eggs bought refrigerated should not sit out more than 2 hours; unwashed farm eggs keep at room temperature for a few weeks."
+ },
+ {
+  "id": "EV-014",
+  "q": "how long does dried pasta and rice keep for stockpile",
+  "topic": "food storage and power cuts",
+  "expect": "Dry white rice and dried pasta keep for 10 to 25 years when stored cool, dry and sealed; brown rice only about 6 months to a year."
+ },
+ {
+  "id": "EV-016",
+  "q": "how to store flour long term without bugs",
+  "topic": "food storage and power cuts",
+  "expect": "Store flour in airtight food-grade containers in a cool dry place, and freezing it for several days first kills any insect eggs."
+ },
+ {
+  "id": "EV-018",
+  "q": "how to make a cooler last longer in the heat",
+  "topic": "food storage and power cuts",
+  "expect": "Pre-chill the cooler, keep it in the shade, minimise opening, and pack it full with block ice or frozen bottles."
+ },
+ {
+  "id": "EV-020",
+  "q": "honey never goes bad right",
+  "topic": "food storage and power cuts",
+  "expect": "Pure honey keeps indefinitely if sealed and kept dry, though it may crystallise, which is harmless."
+ },
+ {
+  "id": "EV-022",
+  "q": "I was dying to try canning this year, how long do I process jars of tomatoes?",
+  "topic": "food storage and power cuts",
+  "expect": "Quart jars of tomatoes with added acid are typically water bath processed for about 45 minutes, but follow a tested recipe for your jar size and altitude."
+ },
+ {
+  "id": "EV-024",
+  "q": "sandwhich meat in cooler 3 hours is it ok",
+  "topic": "food storage and power cuts",
+  "expect": "If the cooler stayed at 40F (4C) or colder with ice for the whole time, it is fine; otherwise discard anything above 40F for over 2 hours."
+ },
+ {
+  "id": "EV-026",
+  "q": "can I keep vegetables from the garden over winter without a fridge",
+  "topic": "food storage and power cuts",
+  "expect": "Root vegetables like potatoes, carrots and onions store for months in a cool, dark, ventilated place around 32 to 40F (0 to 4C)."
+ },
+ {
+  "id": "EV-028",
+  "q": "how much water do I need to store per person",
+  "topic": "water",
+  "expect": "Store at least 1 gallon (about 4 litres) per person per day for drinking and basic hygiene, for at least 3 days and ideally 2 weeks."
+ },
+ {
+  "id": "EV-030",
+  "q": "how long can stored tap water be kept",
+  "topic": "water",
+  "expect": "Commercially bottled water can be kept until its date, and home-stored tap water is best replaced about every 6 months."
+ },
+ {
+  "id": "EV-032",
+  "q": "my boil water notice says boil, how long?",
+  "topic": "water",
+  "expect": "Bring water to a full rolling boil for at least 1 minute, then let it cool before drinking."
+ },
+ {
+  "id": "EV-034",
+  "q": "does boiling remove chemicals from water",
+  "topic": "water",
+  "expect": "No, boiling kills germs but does not remove chemicals, and it can concentrate some contaminants."
+ },
+ {
+  "id": "EV-036",
+  "q": "are water purification tablets safe for kids",
+  "topic": "water",
+  "expect": "Properly dosed chlorine dioxide or iodine-free tablets are generally used for children, but follow the label, and use another method for babies' formula if unsure."
+ },
+ {
+  "id": "EV-038",
+  "q": "how much water does a toilet flush take and how to flush without running water",
+  "topic": "water",
+  "expect": "Pour about 1 to 2 gallons (4 to 8 litres) of any water into the bowl quickly to flush."
+ },
+ {
+  "id": "EV-040",
+  "q": "can i drink the water from my pool",
+  "topic": "water",
+  "expect": "Pool water has chemicals and is not good to drink, but it is fine for flushing toilets and washing things."
+ },
+ {
+  "id": "EV-042",
+  "q": "How long can a person go without water",
+  "topic": "water",
+  "expect": "Most people can survive only about 3 days without water, so plan to drink regularly, and aim for roughly 2 to 3 litres a day."
+ },
+ {
+  "id": "EV-044",
+  "q": "how many bottles of water in a case and how many cases for a family of 4 for 3 days",
+  "topic": "water",
+  "expect": "A family of 4 needs about 12 gallons (about 45 litres) for 3 days, which is around 24 half-litre bottles per day-equivalent of drinking water per person; plan roughly 90 half-litre bottles."
+ },
+ {
+  "id": "EV-046",
+  "q": "how to melt snow for drinking",
+  "topic": "water",
+  "expect": "Melt clean snow in a pot, then boil it for 1 minute before drinking, and add a little water at first to avoid scorching."
+ },
+ {
+  "id": "EV-048",
+  "q": "how to filter muddy water with stuff at home",
+  "topic": "water",
+  "expect": "Let it settle, pour through a clean cloth or coffee filter, then boil or disinfect it."
+ },
+ {
+  "id": "EV-050",
+  "q": "how many litres of water does a family of four need for a week",
+  "topic": "water",
+  "expect": "A family of four needs about 112 litres (about 28 gallons) for a week at 1 gallon (4 litres) per person per day."
+ },
+ {
+  "id": "EV-052",
+  "q": "can I drink water that has been sitting in the bath for a few days",
+  "topic": "water",
+  "expect": "Bath water is fine for flushing and washing, but treat it by filtering and boiling for 1 minute before drinking, or avoid drinking it."
+ },
+ {
+  "id": "EV-054",
+  "q": "is it ok to refill disposable plastic water bottles",
+  "topic": "water",
+  "expect": "Single-use bottles can be refilled once or twice after careful washing, but they degrade, so purpose-made containers are better for storage."
+ },
+ {
+  "id": "EV-056",
+  "q": "how cold does it need to be for pipes to freeze",
+  "topic": "heat and cold at home",
+  "expect": "Pipes can start to freeze when the outside temperature stays below about 20F (-7C), especially in unheated or exposed spaces."
+ },
+ {
+  "id": "EV-058",
+  "q": "my gas heating is off, how cold will the house get overnight",
+  "topic": "heat and cold at home",
+  "expect": "A typical house may lose about 2 to 5F (1 to 3C) per hour at first in freezing weather, so layer up and shut off unused rooms."
+ },
+ {
+  "id": "EV-060",
+  "q": "how to stay cool without AC in a heatwave",
+  "topic": "heat and cold at home",
+  "expect": "Close curtains in the day, open windows at night, drink water, wear light clothes, and use damp cloths or a cool shower."
+ },
+ {
+  "id": "EV-062",
+  "q": "can I sleep with the gas oven on for heat",
+  "topic": "heat and cold at home",
+  "expect": "No, never use a gas oven or hob to heat a home, as it can release carbon monoxide; use safe heating and ventilation."
+ },
+ {
+  "id": "EV-064",
+  "q": "how much can a sleeping bag help in a cold house",
+  "topic": "heat and cold at home",
+  "expect": "A sleeping bag rated to around 20F (-7C) can keep you comfortable indoors even if the room drops near freezing, especially with a mat or mattress under you."
+ },
+ {
+  "id": "EV-066",
+  "q": "should i leave taps dripping to stop freezing",
+  "topic": "heat and cold at home",
+  "expect": "Yes, a slow drip of cold water during freezing weather helps prevent pipes from freezing and bursting."
+ },
+ {
+  "id": "EV-068",
+  "q": "best way to keep warm in bed with no power",
+  "topic": "heat and cold at home",
+  "expect": "Wear a hat and socks, use extra blankets, and add a warm water bottle or heated stones wrapped in cloth."
+ },
+ {
+  "id": "EV-070",
+  "q": "kids bedroom is freezing no radiator working, safe to use an electric heater?",
+  "topic": "heat and cold at home",
+  "expect": "Only with a rated heater placed on a flat floor, away from bedding and curtains, and turned off when no one is in the room."
+ },
+ {
+  "id": "EV-072",
+  "q": "how to heat a room using a wood stove safely",
+  "topic": "heat and cold at home",
+  "expect": "Burn dry seasoned wood, keep the flue and chimney clean, keep flammables a safe distance away, and have a working carbon monoxide alarm."
+ },
+ {
+  "id": "EV-074",
+  "q": "how can I keep my tomatoes cool hot cars",
+  "topic": "heat and cold at home",
+  "expect": "Keep perishables in a cooler with ice packs, not in a hot car, because a car interior can reach well over 100F (38C) quickly."
+ },
+ {
+  "id": "EV-076",
+  "q": "what to wear during a cold snap indoors",
+  "topic": "heat and cold at home",
+  "expect": "Wear several thin layers, a hat, thick socks and gloves rather than one thick layer."
+ },
+ {
+  "id": "EV-078",
+  "q": "what is a safe room temperature for an elderly person in winter",
+  "topic": "heat and cold at home",
+  "expect": "Keep rooms where an older person spends time at about 64F to 70F (18C to 21C)."
+ },
+ {
+  "id": "EV-080",
+  "q": "how to cool down a hot bedroom at night without a fan",
+  "topic": "heat and cold at home",
+  "expect": "Keep curtains shut by day, open windows at night when it is cooler outside, and use a damp sheet or a bottle of frozen water in front of a window opening."
+ },
+ {
+  "id": "EV-082",
+  "q": "how to check batteries are good without a tester",
+  "topic": "light and batteries",
+  "expect": "Drop-testing is unreliable; the best approach is to test them in the device or use a battery tester or multimeter."
+ },
+ {
+  "id": "EV-084",
+  "q": "should i store batteries in the fridge",
+  "topic": "light and batteries",
+  "expect": "No, it is not necessary for modern alkaline batteries; keep them at room temperature, dry and away from metal."
+ },
+ {
+  "id": "EV-086",
+  "q": "how many times can I charge a phone from a 10000mAh power bank",
+  "topic": "light and batteries",
+  "expect": "A 10,000 mAh power bank usually gives about 2 to 3 full phone charges, depending on the phone and conversion losses."
+ },
+ {
+  "id": "EV-088",
+  "q": "are candles safe to use in a power cut",
+  "topic": "light and batteries",
+  "expect": "Only if they are in sturdy holders on stable surfaces, away from anything flammable and never left unattended; LED lights are safer."
+ },
+ {
+  "id": "EV-090",
+  "q": "best way to store rechargeable batteries long term",
+  "topic": "light and batteries",
+  "expect": "Store them partly charged at about 40 to 50 percent in a cool, dry place, and recharge every few months."
+ },
+ {
+  "id": "EV-092",
+  "q": "why did my torch batteries leak",
+  "topic": "light and batteries",
+  "expect": "Old or depleted batteries and heat cause leakage, so remove batteries from devices stored for long and replace them before expiry."
+ },
+ {
+  "id": "EV-094",
+  "q": "solar lights for indoors during an outage, do they work",
+  "topic": "light and batteries",
+  "expect": "Yes, garden solar lights can be charged in sun by day and brought indoors at night as a safe dim light."
+ },
+ {
+  "id": "EV-096",
+  "q": "can I mix old and new batteries",
+  "topic": "light and batteries",
+  "expect": "No, mixing old and new or different types can cause leakage or shorter life, so replace all at once."
+ },
+ {
+  "id": "EV-098",
+  "q": "glow sticks how long do they last",
+  "topic": "light and batteries",
+  "expect": "Standard glow sticks glow for about 6 to 12 hours, and are best as a backup light."
+ },
+ {
+  "id": "EV-100",
+  "q": "is a hand crank radio worth buying",
+  "topic": "light and batteries",
+  "expect": "Yes, a hand-crank or solar radio gives you news and often a light and phone charging without batteries."
+ },
+ {
+  "id": "EV-102",
+  "q": "how to use a lantern safely with kids around",
+  "topic": "light and batteries",
+  "expect": "Use an LED lantern, place it out of reach on a stable surface, and avoid fuel lanterns indoors."
+ },
+ {
+  "id": "EV-104",
+  "q": "dying to know if rechargeable AA batteries are better for emergency kits",
+  "topic": "light and batteries",
+  "expect": "Rechargeables are cost-effective for regular use but lose charge in storage, so low self-discharge types or lithium are better for kits."
+ },
+ {
+  "id": "EV-106",
+  "q": "how do I charge a phone with a solar panel",
+  "topic": "light and batteries",
+  "expect": "Use a small foldable solar charger in direct sun with a USB cable, ideally charging a power bank in the day."
+ },
+ {
+  "id": "EV-108",
+  "q": "fire in the dark, is a torch with red light useful",
+  "topic": "light and batteries",
+  "expect": "A red light preserves night vision and is less glaring, which is useful for reading maps or moving around at night."
+ },
+ {
+  "id": "EV-110",
+  "q": "how far from the house should a generator be",
+  "topic": "generators",
+  "expect": "Place a portable generator outdoors at least 20 feet (6 metres) from the house, with the exhaust pointing away from windows and doors."
+ },
+ {
+  "id": "EV-112",
+  "q": "how long does petrol keep in a jerry can",
+  "topic": "generators",
+  "expect": "Untreated petrol (gasoline) lasts about 3 to 6 months, and up to about 12 months or more with a fuel stabiliser."
+ },
+ {
+  "id": "EV-114",
+  "q": "why does my generator need a carbon monoxide alarm nearby",
+  "topic": "generators",
+  "expect": "Generators produce carbon monoxide, which is invisible and odourless, so battery-powered CO alarms in the home are essential."
+ },
+ {
+  "id": "EV-116",
+  "q": "what gauge extension cord for generator",
+  "topic": "generators",
+  "expect": "Use a heavy-duty outdoor-rated cord, typically 12 or 14 gauge for runs up to about 50 feet, rated for the load."
+ },
+ {
+  "id": "EV-118",
+  "q": "how often should I change oil in a generator",
+  "topic": "generators",
+  "expect": "Check the manual, but typically change oil after the first 5 to 20 hours and then every 50 to 100 hours of use."
+ },
+ {
+  "id": "EV-120",
+  "q": "how do i start a generator that has been sitting for months",
+  "topic": "generators",
+  "expect": "Check oil and fresh fuel, drain old petrol if stale, check the spark plug, then start it outdoors per the manual."
+ },
+ {
+  "id": "EV-122",
+  "q": "is it ok to store a fuel can in my garden shed",
+  "topic": "generators",
+  "expect": "Store fuel in approved containers in a cool, ventilated shed away from the house and ignition sources."
+ },
+ {
+  "id": "EV-124",
+  "q": "generator carbon monoxide alarm went off whats the next step",
+  "topic": "generators",
+  "expect": "Turn off the generator, open windows and doors, and get everyone out into fresh air; do not return until it has been checked."
+ },
+ {
+  "id": "EV-126",
+  "q": "what type of fuel do dual fuel generators use",
+  "topic": "generators",
+  "expect": "Dual fuel generators run on petrol and propane, and propane stores much longer."
+ },
+ {
+  "id": "EV-128",
+  "q": "how do i ground a portable generator",
+  "topic": "generators",
+  "expect": "Many portable generators do not need an external ground rod; check the manual, and use GFCI-protected outlets and cords."
+ },
+ {
+  "id": "EV-130",
+  "q": "can a generator run a heater",
+  "topic": "generators",
+  "expect": "A small 1,500 watt electric heater needs about 1,500 watts continuously, so choose a generator rated at 2,000+ watts, and do not run oversize loads."
+ },
+ {
+  "id": "EV-132",
+  "q": "what appliances should i power first with a small generator",
+  "topic": "generators",
+  "expect": "Prioritise the fridge or freezer, lights, phone chargers and a heater fan or sump pump, and rotate larger loads."
+ },
+ {
+  "id": "EV-134",
+  "q": "fuel stabiliser how much per gallon",
+  "topic": "generators",
+  "expect": "Follow the label; commonly about 1 ounce per 2.5 gallons (roughly 1 fl oz per 10 litres) of petrol."
+ },
+ {
+  "id": "EV-136",
+  "q": "how to cook on a camp stove during power outage",
+  "topic": "cooking without power",
+  "expect": "Use it outdoors or in a very well-ventilated area, on a flat stable surface, never inside a tent or closed room."
+ },
+ {
+  "id": "EV-138",
+  "q": "how to cook rice without electricity",
+  "topic": "cooking without power",
+  "expect": "Use 2 parts water to 1 part white rice, bring to a boil, cover and simmer about 15 minutes, then rest 5 minutes."
+ },
+ {
+  "id": "EV-140",
+  "q": "how much fuel for a camping stove for a week for a family",
+  "topic": "cooking without power",
+  "expect": "Roughly 1 to 2 small gas canisters (about 230 g each) or a few ounces of liquid fuel per day for a family cooking simple meals; plan for about 3 canisters per week."
+ },
+ {
+  "id": "EV-142",
+  "q": "dutch oven cooking with charcoal how many briquettes",
+  "topic": "cooking without power",
+  "expect": "A rule of thumb is about 2 times the oven diameter in inches for total briquettes, so roughly 24 for a 12 inch oven, with about two-thirds on the lid."
+ },
+ {
+  "id": "EV-144",
+  "q": "how do I boil water if I only have a candle",
+  "topic": "cooking without power",
+  "expect": "It is very slow and not practical with a candle, so use a camp stove, fire pit or barbecue instead."
+ },
+ {
+  "id": "EV-146",
+  "q": "what pans work on a camp stove",
+  "topic": "cooking without power",
+  "expect": "Sturdy, flat-bottomed metal pans or camping pots work; avoid anything with plastic handles near flame."
+ },
+ {
+  "id": "EV-148",
+  "q": "how to cook beans off grid",
+  "topic": "cooking without power",
+  "expect": "Soak dried beans overnight, then boil vigorously for at least 10 minutes and simmer 1 to 2 hours until tender."
+ },
+ {
+  "id": "EV-150",
+  "q": "can I make bread without an oven",
+  "topic": "cooking without power",
+  "expect": "Yes, you can cook flatbread in a dry frying pan or bake bread in a covered Dutch oven on a fire or stove."
+ },
+ {
+  "id": "EV-152",
+  "q": "what fuel for a fondue burner as emergency stove",
+  "topic": "cooking without power",
+  "expect": "Fondue gel or alcohol burners give low heat and are only good for warming food slowly; use proper stoves outdoors."
+ },
+ {
+  "id": "EV-154",
+  "q": "how long do you boil eggs on camp stove",
+  "topic": "cooking without power",
+  "expect": "Boil for about 9 to 12 minutes for hard-boiled eggs, depending on altitude."
+ },
+ {
+  "id": "EV-156",
+  "q": "how long does charcoal last in storage",
+  "topic": "cooking without power",
+  "expect": "Charcoal keeps indefinitely if stored dry in a sealed container."
+ },
+ {
+  "id": "EV-158",
+  "q": "can i grill in my garage if door open",
+  "topic": "cooking without power",
+  "expect": "No, never run a grill or any fuel burner in a garage, even with the door open."
+ },
+ {
+  "id": "EV-160",
+  "q": "how long does a can of sterno last",
+  "topic": "cooking without power",
+  "expect": "A standard canned fuel burns for roughly 2 to 3 hours."
+ },
+ {
+  "id": "EV-162",
+  "q": "ideas for meals with only a camp stove and canned food",
+  "topic": "cooking without power",
+  "expect": "Heat canned chilli, beans, soup or vegetables with rice or pasta, and add tinned fish or tortillas for a quick meal."
+ },
+ {
+  "id": "EV-164",
+  "q": "how to go to the toilet when water is off",
+  "topic": "hygiene and sanitation",
+  "expect": "Line the toilet bowl with a bag, add absorbent such as cat litter or sawdust, seal the bag and store it for disposal."
+ },
+ {
+  "id": "EV-166",
+  "q": "how often should I wash my hands in an outage",
+  "topic": "hygiene and sanitation",
+  "expect": "After using the toilet, before eating and food prep, and after cleaning or touching rubbish, using soap or alcohol hand rub."
+ },
+ {
+  "id": "EV-168",
+  "q": "how to make a hand washing station",
+  "topic": "hygiene and sanitation",
+  "expect": "Put a jug or bottle with a small hole above a bowl with soap nearby, so water can trickle while hands are scrubbed."
+ },
+ {
+  "id": "EV-170",
+  "q": "how much water for a bucket bath",
+  "topic": "hygiene and sanitation",
+  "expect": "A basic wash needs about 2 to 4 litres (about 1 gallon) of warm water."
+ },
+ {
+  "id": "EV-172",
+  "q": "what to do with human waste in a long outage",
+  "topic": "hygiene and sanitation",
+  "expect": "Bag waste, seal and store it in a lidded container outdoors, or bury it about 6 to 8 inches deep and well away from water sources."
+ },
+ {
+  "id": "EV-174",
+  "q": "what percentage alcohol in hand sanitizer",
+  "topic": "hygiene and sanitation",
+  "expect": "Use a sanitiser with at least 60 percent alcohol."
+ },
+ {
+  "id": "EV-176",
+  "q": "how often to change cat litter in emergency",
+  "topic": "hygiene and sanitation",
+  "expect": "Scoop daily and change litter more often if you have limited ventilation; keep waste bagged."
+ },
+ {
+  "id": "EV-178",
+  "q": "how to brush my teeth with limited water",
+  "topic": "hygiene and sanitation",
+  "expect": "Wet the brush with a small splash of water and spit rather than rinse, which needs about a cup (250 ml) a day."
+ },
+ {
+  "id": "EV-180",
+  "q": "what disinfectant mix should I use for surfaces",
+  "topic": "hygiene and sanitation",
+  "expect": "Mix 1 tablespoon of unscented household bleach in 1 gallon of water (about 5 ml per 4 litres), apply, and leave for a minute or more."
+ },
+ {
+  "id": "EV-182",
+  "q": "is it ok to use bleach and ammonia together",
+  "topic": "hygiene and sanitation",
+  "expect": "No, never mix bleach with ammonia or other cleaners because it creates toxic fumes."
+ },
+ {
+  "id": "EV-184",
+  "q": "how to dispose of nappies when no bin collection",
+  "topic": "hygiene and sanitation",
+  "expect": "Wrap each used nappy tightly in a bag and keep sealed in a lidded container outside, away from living areas."
+ },
+ {
+  "id": "EV-186",
+  "q": "how long to wash hands for",
+  "topic": "hygiene and sanitation",
+  "expect": "Scrub with soap for at least 20 seconds."
+ },
+ {
+  "id": "EV-188",
+  "q": "is it ok to use dish soap to wash hands",
+  "topic": "hygiene and sanitation",
+  "expect": "Yes, any mild soap works to wash germs off hands when scrubbed for 20 seconds."
+ },
+ {
+  "id": "EV-190",
+  "q": "i have a cold, what can i do at home to feel better",
+  "topic": "minor illness at home",
+  "expect": "Rest, drink fluids, use saline nasal rinse or steam, and take paracetamol or ibuprofen as directed on the label if suitable."
+ },
+ {
+  "id": "EV-192",
+  "q": "my throat is killing me, any tricks to soothe it",
+  "topic": "minor illness at home",
+  "expect": "Gargle warm salt water, sip warm drinks with honey for adults and children over 1, and use lozenges if over the age limit."
+ },
+ {
+  "id": "EV-194",
+  "q": "My 4 year old has a fever of 101F what should I do at home",
+  "topic": "minor illness at home",
+  "expect": "Offer fluids, dress lightly, rest, and use children's paracetamol or ibuprofen per the label dose; a fever of 101F (38.3C) on its own is common with viral illness."
+ },
+ {
+  "id": "EV-196",
+  "q": "mild diarrhoea what should I eat",
+  "topic": "minor illness at home",
+  "expect": "Keep drinking fluids or oral rehydration, and eat small amounts of plain foods like rice, bananas, toast and soup as you feel able."
+ },
+ {
+  "id": "EV-198",
+  "q": "are salt and sugar drinks safe for kids",
+  "topic": "minor illness at home",
+  "expect": "Yes, a correctly measured homemade oral rehydration mix is safe, but sugar sports drinks are less ideal."
+ },
+ {
+  "id": "EV-200",
+  "q": "home remedy for cough",
+  "topic": "minor illness at home",
+  "expect": "Warm drinks with honey and lemon for adults and children over 1, steam, and extra fluids help soothe a cough."
+ },
+ {
+  "id": "EV-202",
+  "q": "stomach bug in the house how do I stop everyone getting it",
+  "topic": "minor illness at home",
+  "expect": "Wash hands with soap, disinfect surfaces, use separate towels, and wash soiled laundry on a hot cycle."
+ },
+ {
+  "id": "EV-204",
+  "q": "can i give honey to a baby with a cold",
+  "topic": "minor illness at home",
+  "expect": "No, honey is not safe for babies under 12 months because of botulism risk."
+ },
+ {
+  "id": "EV-206",
+  "q": "My throat is on fire and I'm dying for some relief, what helps?",
+  "topic": "minor illness at home",
+  "expect": "Warm salt water gargles, warm honey drinks for those over 1, cold treats, rest and over the counter pain relief as labelled can help."
+ },
+ {
+  "id": "EV-208",
+  "q": "should I eat when I have diarrhoea",
+  "topic": "minor illness at home",
+  "expect": "Yes, eat small amounts of bland foods as soon as you can tolerate them and keep up fluids."
+ },
+ {
+  "id": "EV-210",
+  "q": "sinus pressure at home remedies",
+  "topic": "minor illness at home",
+  "expect": "Use steam from a hot shower, saline rinses, warm compresses and extra fluids."
+ },
+ {
+  "id": "EV-212",
+  "q": "itchy throat and runny nose from allergies, what helps",
+  "topic": "minor illness at home",
+  "expect": "Rinse your nose with saline, avoid triggers, keep windows closed in high pollen, and use over the counter antihistamines as labelled."
+ },
+ {
+  "id": "EV-214",
+  "q": "how often should I check on a sick child at night",
+  "topic": "minor illness at home",
+  "expect": "Check on them every few hours, such as about every 2 to 4 hours, and make sure they can be woken and are drinking."
+ },
+ {
+  "id": "EV-216",
+  "q": "how can I tell if my child is dehydrated mildly at home",
+  "topic": "minor illness at home",
+  "expect": "Signs include dry mouth, fewer wet nappies or trips to the toilet, no tears, and unusual tiredness, and the fix is small frequent sips of fluid."
+ },
+ {
+  "id": "EV-218",
+  "q": "how to clean a cut",
+  "topic": "minor injuries",
+  "expect": "Wash your hands, rinse the cut with clean running water, clean around it with mild soap, press to stop bleeding and cover with a clean dressing."
+ },
+ {
+  "id": "EV-220",
+  "q": "how to treat a sprained ankle at home",
+  "topic": "minor injuries",
+  "expect": "Rest, apply ice wrapped in cloth for 15 to 20 minutes every few hours, compress with a bandage and raise the foot."
+ },
+ {
+  "id": "EV-222",
+  "q": "blisters from walking what do I do",
+  "topic": "minor injuries",
+  "expect": "Keep the blister intact, cover with a plaster or padded dressing, and avoid popping it unless it is very painful, in which case clean the area first."
+ },
+ {
+  "id": "EV-224",
+  "q": "should i put butter on a burn",
+  "topic": "minor injuries",
+  "expect": "No, do not use butter, oil or toothpaste; cool with running water and cover."
+ },
+ {
+  "id": "EV-226",
+  "q": "how do i make a sling from a scarf",
+  "topic": "minor injuries",
+  "expect": "Fold the scarf diagonally, place under the arm with the forearm resting in it, and tie the ends behind the neck so the hand is slightly higher than the elbow."
+ },
+ {
+  "id": "EV-228",
+  "q": "how to remove a tick",
+  "topic": "minor injuries",
+  "expect": "Use fine-tipped tweezers or a tick remover to grip close to the skin and pull steadily without twisting, then clean the area and note the date."
+ },
+ {
+  "id": "EV-230",
+  "q": "how long for a sprain to heal",
+  "topic": "minor injuries",
+  "expect": "Mild sprains typically improve in 1 to 3 weeks, while more significant ones can take several weeks."
+ },
+ {
+  "id": "EV-232",
+  "q": "how to treat a paper cut",
+  "topic": "minor injuries",
+  "expect": "Wash it, apply light pressure, and use a small plaster or dab of antiseptic."
+ },
+ {
+  "id": "EV-234",
+  "q": "sunburn what helps",
+  "topic": "minor injuries",
+  "expect": "Cool the skin with a lukewarm shower or damp cloths, drink water, and use aloe vera or moisturiser, and avoid more sun."
+ },
+ {
+  "id": "EV-236",
+  "q": "is it safe to use super glue on a cut",
+  "topic": "minor injuries",
+  "expect": "Medical skin glue or butterfly strips are better, but for a small clean shallow cut, a thin layer of ordinary cyanoacrylate glue is sometimes used when nothing else is available."
+ },
+ {
+  "id": "EV-238",
+  "q": "how to tape a sprained wrist",
+  "topic": "minor injuries",
+  "expect": "Support the wrist with a firm but not tight elastic bandage wrapped from the hand toward the forearm, checking fingers stay warm and pink."
+ },
+ {
+  "id": "EV-240",
+  "q": "what to put on a minor burn after it cooled",
+  "topic": "minor injuries",
+  "expect": "Apply a thin layer of aloe or petroleum jelly and cover with a non-stick dressing, keeping it clean."
+ },
+ {
+  "id": "EV-242",
+  "q": "how to splint a sprained finger",
+  "topic": "minor injuries",
+  "expect": "Tape the injured finger to the neighbouring finger with padding between them to support it."
+ },
+ {
+  "id": "EV-244",
+  "q": "how to keep my elderly dad warm during a power cut",
+  "topic": "kids and elderly",
+  "expect": "Dress him in layers with a hat, use blankets, stay in one small room, and offer warm drinks and food."
+ },
+ {
+  "id": "EV-246",
+  "q": "how much water does a baby need in hot weather",
+  "topic": "kids and elderly",
+  "expect": "Under 6 months, breast milk or formula is enough, and offer extra feeds in heat; older babies can have small sips of water."
+ },
+ {
+  "id": "EV-248",
+  "q": "how to explain a power cut to young kids so they arent scared",
+  "topic": "kids and elderly",
+  "expect": "Stay calm, explain simply, make it an adventure with lanterns and snacks, and keep routines."
+ },
+ {
+  "id": "EV-250",
+  "q": "how do i make sure my elderly neighbour has what they need",
+  "topic": "kids and elderly",
+  "expect": "Check in, ask about medicines, food, warmth and water, and share your contact details."
+ },
+ {
+  "id": "EV-252",
+  "q": "how to keep a baby cool in a heatwave",
+  "topic": "kids and elderly",
+  "expect": "Dress them in light cotton, keep them out of direct sun, use fans and shade, and offer extra feeds."
+ },
+ {
+  "id": "EV-254",
+  "q": "how long can I leave a baby bottle of milk out",
+  "topic": "kids and elderly",
+  "expect": "Prepared formula should be used within 1 hour of starting a feed, and expressed breast milk is fine at room temperature for about 4 hours."
+ },
+ {
+  "id": "EV-256",
+  "q": "how do i keep an elderly relative hydrated if she hates water",
+  "topic": "kids and elderly",
+  "expect": "Offer other drinks like tea, soup, squash, jelly or fruit, aiming for roughly 6 to 8 cups of fluid a day."
+ },
+ {
+  "id": "EV-258",
+  "q": "how do I warm a baby bottle without a microwave",
+  "topic": "kids and elderly",
+  "expect": "Stand the bottle in a jug of warm water for a few minutes and test a drop on your wrist."
+ },
+ {
+  "id": "EV-260",
+  "q": "how often should an elderly person with diabetes check blood sugar when routines change",
+  "topic": "kids and elderly",
+  "expect": "Follow their usual plan and check more often if meals or activity change, as advised by their care team."
+ },
+ {
+  "id": "EV-262",
+  "q": "how many calories does a 5 year old need a day",
+  "topic": "kids and elderly",
+  "expect": "A 5 year old needs about 1,200 to 1,600 calories per day, depending on activity."
+ },
+ {
+  "id": "EV-264",
+  "q": "how to keep elderly parent safe when its too hot in their flat",
+  "topic": "kids and elderly",
+  "expect": "Encourage fluids, light clothing, shade and cool showers, check in often, and move to a cooler place if the flat stays too hot."
+ },
+ {
+  "id": "EV-266",
+  "q": "how to make kids understand water conservation at home",
+  "topic": "kids and elderly",
+  "expect": "Make it a game, such as timing showers and using a bowl for washing up, and praise saving water."
+ },
+ {
+  "id": "EV-268",
+  "q": "how many bottles of water would a breastfed toddler need in hot weather",
+  "topic": "kids and elderly",
+  "expect": "A toddler needs about 1 to 1.3 litres of total fluids a day, more in heat, including milk."
+ },
+ {
+  "id": "EV-270",
+  "q": "how can I keep my toddler's routine in a power cut",
+  "topic": "kids and elderly",
+  "expect": "Keep regular meal and nap times, use a lantern for evening stories, and let them help with small jobs."
+ },
+ {
+  "id": "EV-272",
+  "q": "how much water does a dog need per day",
+  "topic": "pets",
+  "expect": "A dog needs about 1 ounce of water per pound of body weight a day (roughly 30 ml per kg)."
+ },
+ {
+  "id": "EV-274",
+  "q": "what to put in a pet go bag",
+  "topic": "pets",
+  "expect": "Pack food, water, bowls, medicines, vaccination records, a leash or carrier, a photo and waste bags."
+ },
+ {
+  "id": "EV-276",
+  "q": "how to keep a cat warm with no heating",
+  "topic": "pets",
+  "expect": "Provide a warm bed with blankets away from draughts and keep them indoors."
+ },
+ {
+  "id": "EV-278",
+  "q": "how much food should I store for a cat per month",
+  "topic": "pets",
+  "expect": "An average adult cat eats about 200 to 250 grams of wet food a day, or around 2 to 3 kg dry food a month."
+ },
+ {
+  "id": "EV-280",
+  "q": "how to give a dog a pill hidden in food",
+  "topic": "pets",
+  "expect": "Wrap it in a small piece of cheese, meat or pill pocket, and watch that it is swallowed."
+ },
+ {
+  "id": "EV-282",
+  "q": "is it ok to feed the dog human food if kibble runs out",
+  "topic": "pets",
+  "expect": "Yes, plain cooked chicken, rice and vegetables are fine short-term, but avoid onions, garlic, grapes, chocolate and xylitol."
+ },
+ {
+  "id": "EV-284",
+  "q": "how often to walk dog in snow",
+  "topic": "pets",
+  "expect": "Keep walks short, such as 10 to 15 minutes, and check paws for ice."
+ },
+ {
+  "id": "EV-286",
+  "q": "how to keep chickens warm and watered in freezing weather",
+  "topic": "pets",
+  "expect": "Use a draught-free but ventilated coop, thick bedding, and check water several times a day so it does not freeze."
+ },
+ {
+  "id": "EV-288",
+  "q": "will my dog be ok if I leave him alone for a day",
+  "topic": "pets",
+  "expect": "Adult dogs can usually manage 6 to 8 hours between toilet breaks, so a full day is not ideal without a check-in."
+ },
+ {
+  "id": "EV-290",
+  "q": "how to cool a hamster in hot weather",
+  "topic": "pets",
+  "expect": "Move the cage to a cool room away from sun, give a ceramic tile to lie on and provide fresh water."
+ },
+ {
+  "id": "EV-292",
+  "q": "my dog is dying to go out but it's flooded, what do I do",
+  "topic": "pets",
+  "expect": "Keep walks short and in safe, dry areas on a lead, and use an indoor pad or yard as a toilet spot."
+ },
+ {
+  "id": "EV-294",
+  "q": "what to do about my dogs anxiety during fireworks or storms",
+  "topic": "pets",
+  "expect": "Provide a quiet den, white noise, calm company and distraction treats."
+ },
+ {
+  "id": "EV-296",
+  "q": "how many days can a dog go without a walk",
+  "topic": "pets",
+  "expect": "A dog should have at least a few short toilet breaks each day, and ideally 30 minutes to 2 hours of activity, though a day without a long walk is fine."
+ },
+ {
+  "id": "EV-298",
+  "q": "how long can i sit in a car with the engine running in snow",
+  "topic": "car kits and stuck in car",
+  "expect": "Run the engine for about 10 minutes every hour for heat, with the exhaust pipe clear of snow and a window slightly open."
+ },
+ {
+  "id": "EV-300",
+  "q": "how do I jump start a car",
+  "topic": "car kits and stuck in car",
+  "expect": "Connect red clamp to dead battery positive, red to donor positive, black to donor negative, and black to an unpainted metal part of the dead car, then start the donor and then the dead car."
+ },
+ {
+  "id": "EV-302",
+  "q": "tyre pressure is low and there is no air pump near by what do I do",
+  "topic": "car kits and stuck in car",
+  "expect": "Drive slowly to the nearest station, or use a 12V portable inflator or sealant kit from the car kit."
+ },
+ {
+  "id": "EV-304",
+  "q": "is it safe to sleep in my car at a layby",
+  "topic": "car kits and stuck in car",
+  "expect": "Park off the carriageway if possible, lock the doors, keep a window cracked for ventilation, and never run the engine in an enclosed place."
+ },
+ {
+  "id": "EV-306",
+  "q": "how often should I check my emergency car kit",
+  "topic": "car kits and stuck in car",
+  "expect": "Check it every 6 months, replacing expired food, water and batteries."
+ },
+ {
+  "id": "EV-308",
+  "q": "how much fuel should i keep in the tank during storm season",
+  "topic": "car kits and stuck in car",
+  "expect": "Try to keep your tank at least half full at all times."
+ },
+ {
+  "id": "EV-310",
+  "q": "how do I keep my phone charged in the car for a long wait",
+  "topic": "car kits and stuck in car",
+  "expect": "Use a car charger or a power bank, and run the engine only briefly if needed."
+ },
+ {
+  "id": "EV-312",
+  "q": "how can I keep snacks in a hot car",
+  "topic": "car kits and stuck in car",
+  "expect": "Use non-perishable foods like nuts, bars and dried fruit, since a hot car can exceed 100F (38C)."
+ },
+ {
+  "id": "EV-314",
+  "q": "how do I get my car out of mud",
+  "topic": "car kits and stuck in car",
+  "expect": "Straighten the wheels, clear mud around tyres, place mats or boards for grip, and rock gently with low gear."
+ },
+ {
+  "id": "EV-316",
+  "q": "how much does a good jump starter pack cost and are they worth it",
+  "topic": "car kits and stuck in car",
+  "expect": "Portable jump starters cost roughly 50 to 150 dollars and are worth having since you do not need a second car."
+ },
+ {
+  "id": "EV-318",
+  "q": "car smells of petrol, is it ok to keep driving",
+  "topic": "car kits and stuck in car",
+  "expect": "Stop in a safe place, open windows and have it checked before driving further, since a fuel leak is a fire risk."
+ },
+ {
+  "id": "EV-320",
+  "q": "can I use my car as a power source for my fridge",
+  "topic": "car kits and stuck in car",
+  "expect": "A small inverter can power small devices, but running a full fridge may drain the battery; only run the engine outdoors."
+ },
+ {
+  "id": "EV-322",
+  "q": "how much tread should my tyres have for winter",
+  "topic": "car kits and stuck in car",
+  "expect": "Tyres should ideally have at least 4 mm of tread for winter driving; the legal minimum is 1.6 mm in the UK or 2/32 inch in the US."
+ },
+ {
+  "id": "EV-324",
+  "q": "what should be in a family communication plan",
+  "topic": "communication and family plans",
+  "expect": "Include contact numbers, an out-of-area contact, a meeting place near home and one further away, and school or work plans."
+ },
+ {
+  "id": "EV-326",
+  "q": "do text messages work better than calls in a disaster",
+  "topic": "communication and family plans",
+  "expect": "Yes, texts use less bandwidth and often go through when voice calls fail."
+ },
+ {
+  "id": "EV-328",
+  "q": "how to use a walkie talkie, range?",
+  "topic": "communication and family plans",
+  "expect": "Typical consumer walkie-talkies reach about 1 to 2 miles (2 to 3 km) in open areas, and much less in buildings or hills."
+ },
+ {
+  "id": "EV-330",
+  "q": "how can I stay in touch with my dad who has no mobile",
+  "topic": "communication and family plans",
+  "expect": "Agree times for visits or landline calls, give a neighbour your details and consider a basic phone."
+ },
+ {
+  "id": "EV-332",
+  "q": "how to conserve phone battery when there is no signal",
+  "topic": "communication and family plans",
+  "expect": "Turn on airplane mode because searching for signal drains the battery, and lower brightness."
+ },
+ {
+  "id": "EV-334",
+  "q": "what is an out of town contact",
+  "topic": "communication and family plans",
+  "expect": "It is a friend or relative in another area whom everyone calls or texts to report they are safe, since long distance can be easier to reach."
+ },
+ {
+  "id": "EV-336",
+  "q": "how often should we practise the family plan",
+  "topic": "communication and family plans",
+  "expect": "Review and practise it about twice a year."
+ },
+ {
+  "id": "EV-338",
+  "q": "what info should I put on a card in my kids pocket",
+  "topic": "communication and family plans",
+  "expect": "Include their name, your phone numbers, an out-of-area contact, allergies and any medical needs."
+ },
+ {
+  "id": "EV-340",
+  "q": "how to use a CB radio",
+  "topic": "communication and family plans",
+  "expect": "Switch on, set the channel, turn the squelch, press to talk and release to listen; channel 9 is for emergencies in some areas."
+ },
+ {
+  "id": "EV-342",
+  "q": "how to store my emergency contact list so it doesnt break",
+  "topic": "communication and family plans",
+  "expect": "Keep a laminated paper copy in your wallet and go bag, as well as in your phone."
+ },
+ {
+  "id": "EV-344",
+  "q": "What is a signal mirror and how far can it be seen",
+  "topic": "communication and family plans",
+  "expect": "A signal mirror can flash light visible for 10 miles (16 km) or more on a clear day."
+ },
+ {
+  "id": "EV-346",
+  "q": "do 2 way radios need a licence in the UK",
+  "topic": "communication and family plans",
+  "expect": "Standard licence-free PMR446 handsets can be used without a licence in the UK."
+ },
+ {
+  "id": "EV-348",
+  "q": "how often should we check in during a long outage",
+  "topic": "communication and family plans",
+  "expect": "Agree a check-in time, for example once or twice a day, to save phone battery."
+ },
+ {
+  "id": "EV-350",
+  "q": "jar lid stuck what can I do",
+  "topic": "repairs and improvising",
+  "expect": "Tap around the lid, run it under hot water, or use a rubber glove or a spoon to break the seal."
+ },
+ {
+  "id": "EV-352",
+  "q": "how to fix a dripping tap quick",
+  "topic": "repairs and improvising",
+  "expect": "Turn off the supply, take off the handle, replace the worn washer or cartridge and reassemble."
+ },
+ {
+  "id": "EV-354",
+  "q": "how to fix a broken zipper on a bag",
+  "topic": "repairs and improvising",
+  "expect": "Squeeze the slider gently with pliers, or replace it, and run a bit of soap or graphite along the teeth."
+ },
+ {
+  "id": "EV-356",
+  "q": "how do i patch a tarp hole",
+  "topic": "repairs and improvising",
+  "expect": "Clean and dry the area, then apply a patch with waterproof tape or seam sealer on both sides."
+ },
+ {
+  "id": "EV-358",
+  "q": "basic tool kit for the home, what do i need",
+  "topic": "repairs and improvising",
+  "expect": "Include a hammer, screwdrivers, adjustable wrench, pliers, tape measure, utility knife, duct tape and a torch."
+ },
+ {
+  "id": "EV-360",
+  "q": "how to fix a roof leak temporarily",
+  "topic": "repairs and improvising",
+  "expect": "Place a bucket underneath, and cover the damaged roof area with a tarp secured by battens or sandbags if safe."
+ },
+ {
+  "id": "EV-362",
+  "q": "how do I sharpen a knife without a stone",
+  "topic": "repairs and improvising",
+  "expect": "Use the unglazed bottom rim of a ceramic mug or a leather belt to hone the edge."
+ },
+ {
+  "id": "EV-364",
+  "q": "how to start a fire with a lighter that wont spark",
+  "topic": "repairs and improvising",
+  "expect": "Dry the lighter and flint or use matches or a ferro rod as a backup."
+ },
+ {
+  "id": "EV-366",
+  "q": "how to sew a button without a sewing kit",
+  "topic": "repairs and improvising",
+  "expect": "Use a thin wire or strong thread with a safety pin or needle from a hotel kit."
+ },
+ {
+  "id": "EV-368",
+  "q": "how do I stop a toilet running",
+  "topic": "repairs and improvising",
+  "expect": "Lift the lid and check the flapper and fill valve, adjusting the float or replacing the rubber flapper."
+ },
+ {
+  "id": "EV-370",
+  "q": "how to turn off gas safely at the meter",
+  "topic": "repairs and improvising",
+  "expect": "Turn the handle a quarter turn so it is crosswise to the pipe, and only turn it back on through your supplier."
+ },
+ {
+  "id": "EV-372",
+  "q": "how to replace a fuse in a plug",
+  "topic": "repairs and improvising",
+  "expect": "Unplug it, open the cover, replace with the same rated fuse and close securely."
+ },
+ {
+  "id": "EV-374",
+  "q": "how do I fix a cracked phone screen protector quick",
+  "topic": "repairs and improvising",
+  "expect": "Peel off the old protector and apply a fresh one, or cover the crack with clear tape as a stopgap."
+ },
+ {
+  "id": "EV-376",
+  "q": "how often should I check my first aid kit",
+  "topic": "go bags and first aid kits",
+  "expect": "Check the contents at least every 6 to 12 months and replace anything expired."
+ },
+ {
+  "id": "EV-378",
+  "q": "how heavy should my bug out bag be",
+  "topic": "go bags and first aid kits",
+  "expect": "Keep it to about 10 to 20 percent of your body weight, and no more than around 25 to 30 pounds (11 to 14 kg) for most adults."
+ },
+ {
+  "id": "EV-380",
+  "q": "how many days of medication to put in a go bag",
+  "topic": "go bags and first aid kits",
+  "expect": "Include at least 3 to 7 days of regular medication, plus a list of doses."
+ },
+ {
+  "id": "EV-382",
+  "q": "does a first aid kit need antibiotic cream",
+  "topic": "go bags and first aid kits",
+  "expect": "It is optional; clean water, antiseptic wipes and clean dressings are the essentials, and a non-prescription ointment is a convenience."
+ },
+ {
+  "id": "EV-384",
+  "q": "how often should I swap out the food in my go bag",
+  "topic": "go bags and first aid kits",
+  "expect": "Check and rotate food and water about every 6 months."
+ },
+ {
+  "id": "EV-386",
+  "q": "how do I make a bike first aid kit small",
+  "topic": "go bags and first aid kits",
+  "expect": "Use a small waterproof pouch with plasters, a gauze pad, tape, wipes and a couple of gloves, and tuck it under the saddle."
+ },
+ {
+  "id": "EV-388",
+  "q": "What is the 3 3 3 rule",
+  "topic": "go bags and first aid kits",
+  "expect": "The rule of 3s says you can survive about 3 minutes without air, 3 hours in harsh weather, 3 days without water and 3 weeks without food."
+ },
+ {
+  "id": "EV-390",
+  "q": "how many calories should I pack per day",
+  "topic": "go bags and first aid kits",
+  "expect": "Pack about 2,000 calories per adult per day."
+ },
+ {
+  "id": "EV-392",
+  "q": "what are the must have items for a pocket kit",
+  "topic": "go bags and first aid kits",
+  "expect": "A knife or multi-tool, lighter, small torch, whistle, paracord and a few plasters."
+ },
+ {
+  "id": "EV-394",
+  "q": "can I keep medicine in my car go bag",
+  "topic": "go bags and first aid kits",
+  "expect": "Heat can degrade medicines, so keep them in a cool place and swap them regularly."
+ },
+ {
+  "id": "EV-396",
+  "q": "whats the best foil blanket and how big",
+  "topic": "go bags and first aid kits",
+  "expect": "A standard foil blanket is about 52 by 84 inches (132 by 213 cm) and weighs only a couple of ounces."
+ },
+ {
+  "id": "EV-398",
+  "q": "how many plasters and dressings in a home first aid kit",
+  "topic": "go bags and first aid kits",
+  "expect": "A home kit should hold at least about 20 assorted plasters and several sterile dressings."
+ },
+ {
+  "id": "EV-400",
+  "q": "what should I wear for a bug out hike with a heavy pack",
+  "topic": "go bags and first aid kits",
+  "expect": "Wear broken-in shoes, moisture-wicking layers and a hat, and avoid cotton."
+ },
+ {
+  "id": "R6-0090",
+  "q": "wat do i do hes ded",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0119",
+  "q": "not sure this is the right place. three things. one, the generator keeps cutting out after ten minutes, two, the dog has been off her food, three and this is the main one actually, my son, he is 16, came back from the lake about an hour ago, no wait less than that, maybe twenty minutes, said he felt strange and went to lie down in the caravan. i just looked in to ask if he wanted tea and he is on the floor between the beds, sort of wedged, and he is making a noise like snoring but it is not snoring, it comes every now and then, and his lips have no colour. i called his name loud. nothing. i moved the table. is this from the lake or what",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0128",
+  "q": "We keep bees and I was going to ask about a swarm. That can wait. My wife was stung this afternoon, twice on the neck, she has been stung plenty before with no trouble so we thought nothing of it. She said her tongue felt thick and I said have some water. She went to get the cream from the bathroom and I heard a bang. She is on the bathroom floor now, her face is swollen so much I hardly know her, she was making a whistling noise when I got there and now there is no noise at all and she has gone a dusky colour. There is an adrenaline pen somewhere from when our son had his nut thing but that is years old. Do I look for it or do I stay with her. Which",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0200",
+  "q": "do i stop",
+  "prev": "dad went down in the yard, no breaths how deep i heard a crack",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0206",
+  "q": "two fingers or thumbs",
+  "prev": "baby not breathing blue",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0219",
+  "q": "ok im doing it. how many before the breaths",
+  "prev": "my neighbour is on her floor no pulse",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0231",
+  "q": "im not strong enough",
+  "prev": "mum collapsed not breathing im 11",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0234",
+  "q": "how many breaths first",
+  "prev": "man pulled from the sea not breathing",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0242",
+  "q": "i can see the grape do i pull it",
+  "prev": "my daughter 5 choked and went limp doing cpr one hand or two",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0259",
+  "q": "my neighbour just got here can we swap",
+  "prev": "he is not breathing i am alone doing cpr",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0271",
+  "q": "one pushing one breathing how many each",
+  "prev": "she collapsed no pulse two of us now",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0327",
+  "q": "the chip pan has caught fire behind me do i stop cpr",
+  "prev": "cpr on my dad in the kitchen he has no pulse",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0563",
+  "q": "thirty then two, is that the count for a baby, doing it now",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R6-0581",
+  "q": "my wife was 39 weeks pregnant the baby just came out and the baby isnt moving or crying",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R5-0108",
+  "q": "cut off by the avalanche debris on the road, we are six in the hostel. the cook has bad lungs. the stove smoked all night. she is sat up in bed this morning, lips purple, head hanging, and she doesnt lift it when i speak",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R5-0195",
+  "q": "ok im alone now, my sister ran for the neighbours. how hard do i push. i heard a crack",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R5-0295",
+  "q": "My neighbour, a widower in his nineties, has not taken in his milk. I let myself in. He is at the foot of the stairs and I cannot tell whether he is alive.",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R5-0409",
+  "q": "lightning struck the mast and my crewmate is down in the cockpit, the shore power lead is still plugged in and sparking",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R5-0590",
+  "q": "my son plays dead all the time as a joke, falls on the floor and holds his breath. this time its been a while and hes not giggling when i tickle him",
+  "prev": "",
+  "topic": "depend"
+ },
+ {
+  "id": "R5-0615",
+  "q": "shepherd is down on the hill, the dogs are standing over him barking, hes been there since we first heard them an hour ago",
+  "prev": "",
+  "topic": "depend"
+ }
+]
