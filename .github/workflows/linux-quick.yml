@@ -1,0 +1,165 @@
+name: waystone-linux-quick
+# Model-free emergency run on GitHub Linux machines: red team and depend rows go through the real engine
+# (/api/quick, the instant first screen) with only the small search model. The chat model is never loaded.
+# Everyday rows stay on the Mac and Windows jobs (wintest.yml).
+# This repository is PUBLIC: the bundle link and its sha come only from the secrets LINUX_BUNDLE_URL and
+# LINUX_BUNDLE_SHA, are never echoed, and the engine files are never uploaded. Only the answer JSON is.
+on:
+  workflow_dispatch:
+    inputs:
+      eval_set:
+        description: "Question set (test/sets/questions_<set>.json), for example r23q_rt9_en or r23q_depend18_en"
+        required: true
+        default: "r23q_rt9_en"
+      shards:
+        description: "Number of parallel Linux machines (1 to 20)"
+        required: true
+        default: "6"
+
+env:
+  LLAMA_TAG: b11912
+  LLAMA_SHA: 344ea88c09666c1fb3eb5f7a649ada48ff753daaa660c7d7bc0b614cda49a078
+  BGE_REV: 9eba04c5d75ba5a1595e45de734d36bef4e5cb98
+  BGE_SHA: aa473d51f451a22f0fcf39ba3330c14bed38a385712b1113440f69df4047a173
+  BGE_SIZE: "634553760"
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+      n: ${{ steps.m.outputs.n }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: m
+        env:
+          SHARDS: ${{ inputs.shards }}
+          SET: ${{ inputs.eval_set }}
+        run: |
+          case "$SHARDS" in ''|*[!0-9]*) echo "shards must be a number"; exit 1;; esac
+          [ "$SHARDS" -ge 1 ] && [ "$SHARDS" -le 20 ] || { echo "shards must be 1 to 20"; exit 1; }
+          case "$SET" in *[!A-Za-z0-9_]*|'') echo "bad set name"; exit 1;; esac
+          [ -f "test/sets/questions_${SET}.json" ] || { echo "no such set"; exit 1; }
+          echo "n=$SHARDS" >> "$GITHUB_OUTPUT"
+          python3 -I -c "import json,sys; print('matrix=' + json.dumps({'shard': list(range(int(sys.argv[1])))}))" "$SHARDS" >> "$GITHUB_OUTPUT"
+
+  # Download once, check, keep in the Actions cache (readable only by workflows of this repo). The engine bundle is
+  # cached under this run's id only, never as an artifact.
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Bundle (secret link), sha checked against the secret
+        env:
+          URL: ${{ secrets.LINUX_BUNDLE_URL }}
+          WANT: ${{ secrets.LINUX_BUNDLE_SHA }}
+        run: |
+          set +x
+          [ -n "$URL" ] && [ -n "$WANT" ] || { echo "LINUX_BUNDLE_URL or LINUX_BUNDLE_SHA is not set"; exit 1; }
+          mkdir -p cache
+          ok=0
+          for i in 1 2 3 4 5; do
+            curl --fail --silent --show-error --location --retry 3 --output cache/bundle.zip "$URL" 2>/dev/null || true
+            h=$(sha256sum cache/bundle.zip 2>/dev/null | cut -d' ' -f1)
+            if [ "$h" = "$WANT" ]; then ok=1; break; fi
+            echo "bundle try $i: size $(stat -c %s cache/bundle.zip 2>/dev/null || echo 0), sha does not match"; sleep 60
+          done
+          [ "$ok" = 1 ] || { echo "bundle download failed the sha check"; rm -f cache/bundle.zip; exit 1; }
+          echo "bundle ok, $(stat -c %s cache/bundle.zip) bytes"
+      - name: Keep the bundle for this run only
+        uses: actions/cache/save@v4
+        with:
+          path: cache/bundle.zip
+          key: linux-quick-bundle-${{ github.run_id }}
+      - name: Public tools already cached?
+        id: probe
+        uses: actions/cache/restore@v4
+        with:
+          path: tools
+          key: linux-quick-tools-${{ env.LLAMA_TAG }}-${{ env.BGE_SHA }}
+          lookup-only: true
+      - name: llama.cpp release and bge-m3 (public, pinned, sha checked)
+        if: steps.probe.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p tools
+          curl --fail --silent --show-error --location --retry 5 -o tools/llama.tgz "https://github.com/ggml-org/llama.cpp/releases/download/${LLAMA_TAG}/llama-${LLAMA_TAG}-bin-ubuntu-x64.tar.gz"
+          echo "${LLAMA_SHA}  tools/llama.tgz" | sha256sum -c -
+          curl --fail --silent --show-error --location --retry 5 -o tools/bge-m3-q8_0.gguf "https://huggingface.co/ggml-org/bge-m3-Q8_0-GGUF/resolve/${BGE_REV}/bge-m3-q8_0.gguf"
+          [ "$(stat -c %s tools/bge-m3-q8_0.gguf)" = "$BGE_SIZE" ]
+          echo "${BGE_SHA}  tools/bge-m3-q8_0.gguf" | sha256sum -c -
+      - name: Keep the public tools
+        if: steps.probe.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: tools
+          key: linux-quick-tools-${{ env.LLAMA_TAG }}-${{ env.BGE_SHA }}
+
+  quick:
+    needs: [plan, fetch]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore the bundle and the public tools
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/bundle.zip
+          key: linux-quick-bundle-${{ github.run_id }}
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        with:
+          path: tools
+          key: linux-quick-tools-${{ env.LLAMA_TAG }}-${{ env.BGE_SHA }}
+          fail-on-cache-miss: true
+      - name: Check the bundle again and unpack it outside the repo
+        env:
+          WANT: ${{ secrets.LINUX_BUNDLE_SHA }}
+        run: |
+          set +x
+          [ "$(sha256sum cache/bundle.zip | cut -d' ' -f1)" = "$WANT" ] || { echo "bundle sha mismatch"; exit 1; }
+          W="$RUNNER_TEMP/wy"; mkdir -p "$W"
+          unzip -q cache/bundle.zip -d "$W"
+          rm -f cache/bundle.zip
+          mkdir -p "$W/llama/linux-amd64" "$W/models" "$RUNNER_TEMP/ldl"
+          tar -xzf tools/llama.tgz -C "$RUNNER_TEMP/ldl"
+          cp -a "$RUNNER_TEMP/ldl/llama-${LLAMA_TAG}/." "$W/llama/linux-amd64/"
+          cp tools/bge-m3-q8_0.gguf "$W/models/bge-m3-q8_0.gguf"
+          chmod +x "$W/guide" "$W/llama/linux-amd64/llama-server"
+          # Model-free proof: the only model file on this machine is the search model.
+          n=$(find "$W" -name '*.gguf' | wc -l); [ "$n" = 1 ] || { echo "expected only the search model, found $n gguf files"; exit 1; }
+          ls "$W" "$W/models" > /dev/null
+          echo "WY=$W" >> "$GITHUB_ENV"
+      - name: Libraries llama.cpp needs
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libgomp1 > /dev/null
+      - name: Run the set (first screens only, no chat model)
+        timeout-minutes: 50
+        env:
+          SET: ${{ inputs.eval_set }}
+          SHARD: ${{ matrix.shard }}
+          N: ${{ needs.plan.outputs.n }}
+          EVAL_QUICK_ONLY: "1"
+          WAYSTONE_NO_CHAT: "1"
+          WAYSTONE_RERANK: "0"
+          EVAL_DEADLINE_S: "2700"
+          EVAL_PORT: "18940"
+        run: |
+          mkdir -p work/eval out; ln -sfn "$PWD/out" work/eval/results
+          python3 -I -c "import json,sys; q=json.load(open(sys.argv[1])); json.dump(q[int(sys.argv[2])::int(sys.argv[3])], open(sys.argv[4],'w'), ensure_ascii=False)" "test/sets/questions_${SET}.json" "$SHARD" "$N" "work/eval/questions_${SET}.json"
+          export LD_LIBRARY_PATH="$WY/llama/linux-amd64"
+          EVAL_ROOT="$PWD/work" EVAL_BIN="$WY/guide" python3 -I test/eval_run.py "$WY" "$SET" run 2>&1 | tee "$RUNNER_TEMP/eval-log.txt" | tail -40
+          tail -5 "out/run_${SET}.server.txt" || true
+      - name: Upload the answers only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quick-answers-${{ matrix.shard }}
+          # answer JSON only: no engine files, no server log
+          path: |
+            out/run_${{ inputs.eval_set }}.json
+            out/run_${{ inputs.eval_set }}.partial.json
+            out/run_${{ inputs.eval_set }}.progress.jsonl
+          if-no-files-found: warn

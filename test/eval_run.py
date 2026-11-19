@@ -12,6 +12,7 @@ ROOT = Path(os.environ.get("EVAL_ROOT") or Path(__file__).resolve().parent.paren
 BIN = Path(os.environ.get("EVAL_BIN") or ROOT / "build" / "bin" / "guide-macos-arm64")  # EVAL_BIN on the Linux test machine
 PORT = int(os.environ.get("EVAL_PORT", "18940"))  # several tests side by side on the cloud machine
 DEADLINE = float(os.environ.get("EVAL_DEADLINE_S") or 0)  # stop asking new questions after this many seconds (CI step limit)
+QUICK_ONLY = os.environ.get("EVAL_QUICK_ONLY") == "1"  # model-free run (Linux quick job): only the instant first view (/api/quick), never /api/ask
 CPU = os.environ.get("EVAL_CPU") == "1"  # run the AI on the processor (for the 8B model on an 8 GB Mac)
 
 
@@ -351,7 +352,10 @@ def main():
         while True:
             try:
                 st = call("/api/status")
-                if st.get("chat") == "ready" or st.get("error"):
+                if QUICK_ONLY:  # the chat model is switched off: wait for the search model only
+                    if st.get("embed") == "ready" or st.get("embed") == "error":
+                        break
+                elif st.get("chat") == "ready" or st.get("error"):
                     break
             except Exception:
                 pass
@@ -386,13 +390,19 @@ def main():
             prev = turns[-1] if turns else ""
             qk, qk_ms, qres = quick(q["q"], prev, age, cpr)
             t = time.time()
-            res = call("/api/ask", {"q": q["q"], "prev": prev, "age": age, "cpr": cpr})  # as the app sends the question before
+            if QUICK_ONLY:  # no model: the first view is the answer being judged (emergency rows never call the chat model)
+                res = dict(qres or {})
+                res.setdefault("status", "quick" if qres else "error")
+                res.setdefault("urgent", False)
+                res.setdefault("debug", {})
+            else:
+                res = call("/api/ask", {"q": q["q"], "prev": prev, "age": age, "cpr": cpr})  # as the app sends the question before
             el = time.time() - t
             mem_peak = max(mem_peak, footprint_mb())
             exp = exps.get(q["id"], {})
             sc = auto_score(q, exp, res)
             rows.append({"id": q["id"], "q": q["q"], "topic": q.get("topic"), "expect_text": q.get("expect"),
-                         "expect": exp, "status": res["status"], "urgent": res["urgent"], "warning": res.get("warning", ""), "situation": res.get("situation", ""), "fixed_rule": res.get("debug", {}).get("fixed", ""),
+                         "expect": exp, "status": res["status"], "urgent": bool(res.get("urgent")), "warning": res.get("warning", ""), "situation": res.get("situation", ""), "fixed_rule": res.get("debug", {}).get("fixed", ""),
                          "cards": [b["card_id"] for b in res.get("blocks") or []], "shown": shown(res),
                          "choices": [c["card_id"] for c in res.get("choices") or []], "unsure": bool(res.get("unsure")),
                          "pages_shown": pages_shown(res),
