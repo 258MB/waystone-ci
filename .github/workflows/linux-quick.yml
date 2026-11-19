@@ -8,13 +8,13 @@ on:
   workflow_dispatch:
     inputs:
       eval_set:
-        description: "Question set (test/sets/questions_<set>.json), for example r23q_rt9_en or r23q_depend18_en"
+        description: "Question sets, comma or space separated (test/sets/questions_<set>.json), for example r23r_rt9_en,r23r_rt8_en,r23r_depend18_en"
         required: true
-        default: "r23q_rt9_en"
+        default: "r23r_rt9_en"
       shards:
-        description: "Number of parallel Linux machines (1 to 20)"
+        description: "Linux machines in TOTAL for all sets together (1 to 20, shared out by row count)"
         required: true
-        default: "6"
+        default: "12"
 
 env:
   LLAMA_TAG: b11912
@@ -29,20 +29,38 @@ jobs:
     timeout-minutes: 5
     outputs:
       matrix: ${{ steps.m.outputs.matrix }}
-      n: ${{ steps.m.outputs.n }}
     steps:
       - uses: actions/checkout@v4
       - id: m
         env:
           SHARDS: ${{ inputs.shards }}
-          SET: ${{ inputs.eval_set }}
+          SETS: ${{ inputs.eval_set }}
         run: |
-          case "$SHARDS" in ''|*[!0-9]*) echo "shards must be a number"; exit 1;; esac
-          [ "$SHARDS" -ge 1 ] && [ "$SHARDS" -le 20 ] || { echo "shards must be 1 to 20"; exit 1; }
-          case "$SET" in *[!A-Za-z0-9_]*|'') echo "bad set name"; exit 1;; esac
-          [ -f "test/sets/questions_${SET}.json" ] || { echo "no such set"; exit 1; }
-          echo "n=$SHARDS" >> "$GITHUB_OUTPUT"
-          python3 -I -c "import json,sys; print('matrix=' + json.dumps({'shard': list(range(int(sys.argv[1])))}))" "$SHARDS" >> "$GITHUB_OUTPUT"
+          # eval_set is a list (commas or spaces). SHARDS machines in total are shared out over the sets by row count
+          # (every set gets at least one). Output: matrix include list of {set, shard, n}.
+          python3 -I - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os, re, sys
+          sets = [x for x in re.split(r"[,\s]+", os.environ["SETS"].strip()) if x]
+          total = os.environ["SHARDS"].strip()
+          if not total.isdigit() or not 1 <= int(total) <= 20:
+              sys.exit("shards must be 1 to 20 in total")
+          total = int(total)
+          if not sets or len(set(sets)) != len(sets) or len(sets) > total:
+              sys.exit("give 1 or more different sets, at most as many as the shards")
+          rows = {}
+          for s in sets:
+              if not re.fullmatch(r"[A-Za-z0-9_]+", s):
+                  sys.exit("bad set name")
+              try:
+                  rows[s] = len(json.load(open(f"test/sets/questions_{s}.json")))
+              except OSError:
+                  sys.exit("no such set: " + s)
+          n = {s: 1 for s in sets}
+          for _ in range(total - len(sets)):  # next machine goes to the set with the most rows per machine
+              n[max(sets, key=lambda s: rows[s] / n[s])] += 1
+          inc = [{"set": s, "shard": i, "n": n[s]} for s in sets for i in range(n[s])]
+          print("matrix=" + json.dumps({"include": inc}))
+          PY
 
   # Download once, check, keep in the Actions cache (readable only by workflows of this repo). The engine bundle is
   # cached under this run's id only, never as an artifact.
@@ -138,9 +156,9 @@ jobs:
       - name: Run the set (first screens only, no chat model)
         timeout-minutes: 50
         env:
-          SET: ${{ inputs.eval_set }}
+          SET: ${{ matrix.set }}
           SHARD: ${{ matrix.shard }}
-          N: ${{ needs.plan.outputs.n }}
+          N: ${{ matrix.n }}
           EVAL_QUICK_ONLY: "1"
           WAYSTONE_NO_CHAT: "1"
           WAYSTONE_RERANK: "0"
@@ -156,10 +174,10 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: quick-answers-${{ matrix.shard }}
+          name: quick-answers-${{ matrix.set }}-${{ matrix.shard }}
           # answer JSON only: no engine files, no server log
           path: |
-            out/run_${{ inputs.eval_set }}.json
-            out/run_${{ inputs.eval_set }}.partial.json
-            out/run_${{ inputs.eval_set }}.progress.jsonl
+            out/run_${{ matrix.set }}.json
+            out/run_${{ matrix.set }}.partial.json
+            out/run_${{ matrix.set }}.progress.jsonl
           if-no-files-found: warn
