@@ -41,8 +41,8 @@ jobs:
       - name: Download the zips once
         if: steps.probe.outputs.cache-hit != 'true'
         env:
-          MAC_URL: ${{ secrets.MAC_URL_R23M }}
-          WIN_URL: ${{ secrets.WIN_URL_R23M }}
+          MAC_URL: ${{ secrets.MAC_URL_R23P }}
+          WIN_URL: ${{ secrets.WIN_URL_R23P }}
           MAC_SHA: ${{ inputs.mac_sha }}
           WIN_SHA: ${{ inputs.win_sha }}
           RUN_MAC: ${{ inputs.run_mac }}
