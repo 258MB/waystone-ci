@@ -44,17 +44,230 @@ def call(path, body=None, timeout=600):
     return json.loads(urllib.request.urlopen(req, timeout=timeout).read())
 
 
-def quick(q, prev):
-    """The instant first view (/api/quick), which people act on for minutes: banner, warning and the pages shown."""
+def quick(q, prev, age="", cpr=False):
+    """The instant first view (/api/quick), which people act on for minutes: banner, warning and the pages shown.
+    age and cpr are the page's own memory (the app sends them with every question for 15 minutes, see ask() in app.js)."""
     t = time.time()
     try:
-        r = call("/api/quick", {"q": q, "prev": prev}, timeout=120)
+        r = call("/api/quick", {"q": q, "prev": prev, "age": age, "cpr": cpr}, timeout=120)
     except Exception as e:  # never stop a run for the first view
-        return {"error": str(e)[:200]}, round((time.time() - t) * 1000)
+        return {"error": str(e)[:200]}, round((time.time() - t) * 1000), {}
     ms = round((time.time() - t) * 1000)
     return {"status": r.get("status", ""), "urgent": bool(r.get("urgent")), "warning": r.get("warning", ""),
             "message": r.get("message", ""), "cards": [b["card_id"] for b in r.get("blocks") or []],
-            "reason": (r.get("debug") or {}).get("reason", "")}, ms
+            "reason": (r.get("debug") or {}).get("reason", "")}, ms, r
+
+
+# r23q: what the person really sees first. The app draws the pinned "Not breathing" button, then the dispatch box
+# (a question with big buttons, instead of the red banner), the scene warning, the light line "Is someone down right
+# now?", the breathing question, the one checked line, the warning, the answer line, the pages, the "next hours" parts
+# and "Is it one of these?" (renderAnswer in web/app.js). The old "shown" text had only the pages, so a box screen
+# with no page under it came out as an empty answer. screen() records all of it, in screen order, as fields.
+AGES = ("adult", "child", "baby")
+BANNER_TEXT = "Act now. Make yourself and the scene safe, then do the steps in order. Stay with the person, and signal for help if you can (whistle: 3 blasts, a light, a radio)."
+
+
+def _title(d, bid):
+    b = (d.get("blocks") or {}).get(bid) or {}
+    return b.get("title") or bid
+
+
+def _page(d, bid, whole=False):
+    b = (d.get("blocks") or {}).get(bid) or {}
+    sents = [s.get("text", "") for s in (b.get("full") if whole and b.get("full") else b.get("sentences")) or []]
+    return {"id": bid, "title": b.get("title") or bid, "sentences": sents}
+
+
+def _open(tree, b, d, age):
+    out = []
+    add = lambda ids: [out.append(i) for i in ids or [] if i not in out]
+    age = age if age in AGES else "adult"
+    add(b.get("pages"))
+    pba = b.get("pages_by_age")
+    if pba:
+        w = pba.get(age + "_water")
+        add(w if (w and d.get("water")) else pba.get(age))
+    if b.get("add_scene"):
+        add(d.get("scene_pages"))
+    nxt = b.get("next") or ""
+    if nxt == "@then":
+        nxt = d.get("then") or ""
+    if b.get("add_cause"):
+        cp = (d.get("pages_by_age") or {}).get(age) or d.get("pages") or []
+        if not cp and b.get("if_no_cause"):
+            add(b["if_no_cause"].get("pages"))
+            nxt = b["if_no_cause"].get("next") or ""
+        else:
+            add(cp)
+    return out, nxt
+
+
+def _first(b, age, water):
+    f = b.get("first_by_age")
+    age = age if age in AGES else "adult"
+    return ((f and ((water and f.get(age + "_water")) or f.get(age) or f.get("adult"))) or b.get("first") or "")
+
+
+def box_screen(d):
+    """The dispatch box as first drawn (web/dispatch.js view): the open question, its lines and buttons."""
+    tree = d.get("tree") or {}
+    n = (tree.get("nodes") or {}).get(d.get("node")) or {}
+    tx = tree.get("texts") or {}
+    out = {"why": d.get("why", ""), "node": d.get("node", ""), "then": d.get("then", ""), "age_hint": d.get("age_hint", ""),
+           "auto_age": d.get("auto", ""), "auto_line": d.get("auto_line", ""), "animal_button": tx.get("animal_choice", "It is an animal") if d.get("animal_choice") else "",
+           "question": n.get("question", ""), "subline": n.get("subline", ""),
+           "past_hint": n.get("past_hint", "") if d.get("past") else "",
+           "scene_lines": d.get("scene_lines") or [] if n.get("scene_lines") else [], "buttons": [],
+           "found_pages": [_title(d, i) for i in d.get("found") or []]}
+    for b in n.get("buttons") or []:
+        pages, nxt = _open(tree, b, d, "adult")
+        nq = ((tree.get("nodes") or {}).get(nxt) or {}).get("question", "")
+        out["buttons"].append({"id": b.get("id"), "label": b.get("label"), "danger": b.get("style") == "danger",
+                               "gives_first": _first(b, "adult", bool(d.get("water"))), "gives_lead": b.get("lead", ""),
+                               "gives_pages": [_title(d, i) for i in pages], "then_asks": nq})
+    return out
+
+
+def box_walk(d):
+    """The taps that reach the CPR steps from this box (the sure-danger path: safe, the age the words hint or adult, not
+    awake, not breathing; or Yes keep going on the one-tap screen), with what each tap shows. This is what the person
+    reads AFTER the taps; the first screen is box_screen. Never more than 8 taps."""
+    tree = d.get("tree") or {}
+    nodes = tree.get("nodes") or {}
+    node, age, steps = d.get("node"), "", []
+    for _ in range(8):
+        n = nodes.get(node)
+        if not n:
+            break
+        bs = n.get("buttons") or []
+        pick = None
+        if n.get("age_choice"):
+            hint = d.get("age_hint", "")
+            pick = next((b for b in bs if b.get("id") == (hint if hint in AGES + ("newborn",) else "adult")), bs[0] if bs else None)
+        else:
+            pick = next((b for b in bs if b.get("cpr")), None)
+            if not pick:
+                want = {"scene": "yes", "safe_now": "safe", "awake": "no", "fit": "no", "after_fit": "no", "breathing": "no"}.get(node)
+                pick = next((b for b in bs if b.get("id") == want), bs[0] if bs else None)
+        if not pick:
+            break
+        sa = pick.get("set_age")
+        age = d.get("auto", "") if sa == "@auto" else "" if sa == "@none" else sa if sa in AGES else age
+        pages, nxt = _open(tree, pick, d, age)
+        st = {"asked": n.get("question", ""), "tap": pick.get("label", ""), "age": age, "says": _first(pick, age, bool(d.get("water"))),
+              "lead": pick.get("lead", ""), "pages": [_page(d, i) for i in pages], "cpr": bool(pick.get("cpr"))}
+        steps.append(st)
+        if pick.get("cpr") or (pages and not nxt):
+            break
+        node = nxt
+        if pick.get("then_button"):
+            node_b = nodes.get(node) or {}
+            tb = next((b for b in node_b.get("buttons") or [] if b.get("id") == pick["then_button"]), None)
+            if tb:
+                pages2, nxt2 = _open(tree, tb, d, age)
+                steps.append({"asked": node_b.get("question", ""), "tap": tb.get("label", "") + " (pressed for you)", "age": age,
+                              "says": _first(tb, age, bool(d.get("water"))), "lead": tb.get("lead", ""), "pages": [_page(d, i) for i in pages2], "cpr": bool(tb.get("cpr"))})
+                if tb.get("cpr"):
+                    break
+                node = nxt2
+    return {"taps": len(steps), "reaches_cpr": any(s["cpr"] for s in steps), "steps": steps}
+
+
+def screen(res, pinned_text=""):
+    """Everything on the first screen, in screen order, as fields plus one plain text (screen_text)."""
+    d = res.get("dispatch")
+    lt = res.get("light")
+    bc = None if d else res.get("breathing_check")
+    sc = {"pinned_button": pinned_text, "banner": BANNER_TEXT if res.get("urgent") and not d and not bc else "",
+          "status": res.get("status", ""), "urgent": bool(res.get("urgent")),
+          "box": box_screen(d) if d else None, "box_walk": box_walk(d) if d else None,
+          "scene_warning": res.get("scene_warning", "") if d else (res.get("scene_warning", "") or ""),
+          "light": None, "breathing_check": None, "situation": res.get("situation", ""), "warning": res.get("warning", ""),
+          "message": res.get("message", ""), "answer_line": (res.get("answer_line") or {}).get("text", ""),
+          "pages": [], "next_hours": res.get("next_hours") or [], "worse_if": res.get("worse_if") or [],
+          "choices": [{"id": c["card_id"], "title": c["title"]} for c in res.get("choices") or []], "unsure": bool(res.get("unsure"))}
+    if lt and not d:
+        tx = (lt.get("tree") or {}).get("texts") or {}
+        sc["light"] = {"question": tx.get("light_q", "Is someone down right now?"), "buttons": [tx.get("light_yes", "Yes"), tx.get("light_no", "No")],
+                       "yes_opens_box_at": lt.get("node", "")}
+    if bc:
+        sc["breathing_check"] = {"question": bc.get("question", ""), "subline": bc.get("subline", ""),
+                                 "buttons": [{"id": c.get("id"), "label": c.get("label"), "lead": c.get("lead", ""), "pages": [(b.get("title") or "") for b in c.get("blocks") or []]} for c in bc.get("choices") or []]}
+    whole = res.get("status") in ("closest", "fixed")
+    for b in res.get("blocks") or []:
+        sents = b.get("full") if whole else b.get("sentences")
+        sc["pages"].append({"id": b["card_id"], "title": b.get("title", ""), "for": b.get("for", ""), "sentences": [s["text"] for s in sents or []]})
+    sc["screen_text"] = screen_text(sc, bool(res.get("unsure")))
+    return sc
+
+
+def screen_text(sc, unsure):
+    t = []
+    if sc["pinned_button"]:
+        t.append("[button always on top] " + sc["pinned_button"])
+    if sc["banner"]:
+        t.append("[red banner] " + sc["banner"])
+    b = sc["box"]
+    if b:
+        t.append("[box] " + b["question"] + (" " + b["subline"] if b["subline"] else ""))
+        if b["auto_line"]:
+            t.append("[box first line] " + b["auto_line"])
+        t += ["[box danger line] " + l for l in b["scene_lines"]]
+        t.append("[box buttons] " + " | ".join(x["label"] for x in b["buttons"]) + (" | " + b["animal_button"] if b["animal_button"] else ""))
+        if b["found_pages"]:
+            t.append("[box, folded below] Other pages found: " + " | ".join(b["found_pages"]))
+    if sc["scene_warning"]:
+        t.append("[scene warning] " + sc["scene_warning"])
+    if sc["light"]:
+        t.append("[light line] " + sc["light"]["question"] + " " + " | ".join(sc["light"]["buttons"]))
+    if sc["breathing_check"]:
+        t.append("[breathing question] " + sc["breathing_check"]["question"] + " " + sc["breathing_check"]["subline"] + " | " + " | ".join(x["label"] for x in sc["breathing_check"]["buttons"]))
+    if unsure and sc["choices"]:
+        t.append("[Is it one of these? first] " + " | ".join(c["title"] for c in sc["choices"]))
+    for k, tag in (("situation", "checked line"), ("warning", "warning box"), ("message", "message")):
+        if sc[k]:
+            t.append(f"[{tag}] " + sc[k])
+    if sc["answer_line"]:
+        t.append("[answer line] " + sc["answer_line"])
+    for p in sc["pages"]:
+        t.append(f"[page {p['id']}] {p['title']}")
+        t += ["- " + s for s in p["sentences"]]
+    if sc["next_hours"]:
+        t.append("[next hours] " + " ".join(sc["next_hours"]))
+    if sc["worse_if"]:
+        t.append("[getting worse] " + " ".join(sc["worse_if"]))
+    if not unsure and sc["choices"]:
+        t.append("[Is it one of these?] " + " | ".join(c["title"] for c in sc["choices"]))
+    return "\n".join(t)
+
+
+def earlier_turns(prev):
+    """The earlier messages of a question: a text, a list of texts (the conversation so far) or nothing."""
+    if isinstance(prev, list):
+        return [str(x) for x in prev if str(x).strip()]
+    return [str(prev)] if prev else []
+
+
+def page_state(turns, pinned_text):
+    """What the page remembers from the earlier turns, as the real page would send it with the next question.
+    The page sends only the LAST question as prev (lastAsk.q), plus the age last tapped and whether CPR was shown in
+    the last 15 minutes. Each earlier turn is replayed through /api/quick (no AI); when its first screen is the box (or
+    a CPR page) the person is taken to have followed it to the CPR steps: cpr true and the age its hint names (adult
+    if none). A question may set its own "page": {"age": ..., "cpr": ...} instead. Set EVAL_PAGE_STATE=none to send neither."""
+    age, cpr, seen = "", False, []
+    if os.environ.get("EVAL_PAGE_STATE") == "none":
+        return age, cpr, seen
+    prior = ""
+    for t in turns:
+        _, _, r = quick(t, prior, age, cpr)
+        d = r.get("dispatch")
+        seen.append({"turn": t, "box": bool(d), "box_node": (d or {}).get("node", ""), "cpr_shown": bool(r.get("cpr_shown"))})
+        if r.get("cpr_shown") or (d and d.get("node") != "awake" and (d.get("node") in ("scene", "cprcheck") or d.get("why") == "newborn")):
+            cpr = True
+            hint = (d or {}).get("age_hint", "") or (d or {}).get("auto", "")
+            age = hint if hint in AGES else ("baby" if hint == "newborn" else age or "adult")
+        prior = t
+    return age, cpr, seen
 
 
 def shown(res):
@@ -132,6 +345,7 @@ def main():
     done = {r["id"] for r in rows}
     pf = open(prog, "a")
     load_s, mem_ready, mem_peak, st = 0, 0, 0, {}
+    pinned_text = ""
     try:
         t0 = time.time()
         while True:
@@ -145,6 +359,10 @@ def main():
         load_s = time.time() - t0
         mem_ready = footprint_mb()
         mem_peak = mem_ready
+        try:  # the button the app puts on top of every answer ("Not breathing"); its text is in the box tree
+            pinned_text = ((call("/api/pinned") or {}).get("tree") or {}).get("texts", {}).get("pinned", "")
+        except Exception:
+            pinned_text = ""
         print("ready", round(load_s, 1), "s", mem_ready, "MB", st, flush=True)
         for q in qs:
             if stopped:
@@ -155,10 +373,20 @@ def main():
                 break
             if q["id"] in done:
                 continue
-            # r23: the instant first view, as the page asks for it before the answer (same question and prev).
-            qk, qk_ms = quick(q["q"], q.get("prev") or "")
+            # r23: the instant first view, as the page asks for it before the answer (same question, prev, age and cpr).
+            # r23q: an earlier conversation (a list of messages, or one text) is sent like the page does: only the last
+            # message as prev, with the age and CPR flag the page would remember (page_state). Before r23q a list went
+            # to the app as it was, the app could not read it, and the follow-up was answered with no conversation.
+            turns = earlier_turns(q.get("prev"))
+            own = q.get("page")
+            if own is not None:
+                age, cpr, seen = own.get("age", ""), bool(own.get("cpr")), [{"given_by_question": True}]
+            else:
+                age, cpr, seen = page_state(turns, pinned_text)
+            prev = turns[-1] if turns else ""
+            qk, qk_ms, qres = quick(q["q"], prev, age, cpr)
             t = time.time()
-            res = call("/api/ask", {"q": q["q"], "prev": q.get("prev") or ""})  # as the app sends the question before
+            res = call("/api/ask", {"q": q["q"], "prev": prev, "age": age, "cpr": cpr})  # as the app sends the question before
             el = time.time() - t
             mem_peak = max(mem_peak, footprint_mb())
             exp = exps.get(q["id"], {})
@@ -168,6 +396,8 @@ def main():
                          "cards": [b["card_id"] for b in res.get("blocks") or []], "shown": shown(res),
                          "choices": [c["card_id"] for c in res.get("choices") or []], "unsure": bool(res.get("unsure")),
                          "pages_shown": pages_shown(res),
+                         "earlier_turns": turns, "sent": {"prev": prev, "age": age, "cpr": cpr}, "replayed_turns": seen,
+                         "screen": screen(res, pinned_text), "screen_quick": screen(qres, pinned_text) if qres else {},
                          "seconds": round(el, 2), "auto": sc, "debug": res["debug"],
                          "quick": qk, "quick_ms": qk_ms})
             pf.write(json.dumps(rows[-1], ensure_ascii=False) + "\n")
