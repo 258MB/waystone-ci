@@ -115,7 +115,7 @@ def box_screen(d):
     n = (tree.get("nodes") or {}).get(d.get("node")) or {}
     tx = tree.get("texts") or {}
     out = {"why": d.get("why", ""), "node": d.get("node", ""), "then": d.get("then", ""), "age_hint": d.get("age_hint", ""),
-           "auto_age": d.get("auto", ""), "auto_line": d.get("auto_line", ""), "animal_button": tx.get("animal_choice", "It is an animal") if d.get("animal_choice") else "",
+           "auto_age": d.get("auto", ""), "auto_line": d.get("auto_line", ""), "answer_line_box": d.get("answer_line", ""), "animal_button": tx.get("animal_choice", "It is an animal") if d.get("animal_choice") else "",
            "question": n.get("question", ""), "subline": n.get("subline", ""),
            "past_hint": n.get("past_hint", "") if d.get("past") else "",
            "scene_lines": d.get("scene_lines") or [] if n.get("scene_lines") else [], "buttons": [],
